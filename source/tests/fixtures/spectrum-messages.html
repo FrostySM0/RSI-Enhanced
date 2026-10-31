@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" data-rsi-section="spectrum">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spectrum Messages drawer fixture</title>
+<link rel="stylesheet" href="/spectrum-messages-native.css">
+<link rel="stylesheet" href="/spectrum.css">
+<body>
+  <div id="react">
+    <div class="mainLayout__sidebar mainLayout__right mainLayout__right-open">
+      <div class="sidebarRight">
+        <aside class="orion-tavern-c-sidebarRight">
+          <header class="orion-tavern-c-sidebarRightHeader -high">
+            <div class="orion-tavern-c-sidebarRightHeader__top">
+              <div class="orion-tavern-c-sidebarRightHeader__decoration"></div>
+              <svg class="orion-tavern-c-sidebarRightHeader__background" aria-hidden="true"></svg>
+              <div class="orion-tavern-c-sidebarRightHeader__heading">
+                <p class="orion-tavern-c-sidebarRightHeader__title" title="Messages">Messages</p>
+                <div style="display: inline-block;"><button class="a-button -compact -interaction -filled" type="button">
+                  <div class="a-button__background"></div>
+                  <div class="a-button__content"><i class="a-button__icon a-icon -add"></i><span class="a-button__text">New</span></div>
+                </button></div>
+              </div>
+              <p class="orion-tavern-c-sidebarRightHeader__counter">1 unread</p>
+            </div>
+            <div class="orion-tavern-c-sidebarRightHeader__content">
+              <div class="m-inputBase m-inputText -withLabel -empty">
+                <div class="m-inputBase__input">
+                  <input type="text" data-cy-id="input" value="">
+                  <label class="a-inputLabel"><span class="a-inputLabel__text">Find a Conversation</span></label>
+                  <div class="m-inputBase__startOverlay"><i class="a-icon -search"></i></div>
+                </div>
+              </div>
+            </div>
+          </header>
+          <section class="orion-tavern-c-sidebarRightContent">
+            <a class="orion-tavern-c-SidebarRightDirectMessage" href="/spectrum/messages/member/example">
+              <div class="orion-tavern-c-avatar -square -s200 orion-tavern-c-SidebarRightDirectMessage__avatar">
+                <div class="orion-c-avatar__wrapper"><img class="orion-c-avatar__image" alt="" src=""></div>
+              </div>
+              <div class="orion-tavern-c-SidebarRightDirectMessage__content">
+                <span class="orion-tavern-c-SidebarRightDirectMessage__title"><p class="orion-tavern-c-SidebarRightDirectMessage__names -bold">Example pilot</p></span>
+                <p class="orion-tavern-c-SidebarRightDirectMessage__excerpt -bold">Unread message preview</p>
+              </div>
+              <span class="orion-tavern-c-SidebarRightDirectMessage__counter"><p>1</p><i class="a-icon -bullet"></i></span>
+              <button class="a-button orion-tavern-c-SidebarRightDirectMessage__close-button -focusable -compact -default -icon" type="button" aria-label="Close">
+                <div class="a-button__background"></div>
+                <div class="a-button__content"><i class="orion-tavern-c-SidebarRightDirectMessage__icon orion-tavern-c-SidebarRightDirectMessage__icon--close a-button__customIcon a-icon -close"></i></div>
+              </button>
+            </a>
+            <template id="empty-state-example">
+            <div class="m-emptyState t-messagesEmptyState" data-cy-id="empty_state">
+              <div class="m-emptyState__content">
+                <div class="a-image orion-tavern-c-sidebarRight__emptyState-backgroundImage -cover -isLoaded"><div class="a-image__thumbnail"><img class="a-image__img" alt=""></div></div>
+                <svg class="orion-tavern-c-sidebarRight__emptyState-icon" viewBox="0 0 178 178" aria-hidden="true"></svg>
+                <div class="m-emptyState__text">
+                  <h2 data-cy-id="empty_state__title">NO MESSAGES</h2>
+                  <p data-cy-id="empty_state__body">You don't have any messages yet.</p>
+                </div>
+              </div>
+              <button class="a-button m-emptyState__button -compact -interaction -filled" data-cy-id="empty_state__button" type="button">
+                <div class="a-button__background"></div>
+                <div class="a-button__content"><span class="a-button__text">+ NEW</span></div>
+              </button>
+            </div>
+            </template>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spectrum foundation verification fixture</title>
+<style>
+/* Minimal cascade fixture based on observed live selectors, not a site replica. */
+.theme-dark { --theme-bg-color-1: #0e283a; --theme-text-color: #b3bdc6; }
+.mainLayout__content { background-color: #222425; }
+body { margin: 0; }
+main { padding: 24px; }
+section, article { padding: 20px; margin-block: 12px; }
+.app { background: var(--theme-bg-color-1); color: var(--theme-text-color); }
+.modal-content { padding: 20px; }
+</style>
+<link rel="stylesheet" href="/spectrum.css">
+<div id="react" class="theme-dark">
+  <main class="mainLayout__content">
+    <h1>Spectrum foundation fixture</h1>
+    <p>Observed component boundaries; this is not the live website.</p>
+    <section class="orion-tavern-c-ThreadListItem">
+      <header class="orion-tavern-c-ThreadListItem__header">Discussion card</header>
+      <p class="orion-tavern-c-ThreadListItem__subtitle">Muted discussion metadata</p>
+    </section>
+    <div class="app theme-dark">
+      <article class="forum-thread">
+        <div class="content-blocks">Nested legacy discussion text with <a href="#reply">a readable link</a>.</div>
+        <button id="reply">Reply</button>
+      </article>
+    </div>
+  </main>
+</div>
+<div class="ReactModalPortal">
+  <div class="theme-dark">
+    <div class="modal"><div class="modal-content">
+      <header class="c-modal-header">Portalled modal</header>
+      <label>Reason <textarea></textarea></label>
+      <label>Report type <select><option>Choose a type</option></select></label>
+      <button class="action-button">Cancel</button>
+    </div></div>
+  </div>
+</div>
+</html>

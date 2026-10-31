@@ -1,0 +1,97 @@
+/* Minimal native drawer geometry for local visual checks; extension styling stays in dist/spectrum.css. */
+html,
+body {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+#react {
+  min-height: 100vh;
+  background: #10151c;
+}
+
+.mainLayout__sidebar.mainLayout__right {
+  box-sizing: border-box;
+  width: min(386px, 100vw);
+  height: 100vh;
+  margin-left: auto;
+  overflow: hidden;
+}
+
+.sidebarRight,
+.orion-tavern-c-sidebarRight {
+  height: 100%;
+  min-height: 0;
+}
+
+.orion-tavern-c-sidebarRight {
+  display: flex;
+  flex-direction: column;
+}
+
+.orion-tavern-c-sidebarRightHeader {
+  flex: none;
+}
+
+.orion-tavern-c-sidebarRightContent {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+}
+
+.orion-tavern-c-sidebarRightContent.-centerContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.m-emptyState.t-messagesEmptyState {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px;
+}
+
+.m-emptyState__content {
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.orion-tavern-c-sidebarRight__emptyState-backgroundImage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.orion-tavern-c-sidebarRight__emptyState-backgroundImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.orion-tavern-c-sidebarRight__emptyState-icon {
+  position: absolute;
+  width: 178px;
+  height: 178px;
+}
+
+.m-emptyState__text {
+  position: relative;
+  text-align: center;
+}
+
+.m-emptyState__button {
+  position: relative;
+}

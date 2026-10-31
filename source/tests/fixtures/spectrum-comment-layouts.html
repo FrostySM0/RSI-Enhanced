@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en" data-rsi-section="spectrum" data-rsi-forums="on" data-rsi-theme="on" data-rsi-preset="enhanced" data-rsi-comment-layout="threaded" data-rsi-density="balanced" data-rsi-avatar="circle">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spectrum comment layout preview</title>
+  <link rel="stylesheet" href="/spectrum.css">
+  <style>
+    body { min-width: 900px; margin: 0; background: var(--rsi-background); color: var(--rsi-text); font: 15px/1.55 Arial, sans-serif; }
+    .preview-bar { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 20px 4vw; border-bottom: 1px solid var(--rsi-border); background: var(--rsi-surface); }
+    .preview-bar strong { color: var(--rsi-accent); letter-spacing: .08em; }
+    .preview-bar select { min-width: 180px; padding: 8px 10px; background: var(--rsi-raised); color: var(--rsi-text); border: 1px solid var(--rsi-border); }
+    #react { max-width: 1480px; margin: 0 auto; padding: 40px 5vw 80px; }
+    #page.forum-thread .forum-thread.discussion { width: 100%; }
+    .forum-thread-heading { margin: 0 0 26px; color: var(--rsi-text); font-size: 22px; }
+    .forum-thread-item { display: flex; min-width: 0; }
+    .forum-thread-item > .gutter { flex: 0 0 28px; }
+    .forum-thread-item > .content { flex: 1 1 auto; min-width: 0; }
+    .content-header .left { display: flex; align-items: center; gap: 10px; min-width: 0; }
+    .member-avatar, .member-avatar .avatar { width: 48px; height: 48px; }
+    .member-avatar .avatar { overflow: hidden; border-radius: var(--rsi-forum-avatar-radius); border: 1px solid var(--rsi-border); }
+    .member-avatar img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .member-name { color: var(--rsi-accent); font-size: 18px; }
+    .member-handle, .forum-thread-time-created { color: var(--rsi-muted); font-size: 12px; }
+    .vote-control, .toggle-collapse { color: var(--rsi-accent); background: var(--rsi-surface); border: 1px solid var(--rsi-border); cursor: pointer; }
+    .vote-control { display: grid; gap: 1px; min-width: 34px; padding: 4px; }
+    .content-blocks { min-width: 0; font-size: var(--rsi-font-size, 15px); }
+    .forum-thread-item-children-replies[hidden] { display: none !important; }
+  </style>
+  <script>
+    const previewLayout = new URLSearchParams(location.search).get('layout');
+    if (['threaded', 'compact', 'flat', 'cards', 'bubbles', 'conversation'].includes(previewLayout)) {
+      document.documentElement.setAttribute('data-rsi-comment-layout', previewLayout);
+    }
+  </script>
+</head>
+<body>
+  <nav class="preview-bar" aria-label="Local preview controls">
+    <strong>SPECTRUM COMMENT LAYOUT PREVIEW</strong>
+    <label>Layout
+      <select id="layout-preview">
+        <option value="threaded">Threaded</option>
+        <option value="compact">Compact threaded</option>
+        <option value="flat">Flat</option>
+        <option value="cards">Card stack</option>
+        <option value="bubbles">Bubble</option>
+        <option value="conversation">Conversation stream</option>
+      </select>
+    </label>
+  </nav>
+  <div id="react">
+    <main id="page" class="forum-thread">
+      <section class="page-content forum-thread discussion">
+        <h1 class="forum-thread-heading">Comments · layout preview</h1>
+        <div class="forum-thread-item type-forum_thread">
+          <div class="content"><div class="content-main">
+            <header class="content-header"><div class="left">
+              <div class="member-profile-openable"><div class="member-avatar"><div class="avatar"><img alt="Original author's avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' fill='%23345163'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' fill='white' font-size='18'%3EA%3C/text%3E%3C/svg%3E"></div></div></div>
+              <span class="member-name"><span class="displayname"><span class="nickname">Agonist</span></span></span><span class="member-handle">@Agonist101</span><time class="forum-thread-time-created">October 12th at 13:44</time>
+            </div></header>
+            <div class="content-blocks"><p>Backers would have appreciated an update.</p></div>
+          </div></div>
+        </div>
+        <div class="forum-thread-replies">
+          <div class="forum-thread-item type-forum_thread_reply depth-0 depth-even">
+            <div class="gutter"><button class="toggle-collapse" aria-expanded="true" aria-label="Collapse replies">−</button></div>
+            <div class="content"><div class="content-main">
+              <header class="content-header"><div class="left">
+                <button class="vote-control" type="button" aria-label="Upvote, 5 votes"><span>▲</span><small>+5</small></button>
+                <div class="member-profile-openable"><div class="member-avatar"><div class="avatar"><img alt="Agonist's avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' fill='%23345163'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' fill='white' font-size='18'%3EA%3C/text%3E%3C/svg%3E"></div></div></div>
+                <span class="member-name"><span class="displayname"><span class="nickname">Agonist</span></span></span><span class="member-handle">@Agonist101</span><time class="forum-thread-time-created">October 12th at 13:44</time>
+              </div></header>
+              <div class="content-blocks"><p>Backers would have appreciated an update.</p></div>
+              <div class="forum-thread-item-children-replies">
+                <div class="forum-thread-item type-forum_thread_reply depth-1 depth-odd">
+                  <div class="gutter"><button class="toggle-collapse" aria-expanded="true" aria-label="Collapse replies">−</button></div>
+                  <div class="content"><div class="content-main">
+                    <header class="content-header"><div class="left">
+                      <button class="vote-control" type="button" aria-label="Upvote, 2 votes"><span>▲</span><small>+2</small></button>
+                      <div class="member-profile-openable"><div class="member-avatar"><div class="avatar"><img alt="TommeeGunn's avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' fill='%2329323d'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' fill='white' font-size='18'%3ET%3C/text%3E%3C/svg%3E"></div></div></div>
+                      <span class="member-name"><span class="displayname"><span class="nickname">TommeeGunn</span></span></span><span class="member-handle">@TommeeGunn</span><time class="forum-thread-time-created">October 12th at 14:31</time>
+                    </div></header>
+                    <div class="content-blocks"><p>The event was recorded; footage may come later.</p></div>
+                    <div class="forum-thread-item-children-replies">
+                      <div class="forum-thread-item type-forum_thread_reply depth-2 depth-even">
+                        <div class="gutter"><button class="toggle-collapse" aria-expanded="true" aria-label="Collapse replies">−</button></div>
+                        <div class="content"><div class="content-main">
+                          <header class="content-header"><div class="left">
+                            <button class="vote-control" type="button" aria-label="Upvote, 5 votes"><span>▲</span><small>+5</small></button>
+                            <div class="member-profile-openable"><div class="member-avatar"><div class="avatar"><img alt="Frosty's avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' fill='%2344455d'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' fill='white' font-size='18'%3EF%3C/text%3E%3C/svg%3E"></div></div></div>
+                            <span class="member-name"><span class="displayname"><span class="nickname">Frosty</span></span></span><span class="member-handle">@Frosty00</span><time class="forum-thread-time-created">October 12th at 17:45</time>
+                          </div></header>
+                          <div class="content-blocks"><p>We still do not know when it will be shared.</p></div>
+                          <div class="forum-thread-item-children-replies">
+                            <div class="forum-thread-item type-forum_thread_reply depth-3 depth-odd">
+                              <div class="gutter"><button class="toggle-collapse" aria-expanded="false" aria-label="Collapse replies">−</button></div>
+                              <div class="content"><div class="content-main">
+                                <header class="content-header"><div class="left">
+                                  <button class="vote-control" type="button" aria-label="Upvote, 3 votes"><span>▲</span><small>+3</small></button>
+                                  <div class="member-profile-openable"><div class="member-avatar"><div class="avatar"><img alt="Agonist's avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' fill='%23345163'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' fill='white' font-size='18'%3EA%3C/text%3E%3C/svg%3E"></div></div></div>
+                                  <span class="member-name"><span class="displayname"><span class="nickname">Agonist</span></span></span><span class="member-handle">@Agonist101</span><time class="forum-thread-time-created">October 12th at 17:51</time>
+                                </div></header>
+                                <div class="content-blocks"><p>I hope they share it with everyone.</p></div>
+                              </div></div>
+                            </div>
+                          </div>
+                        </div></div>
+                      </div>
+                    </div>
+                  </div></div>
+                </div>
+              </div>
+            </div></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script>
+    const selector = document.getElementById('layout-preview');
+    selector.value = document.documentElement.getAttribute('data-rsi-comment-layout');
+    selector.addEventListener('change', () => {
+      document.documentElement.setAttribute('data-rsi-comment-layout', selector.value);
+      syncPreviewContexts();
+    });
+    function syncPreviewContexts() {
+      for (const label of document.querySelectorAll('.rsi-reply-context')) label.remove();
+      if (selector.value !== 'conversation') return;
+      const root = document.querySelector('.forum-thread-item.type-forum_thread');
+      for (const reply of document.querySelectorAll('.forum-thread-item.type-forum_thread_reply')) {
+        let parent = reply.parentElement?.closest('.forum-thread-item');
+        if (!parent) parent = root;
+        const handle = parent?.querySelector('.member-handle')?.textContent?.trim() || 'parent post';
+        const main = reply.querySelector(':scope > .content > .content-main');
+        const body = main?.querySelector(':scope > .content-blocks');
+        if (!main) continue;
+        const label = document.createElement('div');
+        label.className = 'rsi-reply-context';
+        label.textContent = `Replying to ${handle.startsWith('@') ? handle : `@${handle}`}`;
+        main.insertBefore(label, body);
+      }
+    }
+    syncPreviewContexts();
+    for (const button of document.querySelectorAll('.toggle-collapse')) {
+      button.addEventListener('click', () => {
+        const replies = button.closest('.forum-thread-item').querySelector(':scope > .content .forum-thread-item-children-replies');
+        if (!replies) return;
+        replies.hidden = !replies.hidden;
+        button.setAttribute('aria-expanded', String(!replies.hidden));
+      });
+    }
+  </script>
+</body>
+</html>

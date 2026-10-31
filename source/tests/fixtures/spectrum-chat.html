@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en" data-rsi-section="spectrum" data-rsi-theme="on" data-rsi-chat="on" data-rsi-preset="enhanced">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spectrum desktop chat verification fixture</title>
+<script>
+  const query = new URLSearchParams(location.search);
+  if (query.get('density') === 'compact') document.documentElement.dataset.rsiDensity = 'compact';
+</script>
+<style>
+body { margin: 0; }
+#react { display: grid; grid-template-columns: 240px minmax(0,1fr); min-height: 100vh; }
+aside { padding: 20px; background: #102c3c; }
+.orion-tavern-c-SidebarLeftBookmark { display: block; padding: 10px; }
+.app-content { display: flex; height: 90vh; min-width: 0; }
+#page.lobby { display: flex; flex: 1; min-width: 0; }
+#page-main, .page-content { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.lobby-header { background: #13374e; }
+.lobby-header-title { padding: 10px 24px; }
+.messages-list { overflow: auto; flex: 1; min-height: 0; }
+.messages-items { display: flex; flex-direction: column; }
+.message-item { display: flex; padding-block: 12px; flex-shrink: 0; }
+.message-item > .gutter { flex: 0 0 40px; margin-right: 10px; }
+.message-item > .content { flex: 1; min-width: 0; }
+.message-item .avatar { width: 40px; height: 40px; }
+.message-item .avatar img { width: 100%; height: 100%; }
+.message-item.type-small { padding-top: 2px; }
+.message-item.type-small .time { display: none; }
+.message-item.type-small:hover .time { display: block; }
+.message-item .body { font-size: 15px; }
+.message-media { display: flex; flex-direction: column; border-left: 3px solid #2d85bb; }
+.message-media-rich { background: #0d2635; max-width: 550px; padding: 12px; }
+.message-media-meta { min-width: 0; }
+.message-media figure { margin: 10px; }
+.message-media .image.photo { display: block; width: 900px; height: 180px; background: #263647; }
+.lobby-footer { background: #13374e; padding: 10px; }
+.message-input .message-row > .input { background: white; }
+.message-input .message-row > .input.error { background: rgb(223 12 12 / .25); box-shadow: #dd5151 0 0 0 2px inset; }
+.draft-extend { padding: 10px; min-height: 30px; }
+.quick-access.lobby-users { width: 200px; background: #0d2635; }
+.quick-access-header { padding: 12px; }
+.members-list-group-header { padding: 8px; }
+.lobby-member-presences input { box-sizing: border-box; width: 100%; }
+/* Live legacy selectors: the extra #page-main ID beats the initial chat overrides. */
+.app.theme-dark .app-content #page.lobby #page-main .messages-list { background-color: #0e283a; }
+.app.theme-dark .app-content #page.lobby #page-main .lobby-header { background-color: #0a1e2a; }
+/* Synthetic native MOTD panel and close control styling, matching the screenshot regression. */
+.app.theme-dark .app-content #page.lobby #page-main .lobby-message--motd .motd-content { background: #0b4d7e; border: 2px solid #08aaff; box-shadow: 0 0 0 1px #08aaff; }
+.app.theme-dark .app-content #page.lobby #page-main .lobby-message--motd button { background: #102e48; border-inline-start: 2px solid #08aaff; box-shadow: inset 1px 0 #08aaff; }
+.app.theme-dark .app-content .quick-access .lobby-member-presences { background-color: #0c2332; }
+.app.theme-dark .app-content .quick-access .lobby-member-presences .search { background-color: #0e283a; }
+</style>
+<link rel="stylesheet" href="/spectrum.css">
+<div id="react" class="theme-dark">
+  <aside>
+    <p>Chat navigation fixture</p>
+    <a class="orion-tavern-c-SidebarLeftBookmark -isSelected" href="/spectrum/community/SC/lobby/1"><span class="orion-tavern-c-SidebarLeftBookmark__names">#general</span></a>
+    <a class="orion-tavern-c-SidebarLeftBookmark" href="/spectrum/community/SC/lobby/8"><span class="orion-tavern-c-SidebarLeftBookmark__names">#sc-testing-chat</span></a>
+    <a class="orion-tavern-c-SidebarLeftBookmark" href="/spectrum/community/SC/lobby/7"><span class="orion-tavern-c-SidebarLeftBookmark__names">#helpdesk-volunteers</span></a>
+    <a class="orion-tavern-c-SidebarLeftBookmark" href="/spectrum/community/SC/forum/3">Forum bookmark</a>
+    <a id="selected-forum-bookmark" class="orion-tavern-c-SidebarLeftBookmark -isSelected" href="/spectrum/community/SC/forum/3" hidden>Selected forum bookmark regression probe</a>
+    <button id="late-message">Insert late message</button>
+  </aside>
+  <div class="app theme-dark"><div class="app-content">
+    <div id="page" class="lobby"><div id="page-main"><div class="page-content">
+      <div class="lobby-header"><div class="lobby-header-title"><div class="lobby-name">#general</div></div></div>
+      <aside class="lobby-message--motd" role="status">
+        <div class="motd-content">
+          <div><strong>Message of the day</strong> <time>39 minutes ago</time></div>
+          <p>(Tysdag) We are preparing a new Evocati test build for IAE.</p>
+          <p>(Frjádagur) A new PTU build is available for Wave 1 <a href="#version">VERSION 4.10.3-PTU</a></p>
+        </div>
+        <button type="button" aria-label="Dismiss message">×</button>
+      </aside>
+      <div class="messages-list"><div class="messages-items">
+        <div class="message-item status-default">
+          <div class="gutter"><span class="member-profile-openable"><div class="member-avatar"><div class="avatar"><img alt="Chat fixture avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Crect width='48' height='48' fill='%2380ccef'/%3E%3C/svg%3E"></div></div></span></div>
+          <div class="content"><div class="top"><span class="member-name"><span class="displayname">Citizen</span></span> <span class="member-nickname">@Citizen</span> <span class="time">14:42</span></div><div class="bottom"><div class="body">Readable chat with a <span class="mention">@mention</span> and a <span class="mention current-member">@current-user</span>.<br><a href="#media">https://example.invalid/averylongunbrokenlinkthatmustnotstretchthemessagecolumnpasttheavailabledesktopchatwidthoroverlaptheonlineuserspanel</a><pre><code>const longCodeLine = "retain indentation and scroll internally instead of stretching the entire desktop chat column beyond the viewport";</code></pre></div></div></div>
+        </div>
+        <div class="message-item status-default type-small"><div class="gutter"><span class="time">14:43</span></div><div class="content"><div class="bottom"><div class="body">Grouped follow-up message; timestamp stays hover-controlled.</div></div></div></div>
+        <div class="message-item status-default" id="same-author-repeat">
+          <div class="gutter"></div><div class="content"><div class="top"><span class="member-name"><span class="displayname">Citizen</span></span> <span class="member-nickname">@Citizen</span> <span class="time">14:44</span></div><div class="bottom"><div class="body">A later message from the same author should stay in the same visual group.</div></div></div>
+        </div>
+        <div class="message-item status-default" id="author-change">
+          <div class="gutter"></div><div class="content"><div class="top"><span class="member-name"><span class="displayname">Other Citizen</span></span> <span class="member-nickname">@OtherCitizen</span> <span class="time">14:45</span></div><div class="bottom"><div class="body">A different author should begin a new group with a divider.</div></div></div>
+        </div>
+        <div class="message-item status-default" id="media"><div class="gutter"></div><div class="content"><div class="bottom"><div class="message-media embed"><div class="handle"><a class="provider" href="#media">Attachment</a></div><div class="message-media-rich"><div class="message-media-meta"><a class="title" href="#media">Linked attachment preview</a><p class="description">Preserve links, preview dimensions and native controls.</p></div></div><figure><a class="image photo" href="#media" aria-label="Oversized image attachment"></a></figure></div></div></div></div>
+      </div></div>
+      <div class="lobby-footer"><div class="message-input"><div class="message-row"><div class="input"><div class="draft-extend" contenteditable="true" role="textbox" aria-label="Local composer fixture"></div></div></div></div><div class="message-input"><div class="message-row"><div class="input error"><div class="draft-extend">Fixture error state must stay visible</div></div></div></div></div>
+    </div></div></div>
+    <div class="quick-access lobby-users">
+      <div class="quick-access-panel">
+        <div class="quick-access-header">
+          <div class="quick-access-header-title">
+            <span>Online users&nbsp;<em class="online-count">113</em></span>
+            <div class="quick-access-header-settings">
+              <span><svg viewBox="0 0 17 17" class="icon"><use href="#icon-settings"></use></svg></span>
+              <span class="quick-access-header-close-button"><svg viewBox="0 0 16 16" class="icon"><use href="#icon-menu-mobile-close"></use></svg></span>
+            </div>
+          </div>
+        </div>
+        <div class="lobby-member-presences">
+          <div class="search"><svg viewBox="0 0 14 14" class="icon"><use href="#icon-search"></use></svg><input type="text" placeholder="Filter users in this lobby"></div>
+          <div class="members-list grouped" style="position: relative;">
+            <div style="overflow: visible; height: 0px; width: 0px;">
+              <div class="ReactVirtualized__Grid ReactVirtualized__List" role="grid" tabindex="0" style="box-sizing: border-box; direction: ltr; height: 1091px; position: relative; width: 359px; will-change: transform; overflow: auto;">
+                <div class="ReactVirtualized__Grid__innerScrollContainer" role="row" style="width: auto; height: 72px; max-width: 359px; max-height: 72px; overflow: hidden; position: relative;">
+                  <div class="members-list-group open" style="height: 25px; left: 0px; position: absolute; top: 0px; width: 100%;">
+                    <div class="members-list-group-header" style="color: rgb(222, 195, 66); background-color: rgba(222, 195, 66, 0.15); border-color: rgb(222, 195, 66);"><div class="members-list-group-gutter"><svg viewBox="0 0 8 4" class="icon" style="fill: rgb(222, 195, 66);"><use href="#icon-arrow-down"></use></svg></div><div class="members-list-group-name">staff</div><div class="members-list-group-info"><span>1 online</span></div></div>
+                  </div>
+                  <div style="height: 36px; left: 0px; position: absolute; top: 25px; width: 100%;">
+                    <span class="member-profile-openable lobby-presence-item lobby-presence-item--online" style="cursor: pointer;">
+                      <div class="member-avatar"><div class="avatar" style="border-color: rgb(222, 195, 66);"><img alt="Fixture avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Crect width='32' height='32' fill='%2380ccef'/%3E%3C/svg%3E"></div></div>
+                      <div class="member-presence" data-tip="Online since today" currentitem="false"><svg viewBox="0 0 14 13" class="icon member-presence online"><use href="#icon-member"></use></svg></div>
+                      <div class="member-info"><span class="member-name"><span class="displayname"><span class="nickname">Fixture Citizen</span></span></span><div class="member-presence-info"></div></div>
+                    </span>
+                  </div>
+                  <div class="members-list-group open" style="height: 25px; left: 0px; position: absolute; top: 61px; width: 100%;">
+                    <div class="members-list-group-header" style="color: rgb(77, 161, 227); background-color: rgba(77, 161, 227, 0.15); border-color: rgb(77, 161, 227);"><div class="members-list-group-gutter"><svg viewBox="0 0 8 4" class="icon" style="fill: rgb(77, 161, 227);"><use href="#icon-arrow-down"></use></svg></div><div class="members-list-group-name">backer</div><div class="members-list-group-info"><span>0 online</span></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="quick-access friends">
+      <div class="quick-access-panel">
+        <div class="quick-access-header">
+          <div class="quick-access-header-title">
+            <span>Friends</span>
+            <div class="quick-access-header-settings">
+              <button class="action-button action-button--outline" type="button"><svg class="icon action-button__icon"><use href="#icon-plus"></use></svg><span class="action-button__label">Add</span></button>
+              <span><svg viewBox="0 0 17 17" class="icon"><use href="#icon-settings"></use></svg></span>
+            </div>
+          </div>
+          <p class="online-count">1 connected, 1 offline</p>
+        </div>
+        <div class="lobby-member-presences">
+          <div class="search"><svg viewBox="0 0 14 14" class="icon"><use href="#icon-search"></use></svg><input type="text" placeholder="Filter friends"></div>
+          <div class="members-list" style="position: relative;">
+            <div style="overflow: visible; height: 0px; width: 0px;">
+              <div class="ReactVirtualized__Grid ReactVirtualized__List" role="grid" tabindex="0" style="box-sizing: border-box; direction: ltr; height: 1091px; position: relative; width: 359px; will-change: transform; overflow: auto;">
+                <div class="ReactVirtualized__Grid__innerScrollContainer" role="row" style="width: auto; height: 72px; max-width: 359px; max-height: 72px; overflow: hidden; position: relative;">
+                  <div style="height: 36px; left: 0px; position: absolute; top: 0px; width: 100%;"><span class="member-profile-openable lobby-presence-item lobby-presence-item--online" style="cursor: pointer;"><div class="member-avatar"><div class="avatar"><img alt="Online friend avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Crect width='32' height='32' fill='%2380ccef'/%3E%3C/svg%3E"></div></div><div class="member-presence" data-tip="Online since today"><svg viewBox="0 0 14 13" class="icon member-presence online"><use href="#icon-member"></use></svg></div><div class="member-info"><span class="member-name"><span class="displayname"><span class="nickname">Online Friend</span></span></span><div class="member-presence-info"></div></div></span></div>
+                  <div style="height: 36px; left: 0px; position: absolute; top: 36px; width: 100%;"><span class="member-profile-openable lobby-presence-item lobby-presence-item--offline" style="cursor: pointer;"><div class="member-avatar"><div class="avatar"><img alt="Offline friend avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Crect width='32' height='32' fill='%2380ccef'/%3E%3C/svg%3E"></div></div><div class="member-presence" data-tip=" "><svg viewBox="0 0 14 13" class="icon member-presence offline"><use href="#icon-member"></use></svg></div><div class="member-info"><span class="member-name"><span class="displayname"><span class="nickname">Offline Friend</span></span></span><div class="member-presence-info">Last online 8 months ago</div></div></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="quick-access-settings">
+        <a href="/spectrum/settings/friends">Manage friends</a>
+        <a href="/spectrum/settings/friend-requests">Manage friend requests</a>
+        <a href="/spectrum/settings/blocklist">Manage blocked users</a>
+        <hr>
+        <div class="smart-checkbox"><div class="widget allow"><svg viewBox="0 0 10 10" class="icon"><use href="#icon-checkmark"></use></svg></div><label>Show offline</label></div>
+        <div class="smart-checkbox"><div class="widget allow"><svg viewBox="0 0 10 10" class="icon"><use href="#icon-checkmark"></use></svg></div><label>Show activity</label></div>
+        <div class="smart-checkbox"><div class="widget disallow"><svg viewBox="0 0 10 10" class="icon"><use href="#icon-cross"></use></svg></div><label>Group by org</label></div>
+        <div class="smart-checkbox"><div class="widget allow"><svg viewBox="0 0 10 10" class="icon"><use href="#icon-checkmark"></use></svg></div><label>Sort by status</label></div>
+      </div>
+    </div>
+    <aside class="quick-access notifications">
+      <div id="notifications">
+        <div class="notifications-main">
+          <div class="quick-access-header">
+            <div class="quick-access-header-title">
+              <span>Notifications</span>
+              <button class="action-button action-button--outline" type="button"><svg class="icon action-button__icon"><use href="#icon-trash"></use></svg><span class="action-button__label">Clear all</span></button>
+            </div>
+          </div>
+          <div class="rsi-notification-filters">
+            <div class="rsi-notification-filter-group" role="group" aria-label="Filter notifications by type">
+              <button class="rsi-notification-filter" type="button" aria-pressed="true">All</button>
+              <button class="rsi-notification-filter" type="button" aria-pressed="false">Replies</button>
+              <button class="rsi-notification-filter" type="button" aria-pressed="false">Votes</button>
+              <button class="rsi-notification-filter" type="button" aria-pressed="false">Mentions</button>
+              <button class="rsi-notification-filter" type="button" aria-pressed="false"><span class="rsi-notification-filter-marker" aria-hidden="true"></span>Moderation</button>
+            </div>
+            <span class="rsi-notification-filter-status" role="status" aria-live="polite">2 shown</span>
+          </div>
+          <div class="notifications-list">
+            <a class="notifications-item" href="#thread"><div class="item-avatar" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 32 32\'%3E%3Crect width=\'32\' height=\'32\' fill=\'%2380ccef\'/%3E%3C/svg%3E');"></div><div class="item-details"><div class="item-text"><strong>2 new replies</strong> in the thread <strong>Fixture discussion</strong></div><div class="item-timestamp"><svg class="icon"><use href="#icon-type-lobby"></use></svg>2 hours ago</div></div><div class="item-actions"><button class="item-menu action reset" title="Hide" type="button"><svg class="icon"><use href="#icon-editor-action-move-down"></use></svg></button></div></a>
+            <div class="notifications-item"><div class="item-avatar"></div><div class="item-details"><div class="item-text">Moderator has <strong>deleted</strong> your reply.</div><div class="item-timestamp">a month ago</div></div></div>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div></div>
+</div>
+<script>
+document.getElementById('late-message').addEventListener('click', () => {
+  const item = document.createElement('div');
+  item.className = 'message-item status-default';
+  item.id = 'late-item';
+  item.innerHTML = '<div class="gutter"></div><div class="content"><div class="bottom"><div class="body">Dynamically inserted message</div></div></div>';
+  document.querySelector('.messages-items').append(item);
+});
+</script>
+</html>

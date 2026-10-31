@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en" data-rsi-section="spectrum" data-rsi-forums="on" data-rsi-theme="on" data-rsi-preset="enhanced" data-rsi-density="balanced" data-rsi-avatar="circle">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spectrum comment layout concepts</title>
+  <link rel="stylesheet" href="/spectrum.css">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--rsi-background); color: var(--rsi-text); font: 14px/1.5 Arial, sans-serif; }
+    .concept-shell { max-width: 1500px; margin: 0 auto; padding: 32px; }
+    .concept-heading { margin-bottom: 22px; }
+    .concept-heading .eyebrow, .concept-index { color: var(--rsi-accent); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .concept-heading h1 { margin: 4px 0 6px; color: var(--rsi-text); font-size: 24px; }
+    .concept-heading p { max-width: 760px; margin: 0; color: var(--rsi-muted); }
+    .concept-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; align-items: start; }
+    .concept-card { min-width: 0; overflow: hidden; background: var(--rsi-surface); border: 1px solid var(--rsi-border); border-radius: 7px; }
+    .concept-title { display: flex; align-items: center; gap: 12px; min-height: 76px; padding: 14px 18px; background: linear-gradient(90deg, color-mix(in srgb, var(--rsi-accent) 12%, var(--rsi-surface)), var(--rsi-surface) 70%); border-bottom: 1px solid var(--rsi-border); }
+    .concept-index { display: grid; width: 30px; height: 30px; flex: 0 0 30px; place-items: center; border: 1px solid var(--rsi-accent); border-radius: 50%; }
+    .concept-title h2 { margin: 0; color: var(--rsi-text); font-size: 15px; letter-spacing: .04em; text-transform: uppercase; }
+    .concept-title p { margin: 2px 0 0; color: var(--rsi-muted); font-size: 12px; }
+    .concept-body { padding: 18px; }
+    .original-post { margin-bottom: 14px; padding: 14px; background: var(--rsi-background); border: 1px solid var(--rsi-border); border-inline-start: 3px solid var(--rsi-accent); border-radius: 4px; }
+    .original-post .comment-author { margin-bottom: 8px; }
+    .comment-author { display: flex; align-items: center; gap: 9px; min-width: 0; }
+    .preview-avatar { display: grid; width: 36px; height: 36px; flex: 0 0 36px; place-items: center; border: 1px solid var(--rsi-accent); border-radius: 50%; background: var(--rsi-raised); color: var(--rsi-text); font-size: 13px; font-weight: 700; }
+    .original-post .preview-avatar { width: 42px; height: 42px; flex-basis: 42px; }
+    .author-copy { min-width: 0; flex: 1; }
+    .author-line { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 7px; }
+    .author-name { color: var(--rsi-accent); font-size: 14px; font-weight: 700; }
+    .author-handle, .comment-time { color: var(--rsi-muted); font-size: 11px; }
+    .comment-time { margin-inline-start: auto; white-space: nowrap; }
+    .comment-copy { margin: 9px 0 0; color: var(--rsi-text); }
+    .reply-list { display: grid; gap: 10px; }
+    .compact-reply { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 10px; padding: 11px 12px; background: var(--rsi-raised); border: 1px solid var(--rsi-border); border-radius: 5px; }
+    .compact-reply .preview-avatar { width: 32px; height: 32px; flex-basis: 32px; }
+    .vote-mark { display: grid; width: 26px; height: 38px; align-content: center; justify-items: center; gap: 1px; color: var(--rsi-accent); background: var(--rsi-background); border: 1px solid var(--rsi-border); border-radius: 3px; font-size: 12px; line-height: 1; }
+    .vote-mark small { color: var(--rsi-muted); font-size: 9px; }
+    .compact-children { display: grid; gap: 9px; margin: 9px 0 0 15px; padding-inline-start: 13px; border-inline-start: 1px solid var(--rsi-border); }
+    .stream-context { margin-bottom: 10px; padding: 12px 14px; background: var(--rsi-background); border: 1px solid var(--rsi-border); border-radius: 4px; }
+    .stream-context .preview-avatar { width: 34px; height: 34px; flex-basis: 34px; }
+    .stream-context .comment-copy { margin-inline-start: 43px; }
+    .conversation-stream { border-top: 1px solid var(--rsi-border); }
+    .stream-reply { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 11px; padding: 13px 4px; border-bottom: 1px solid var(--rsi-border); }
+    .stream-reply .preview-avatar { width: 34px; height: 34px; flex-basis: 34px; }
+    .stream-content { min-width: 0; }
+    .stream-content .comment-author { gap: 7px; }
+    .reply-context { display: inline-flex; align-items: center; gap: 5px; margin-top: 5px; padding: 2px 7px; color: var(--rsi-accent); background: color-mix(in srgb, var(--rsi-accent) 9%, var(--rsi-background)); border-radius: 3px; font-size: 10px; }
+    .reply-context span { color: var(--rsi-muted); }
+    .stream-reply .comment-copy { margin-top: 6px; }
+    .layout-note { margin: 15px 0 0; color: var(--rsi-muted); font-size: 11px; }
+    @media (max-width: 1050px) { .concept-shell { padding: 20px; } .concept-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main class="concept-shell">
+    <header class="concept-heading">
+      <div class="eyebrow">Spectrum forums · layout concepts</div>
+      <h1>Two more ways to read a thread</h1>
+      <p>Both concepts use the active theme’s palette and preserve the familiar author, time and vote details. These are mockups for comparison, not new settings in the extension yet.</p>
+    </header>
+    <div class="concept-grid">
+      <section class="concept-card" aria-labelledby="compact-title">
+        <header class="concept-title">
+          <span class="concept-index">01</span>
+          <div><h2 id="compact-title">Compact threaded</h2><p>Keep the reply path; use less vertical space.</p></div>
+        </header>
+        <div class="concept-body">
+          <article class="original-post">
+            <div class="comment-author"><span class="preview-avatar">A</span><div class="author-copy"><div class="author-line"><span class="author-name">Agonist</span><span class="author-handle">@Agonist101</span><time class="comment-time">Oct 12 · 13:44</time></div></div></div>
+            <p class="comment-copy">Backers would have appreciated an update.</p>
+          </article>
+          <div class="reply-list">
+            <article class="compact-reply">
+              <span class="vote-mark">▲<small>+5</small></span><div><div class="comment-author"><span class="preview-avatar">A</span><div class="author-copy"><div class="author-line"><span class="author-name">Agonist</span><span class="author-handle">@Agonist101</span><time class="comment-time">13:44</time></div></div></div><p class="comment-copy">Backers would have appreciated an update.</p>
+                <div class="compact-children">
+                  <article class="compact-reply"><span class="vote-mark">▲<small>+2</small></span><div><div class="comment-author"><span class="preview-avatar">T</span><div class="author-copy"><div class="author-line"><span class="author-name">TommeeGunn</span><span class="author-handle">@TommeeGunn</span><time class="comment-time">14:31</time></div></div></div><p class="comment-copy">The event was recorded; footage may come later.</p>
+                    <div class="compact-children"><article class="compact-reply"><span class="vote-mark">▲<small>+5</small></span><div><div class="comment-author"><span class="preview-avatar">F</span><div class="author-copy"><div class="author-line"><span class="author-name">Frosty</span><span class="author-handle">@Frosty00</span><time class="comment-time">17:45</time></div></div></div><p class="comment-copy">We still do not know when it will be shared.</p></div></article></div>
+                  </div></article>
+                </div>
+              </div>
+            </article>
+          </div>
+          <p class="layout-note">Nested replies stay grouped under their parent, with a subtle ancestry rail.</p>
+        </div>
+      </section>
+
+      <section class="concept-card" aria-labelledby="stream-title">
+        <header class="concept-title">
+          <span class="concept-index">02</span>
+          <div><h2 id="stream-title">Conversation stream</h2><p>One reading column, with reply context kept visible.</p></div>
+        </header>
+        <div class="concept-body">
+          <article class="stream-context">
+            <div class="comment-author"><span class="preview-avatar">A</span><div class="author-copy"><div class="author-line"><span class="author-name">Agonist</span><span class="author-handle">@Agonist101</span><time class="comment-time">Oct 12 · 13:44</time></div></div></div>
+            <p class="comment-copy">Backers would have appreciated an update.</p>
+          </article>
+          <div class="conversation-stream">
+            <article class="stream-reply"><span class="vote-mark">▲<small>+5</small></span><div class="stream-content"><div class="comment-author"><span class="preview-avatar">A</span><div class="author-copy"><div class="author-line"><span class="author-name">Agonist</span><span class="author-handle">@Agonist101</span></div></div><time class="comment-time">13:44</time></div><div class="reply-context">↳ <span>replying to</span> @Agonist101</div><p class="comment-copy">Backers would have appreciated an update.</p></div></article>
+            <article class="stream-reply"><span class="vote-mark">▲<small>+2</small></span><div class="stream-content"><div class="comment-author"><span class="preview-avatar">T</span><div class="author-copy"><div class="author-line"><span class="author-name">TommeeGunn</span><span class="author-handle">@TommeeGunn</span></div></div><time class="comment-time">14:31</time></div><div class="reply-context">↳ <span>replying to</span> @Agonist101</div><p class="comment-copy">The event was recorded; footage may come later.</p></div></article>
+            <article class="stream-reply"><span class="vote-mark">▲<small>+5</small></span><div class="stream-content"><div class="comment-author"><span class="preview-avatar">F</span><div class="author-copy"><div class="author-line"><span class="author-name">Frosty</span><span class="author-handle">@Frosty00</span></div></div><time class="comment-time">17:45</time></div><div class="reply-context">↳ <span>replying to</span> @TommeeGunn</div><p class="comment-copy">We still do not know when it will be shared.</p></div></article>
+          </div>
+          <p class="layout-note">Replies read top-to-bottom; the small context label shows who each comment answers.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

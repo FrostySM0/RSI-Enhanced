@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en" data-rsi-section="spectrum">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spectrum forum verification fixture</title>
+<script>
+  // Fixture-only controls for isolated styling checks; extension behavior is still tested separately.
+  const query = new URLSearchParams(location.search);
+  for (const name of ['density', 'avatar']) {
+    const value = query.get(name);
+    if (value) document.documentElement.setAttribute(`data-rsi-${name}`, value);
+  }
+  const layout = query.get('layout');
+  if (['threaded', 'flat', 'cards', 'bubbles'].includes(layout)) {
+    document.documentElement.setAttribute('data-rsi-comment-layout', layout);
+  }
+  if (query.has('width')) {
+    const width = Number(query.get('width'));
+    if (width >= 640 && width <= 1600) document.documentElement.style.setProperty('--rsi-forum-width', `${width}px`);
+  }
+</script>
+<style>
+/* Reduced live grid/flex contracts. This fixture does not reproduce Spectrum. */
+body { margin: 0; }
+#react { min-height: 100vh; margin-inline-start: 288px; }
+.fixture-sidebar { position: fixed; inset: 0 auto 0 0; width: 288px; background: #102c3c; color: #e6edf3; font: 14px/1.6 Arial, sans-serif; box-sizing: border-box; padding: 24px; }
+.a-fontStyle.-body-2 { font-family: 'Univia Pro', serif; font-size: 16px; margin: 0; }
+.screen-layout__main { padding: 16px; }
+.thread-list-screen__thread-list { display: grid; grid-template-columns: minmax(0,1fr) auto; padding: 0; list-style: none; }
+.orion-tavern-c-ThreadListItem { display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; padding-block: var(--_padding, 6px); gap: var(--_gap, 8px); }
+.orion-tavern-c-ThreadListItem__stats { grid-column: 2; }
+.forum-thread-item { display: flex; margin: 0 12px 15px; }
+.forum-thread-item.type-forum_thread { position: relative; }
+.forum-thread-item > .gutter { flex: 0 0 40px; }
+.forum-thread-item > .content { min-width: 0; flex: 1; }
+.forum-thread-item-children-replies .forum-thread-item { margin-inline: 0; padding-inline-start: 26px; }
+.theme-dark #page.forum-thread .forum-thread-replies .forum-thread-item.depth-odd { background-color: #0d2635; }
+.content-block.image.single { display: flex; justify-content: center; background: #091c27; border-left: 5px solid #245b78; padding: 20px; margin-block: 12px; }
+.content-block.image.single .content-block-media { margin: 10px; }
+.member-avatar .avatar { width: 38px; height: 38px; border: 1px solid #8796a4; }
+.member-avatar img { width: 100%; height: 100%; }
+.content-header { display: flex; gap: 8px; align-items: center; }
+.content-header > .left { display: flex; gap: 12px; align-items: center; }
+.content-block-media { display: inline-block; }
+.media-embed-wrapper { width: 550px; }
+.media-embed-code iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; }
+.forum-thread-item.unread { background: rgb(43 114 176 / .3) !important; }
+.content-blocks { padding-block: 8px; }
+.chat-fixture { padding: 16px; }
+.chat-fixture .content-main { padding: 0; }
+</style>
+<link rel="stylesheet" href="/spectrum.css">
+<div id="react" class="theme-dark">
+  <aside class="fixture-sidebar">
+    <div class="fixture-bookmarks">
+      <strong>Bookmarks</strong>
+      <a class="orion-tavern-c-SidebarLeftBookmark" href="/spectrum/community/SC/forum/3">General</a>
+      <a class="orion-tavern-c-SidebarLeftBookmark" href="/spectrum/community/SC/forum/3">Ask The Devs</a>
+      <div class="rsi-saved-threads">
+        <div class="rsi-saved-threads__heading">Saved Threads</div>
+        <div class="rsi-saved-threads__list">
+          <a class="rsi-saved-threads__link" href="/spectrum/community/SC/forum/3/thread/discussion/1001">Referral rewards and locked store credit</a>
+        </div>
+      </div>
+      <nav class="spectrumSidebarLeft">
+        <div class="orion-tavern-c-SidebarLeftContentGroup">
+          <header class="orion-tavern-c-SidebarLeftContentGroup__header"><h2 class="header__label">Recent Messages</h2><nav class="header__nav-icons"><button aria-label="Start a conversation" type="button">+</button></nav></header>
+          <ul class="orion-tavern-c-SidebarLeftContentGroup__content"></ul>
+        </div>
+        <div class="orion-tavern-c-SidebarLeftContentGroup">
+          <header class="orion-tavern-c-SidebarLeftContentGroup__header"><h2 class="header__label">Private Groups</h2><nav class="header__nav-icons"><button aria-label="Start a group" type="button">+</button></nav></header>
+          <ul class="orion-tavern-c-SidebarLeftContentGroup__content"></ul>
+        </div>
+      </nav>
+    </div>
+  </aside>
+  <div class="thread-list-screen screen-layout">
+    <main class="screen-layout__main">
+      <h1>Forum fixture</h1>
+      <p>Verified structural contracts, synthetic content.</p>
+      <ul class="thread-list-screen__thread-list" id="fixture-list">
+        <li class="orion-tavern-c-ThreadListItem" tabindex="0" role="link">
+          <header class="orion-tavern-c-ThreadListItem__header"><h2 class="header__title a-fontStyle -body-2"><a class="title__link" href="/spectrum/community/SC/forum/3/thread/discussion/1001">Discussion with a long title and consistent readable desktop typography</a><button class="rsi-saved-thread-toggle" type="button" aria-pressed="true" aria-label="Remove saved thread">★</button></h2></header>
+          <span class="orion-tavern-c-ThreadListItem__stats">42 replies</span>
+        </li>
+        <div class="orion-c-divider -hasStartDecoration -hasEndDecoration"></div>
+        <li class="orion-tavern-c-ThreadListItem -isRead" tabindex="0" role="link">
+          <header class="orion-tavern-c-ThreadListItem__header"><a class="title__link" href="/spectrum/community/SC/forum/3/thread/previously-read/1002">Previously read discussion</a><button class="rsi-saved-thread-toggle" type="button" aria-pressed="false" aria-label="Save thread">☆</button></header>
+          <span class="orion-tavern-c-ThreadListItem__stats">8 replies</span>
+        </li>
+        <li class="orion-tavern-c-ThreadListItem" tabindex="0" role="link">
+          <header class="orion-tavern-c-ThreadListItem__header"><a class="title__link" href="/spectrum/community/SC/forum/3/thread/developer-reply/1003">Developer reply fixture</a></header>
+          <div class="orion-tavern-c-ThreadListItem__last-reply"><i class="orion-tavern-c-ThreadListItem__role-line" aria-hidden="true"></i><a class="displayname">DevReplyAuthor</a><time>1 day ago</time></div>
+          <span class="orion-tavern-c-ThreadListItem__stats">12 replies</span>
+        </li>
+      </ul>
+      <button id="load-more">Insert late discussion</button>
+    </main>
+  </div>
+  <div class="app theme-dark app-content">
+    <div class="forum-thread" id="page"><div class="page-content">
+      <div class="forum-thread discussion" id="discussion">
+        <div class="forum-thread-item type-forum_thread style-type-large depth-0">
+          <div class="gutter"><div class="member-avatar"><div class="avatar"><img alt="Fixture avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Crect width='80' height='80' fill='%2380ccef'/%3E%3C/svg%3E"></div></div></div>
+          <div class="content"><div class="content-main">
+            <header class="content-header"><div class="left"><div class="forum-thread-member-info"><span class="member-name"><span class="displayname" style="color: rgb(191, 167, 57);"><span class="nickname">Fixture Dev</span></span><span class="nickname">@FixtureDev</span></span></div><h1 class="forum-thread-subject" style="color: rgb(222, 195, 66);">Developer thread title</h1></div></header>
+            <div class="content-blocks">
+              <div class="content-block text" style="color: rgb(191, 167, 57);"><p>Developer post body</p><a href="#discussion">A link retains its native colour.</a></div>
+              <div class="content-block text"><p>A readable paragraph with an unusually long URL: <a href="#discussion">https://example.invalid/averylongunbrokenpaththatmustnotpushthereadingcolumnoutsidetheviewportonamobiledeviceorforcehorizontalpagescrolling</a></p></div>
+              <blockquote>A quotation with a clear boundary and readable contrast.</blockquote>
+              <pre><code>const deliberatelyLongCodeLine = "keep code indentation and scroll this long line rather than stretching the entire discussion column far beyond the small mobile viewport";</code></pre>
+              <p>Inline <code>chrome.storage.local</code> example.</p>
+              <div class="content-block image single"><a class="content-block-media" href="#discussion"><img alt="First thumbnail" width="400" height="240" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='240'%3E%3Crect width='400' height='240' fill='%23263647'/%3E%3C/svg%3E"></a></div><div class="content-block image single"><a class="content-block-media" href="#discussion"><img alt="Second thumbnail" width="400" height="240" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='240'%3E%3Crect width='400' height='240' fill='%23263647'/%3E%3C/svg%3E"></a></div>
+              <a class="content-block-media" href="#discussion"><img alt="Oversized fixture attachment" width="1600" height="400" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='400'%3E%3Crect width='1600' height='400' fill='%23263647'/%3E%3C/svg%3E"></a>
+              <div class="media-embed-wrapper"><div class="media-embed-code"><iframe title="Local embed fixture" srcdoc="<!doctype html><body style='background:%231d2835;color:white'>Local embed; no external request</body>"></iframe></div></div>
+            </div>
+          </div></div>
+        </div>
+        <div class="forum-thread-replies">
+          <div class="forum-thread-item type-forum_thread_reply style-type-small depth-0 depth-even unread">
+            <div class="gutter"><button class="toggle-collapse" aria-expanded="true">−</button></div>
+            <div class="content"><div class="content-main"><header class="content-header"><div class="left"><span class="member-profile-openable"><div class="member-avatar"><div class="avatar"><img alt="Reply fixture avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Crect width='80' height='80' fill='%2380ccef'/%3E%3C/svg%3E"></div></div></span><span class="member-name"><span class="displayname" style="color: rgb(80, 160, 220);"><span class="nickname">Regular User</span></span></span><span class="unread"></span></div></header><div class="content-blocks"><div class="content-block text">Regular post body</div></div></div>
+              <div class="forum-thread-item-children-replies"><div class="forum-thread-item type-forum_thread_reply depth-1 depth-odd"><div class="content"><div class="content-main"><header class="content-header"><span class="member-name"><span class="displayname" style="color: rgb(191,167,57);"><span class="nickname">Second Dev</span></span></span></header><div class="content-blocks"><div class="content-block text" style="color: rgb(191, 167, 57);">Developer reply body</div></div></div></div></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="forum-thread-item type-forum_thread_reply depth-0" id="late-top-level-reply">
+          <div class="gutter"><button class="toggle-collapse" aria-expanded="false">−</button></div>
+          <div class="content"><div class="content-main"><header class="content-header"><div class="left"><span class="member-name"><span class="displayname"><span class="nickname">Late Reply</span></span></span></div></header><div class="content-blocks"><div class="content-block text">A newly posted top-level reply outside the native replies wrapper.</div></div></div></div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+  <div class="chat-fixture"><div class="content-main"><div class="content-blocks">Chat lookalike remains outside forum rules.</div></div></div>
+</div>
+<script>
+  if (query.get('state') === 'read') document.querySelector('.forum-thread-replies > .unread').classList.remove('unread');
+  document.getElementById('load-more').addEventListener('click', () => {
+    const item = document.createElement('li');
+    item.className = 'orion-tavern-c-ThreadListItem';
+    const header = document.createElement('header');
+    header.className = 'orion-tavern-c-ThreadListItem__header';
+    const title = document.createElement('a');
+    title.className = 'title__link'; title.href = '/spectrum/community/SC/forum/3/thread/late-discussion/1004';
+    title.textContent = 'Dynamically loaded discussion'; header.append(title); item.append(header);
+    item.id = 'late-card';
+    document.getElementById('fixture-list').append(item);
+  });
+  document.querySelector('.toggle-collapse').addEventListener('click', (event) => {
+    const button = event.currentTarget;
+    const children = button.closest('.forum-thread-item').querySelector('.forum-thread-item-children-replies');
+    children.hidden = !children.hidden;
+    button.setAttribute('aria-expanded', String(!children.hidden));
+  });
+</script>
+</html>
