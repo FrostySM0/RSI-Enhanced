@@ -1,0 +1,838 @@
+/* Transmission detail typography stays independent from the Comm-Link listing. */
+#platform-client-root #layout-system .mini-grid-element-text .a-fontStyle.-body-1 { color: var(--rsi-text); background-color: var(--rsi-surface); font-family: var(--rsi-selected-font-family, Arial, Helvetica, sans-serif); line-height: 1.65; }
+
+/* The Comm-Link app is under bodyWrapper, outside the platform header root. */
+body:has(#bodyWrapper #channel) {
+  color-scheme: dark;
+  background-color: var(--rsi-background);
+  background-image:
+    radial-gradient(ellipse at 50% 0%, color-mix(in srgb, #2a6688 20%, transparent), transparent 58%),
+    linear-gradient(160deg, #0d151e 0%, var(--rsi-background) 52%, #111d29 100%);
+  background-attachment: fixed;
+}
+
+body:has(#bodyWrapper #channel) #bodyWrapper {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  background-color: transparent;
+  background-image: none;
+}
+
+/* The live grid artwork is on #contentbody, behind the listing and its native header. */
+body:has(#bodyWrapper #channel) #contentbody {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  background-color: transparent;
+  background-image: none;
+}
+
+/* RSI's centered 1140px listing shell lives one level deeper. */
+body:has(#bodyWrapper #channel) #contentbody > .wrapper {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  background-color: transparent;
+  background-image: none;
+}
+
+/* Patch Notes share the native channel cards, inside one additional wrapper. */
+#patch-notes,
+#patch-notes > .content-wrapper,
+#patch-notes > .content-wrapper > .wrapper {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  background-color: transparent;
+  background-image: none;
+}
+
+#patch-notes > .content-wrapper {
+  padding-inline: clamp(16px, 2vw, 28px);
+}
+
+#patch-notes > .content-wrapper > .wrapper {
+  padding: 0;
+}
+
+/* Match the Comm-Link masthead and replace its generic arrow with a link mark. */
+#patch-notes > .content-wrapper > .wrapper > .page-title {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  min-height: 108px;
+  margin: 0 0 16px;
+  padding: clamp(18px, 2vw, 30px);
+  border: 1px solid var(--rsi-border);
+  border-radius: 12px;
+  background: linear-gradient(120deg, color-mix(in srgb, #28536b 42%, var(--rsi-surface)), var(--rsi-surface) 68%);
+  box-shadow: 0 14px 36px rgb(0 0 0 / 16%);
+  color: var(--rsi-text);
+  font: 500 clamp(28px, 2.5vw, 40px)/1.12 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  letter-spacing: 0.02em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+#patch-notes > .content-wrapper > .wrapper > .page-title > :is(.top-line, .inner-line, .bottom-line) {
+  display: none !important;
+}
+
+#patch-notes > .content-wrapper > .wrapper > .page-title > .icon {
+  display: block;
+  flex: 0 0 40px;
+  position: relative !important;
+  inset: auto !important;
+  width: 40px !important;
+  height: 40px !important;
+  margin-inline-end: 14px;
+  background: none !important;
+}
+
+#patch-notes > .content-wrapper > .wrapper > .page-title > .icon::before {
+  box-sizing: border-box;
+  position: absolute;
+  inset-block-start: 6px;
+  inset-inline-start: 8px;
+  width: 21px;
+  height: 26px;
+  border: 2px solid var(--rsi-accent);
+  border-radius: 2px;
+  content: "";
+}
+
+#patch-notes > .content-wrapper > .wrapper > .page-title > .icon::after {
+  position: absolute;
+  inset-block-start: 14px;
+  inset-inline-start: 14px;
+  width: 12px;
+  height: 14px;
+  background: repeating-linear-gradient(to bottom, var(--rsi-accent) 0 2px, transparent 2px 7px);
+  content: "";
+}
+
+#patch-notes > .content-wrapper > .wrapper > #channel {
+  padding-inline: 0;
+}
+
+/* The Patch Notes detail layer has no summary and only darkens the artwork. */
+#patch-notes #channel .hub-blocks > .hub-block > .over {
+  display: none !important;
+}
+
+/* Give every Patch Notes card the same restrained selection cue and category tag. */
+#patch-notes #channel .hub-blocks > .hub-block {
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--rsi-border) 78%, transparent);
+  border-radius: 9px;
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+#patch-notes #channel .hub-blocks > .hub-block:is(:hover, :focus-visible) {
+  z-index: 3;
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--rsi-accent) 78%, var(--rsi-border));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--rsi-accent) 48%, transparent), 0 12px 30px rgb(0 0 0 / 34%), 0 0 24px color-mix(in srgb, var(--rsi-accent) 22%, transparent);
+}
+
+#patch-notes #channel .hub-blocks > .hub-block::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  inset-block: -35%;
+  left: -48%;
+  width: 34%;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--rsi-accent) 22%, transparent), transparent);
+  opacity: 0;
+  pointer-events: none;
+  transform: skewX(-18deg);
+}
+
+#patch-notes #channel .hub-blocks > .hub-block:is(:hover, :focus-visible)::after {
+  animation: patchNotesCardSweep 700ms ease-out 1;
+}
+
+#channel .hub-blocks > .hub-block > .type {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: absolute;
+  z-index: 4;
+  inset: 14px 14px auto auto;
+  width: auto;
+  min-height: 30px;
+  margin: 0;
+  padding: 6px 15px 6px 11px;
+  border: 1px solid color-mix(in srgb, var(--rsi-accent) 38%, var(--rsi-border));
+  border-left: 2px solid var(--rsi-accent);
+  background: linear-gradient(112deg, color-mix(in srgb, var(--rsi-accent) 14%, var(--rsi-surface)), color-mix(in srgb, var(--rsi-background) 94%, transparent) 72%);
+  box-shadow: 0 5px 18px rgb(0 0 0 / 34%), inset 0 1px 0 rgb(255 255 255 / 8%);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+  color: var(--rsi-text);
+  font: 700 10px/1.15 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  letter-spacing: 0.085em;
+  text-transform: uppercase;
+}
+
+#channel .hub-blocks > .hub-block > .type::before {
+  content: "";
+  display: block;
+  flex: 0 0 7px;
+  width: 7px;
+  height: 8px;
+  background: var(--rsi-accent);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--rsi-accent) 70%, transparent));
+}
+
+#channel .hub-blocks > .hub-block > .type > .icon {
+  display: none;
+}
+
+#channel .hub-blocks > .hub-block > .type > span {
+  display: block;
+  position: static;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
+
+@keyframes patchNotesCardSweep {
+  0% { left: -48%; opacity: 0; }
+  18% { opacity: 1; }
+  100% { left: 118%; opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #patch-notes #channel .hub-blocks > .hub-block,
+  #patch-notes #channel .hub-blocks > .hub-block:is(:hover, :focus-visible),
+  #patch-notes #channel .hub-blocks > .hub-block:is(:hover, :focus-visible)::after {
+    animation: none;
+    transition: none;
+    transform: none;
+  }
+}
+
+/* Keep the listing in normal flow so the native feed can continue loading older cards. */
+#channel {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  margin-block-start: clamp(18px, 2vw, 30px);
+  padding: clamp(16px, 2vw, 28px);
+  color: var(--rsi-text);
+  background-color: transparent;
+  background-image: none;
+}
+
+/* Use a full-width grid for cards while leaving the feed in normal page flow. */
+#channel .hub-blocks {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  width: 100%;
+}
+
+#channel .hub-blocks > .hub-block.full {
+  grid-column: 1 / -1;
+}
+
+#channel .hub-blocks > .hub-block {
+  box-sizing: border-box;
+  display: block;
+  float: none !important;
+  position: relative;
+  min-width: 0;
+  width: auto !important;
+  margin: 0 !important;
+}
+
+/* Native clear divs separate cards that should share a fractional row. */
+#channel .hub-blocks > .cboth {
+  display: none !important;
+}
+
+/* Keep the site's pagination sentinel measurable after the card grid above it. */
+#channel > .loader {
+  position: static !important;
+  clear: both;
+  width: 100%;
+}
+
+#channel .hub-blocks > .hub-block.one_third {
+  grid-column: span 1;
+}
+
+#channel .hub-blocks > .hub-block.two_thirds {
+  grid-column: span 2;
+}
+
+#channel .hub-block > .background {
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: auto !important;
+  height: auto !important;
+  border-radius: inherit;
+  background-color: transparent !important;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+#channel .hub-block > .title-holder {
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto !important;
+  height: auto !important;
+  min-height: 0;
+  padding: clamp(24px, 4vw, 64px);
+}
+
+#channel .hub-block > .title-holder .title {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  font-size: clamp(24px, 2.5vw, 50px);
+  line-height: 1.12;
+  text-align: center;
+  text-shadow: 0 2px 16px rgb(0 0 0 / 72%);
+  overflow-wrap: anywhere;
+}
+
+#channel .hub-block.one_third > .title-holder .title {
+  font-size: clamp(22px, 1.7vw, 34px);
+}
+
+#channel .hub-block > .text {
+  box-sizing: border-box;
+  position: absolute;
+  inset-inline: 10px;
+  bottom: 10px;
+  z-index: 2;
+  width: auto !important;
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  padding: 12px 16px;
+}
+
+#channel .hub-blocks .no-results {
+  grid-column: 1 / -1;
+  width: auto;
+}
+
+#channel > .hr {
+  display: none;
+}
+
+/* Restyle the native masthead; its links and article cards remain site-owned. */
+#channel > .hr + .content-block4 {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  min-height: 108px;
+  margin: 0 0 16px;
+  padding: clamp(18px, 2vw, 30px);
+  border: 1px solid var(--rsi-border);
+  border-radius: 12px;
+  background: linear-gradient(120deg, color-mix(in srgb, #28536b 42%, var(--rsi-surface)), var(--rsi-surface) 68%);
+  box-shadow: 0 14px 36px rgb(0 0 0 / 16%);
+}
+
+#channel > .hr + .content-block4 .content {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 12px clamp(12px, 2vw, 28px);
+  width: 100%;
+}
+
+#channel > .hr + .content-block4 .content :is(.top, .cboth) {
+  display: none;
+}
+
+#channel > .hr + .content-block4 .content .subtitle {
+  order: 2;
+  color: var(--rsi-muted);
+  font: 600 12px/1.4 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+#channel > .hr + .content-block4 h1 {
+  order: 1;
+  position: relative;
+  z-index: 1;
+  width: auto;
+  margin: 0;
+  padding-block: 0;
+  padding-inline: 56px 0;
+  border: 0;
+  background: none !important;
+  color: var(--rsi-text);
+  font: 500 clamp(28px, 2.5vw, 40px)/1.12 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+#channel > .hr + .content-block4 h1::before,
+#channel > .hr + .content-block4 h1::after {
+  box-sizing: border-box;
+  position: absolute;
+  inset-block-start: 50%;
+  width: 18px;
+  height: 11px;
+  border: 2px solid var(--rsi-accent);
+  border-radius: 8px;
+  content: "";
+  pointer-events: none;
+}
+
+#channel > .hr + .content-block4 h1::before {
+  inset-inline-start: 7px;
+  transform: translateY(-50%) rotate(42deg);
+}
+
+#channel > .hr + .content-block4 h1::after {
+  inset-inline-start: 19px;
+  transform: translateY(-50%) rotate(-42deg);
+}
+
+#channel > .hr + .content-block4 .bottom {
+  display: none;
+}
+
+/* The old filter area uses custom anchors and a form named #hub-search. */
+#channel > .content-block4.filters {
+  box-sizing: border-box;
+  position: relative;
+  z-index: 5;
+  margin: 0 0 clamp(24px, 3vw, 40px);
+  padding: clamp(14px, 1.5vw, 20px);
+  border: 1px solid var(--rsi-border);
+  border-radius: 12px;
+  background: linear-gradient(145deg, color-mix(in srgb, var(--rsi-surface) 94%, #29465a), var(--rsi-surface));
+  box-shadow: 0 14px 36px rgb(0 0 0 / 18%);
+}
+
+#channel > .content-block4.filters .bottom {
+  display: none;
+}
+
+#channel > .content-block4.filters .content {
+  box-sizing: border-box;
+  width: 100%;
+  background-color: transparent;
+  background-image: none;
+}
+
+#channel #hub-search {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(140px, 1fr)) minmax(220px, 1.4fr) minmax(120px, 0.75fr) auto;
+  align-items: end;
+  gap: 16px;
+  width: 100%;
+  max-width: 1500px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+}
+
+#channel #hub-search .selectlist-container {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: auto minmax(42px, auto);
+  row-gap: 6px;
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  width: auto;
+  margin: 0;
+  color: var(--rsi-muted);
+  font: 600 11px/1.4 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+#channel #hub-search .selectlist-container > .label {
+  display: block;
+  position: static;
+  float: none;
+  width: auto;
+  margin: 0;
+  padding: 0;
+}
+
+#channel #hub-search .selectlist-container:hover,
+#channel #hub-search .selectlist-container:focus-within {
+  z-index: 6;
+}
+
+/* Raise an opened native menu above neighboring controls even without hover/focus. */
+#channel #hub-search .selectlist-container:has(> .js-selectlist:is(.active, [aria-expanded="true"])),
+#channel #hub-search .selectlist-container:has(> .js-selectlist > .scrollable.body:not([style*="display: none"])) {
+  z-index: 20;
+}
+
+#channel #hub-search .js-selectlist {
+  box-sizing: border-box;
+  display: flex !important;
+  align-items: center;
+  position: relative;
+  pointer-events: auto;
+  cursor: pointer;
+  min-width: 0;
+  width: 100%;
+  min-height: 42px;
+  margin: 0;
+  padding: 0 8px 0 12px;
+  border: 1px solid var(--rsi-border);
+  border-radius: 7px;
+  background: var(--rsi-background);
+  color: var(--rsi-text);
+  font: 14px/1.35 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  letter-spacing: normal;
+  text-decoration: none;
+}
+
+#channel #hub-search .js-selectlist > span {
+  box-sizing: border-box;
+  order: 1;
+  display: block !important;
+  flex: 1 1 auto;
+  position: static !important;
+  float: none;
+  min-width: 0;
+  width: auto !important;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  opacity: 1 !important;
+  visibility: visible !important;
+  color: var(--rsi-text) !important;
+  -webkit-text-fill-color: var(--rsi-text) !important;
+  font: 14px/1.35 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  letter-spacing: normal;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+#channel #hub-search .js-selectlist > .arrow {
+  box-sizing: border-box;
+  order: 2;
+  display: block !important;
+  flex: 0 0 50px;
+  position: relative;
+  float: none;
+  width: 50px;
+  min-height: 40px;
+  margin: 0;
+  background-position: center;
+}
+
+#channel #hub-search .js-selectlist > input[type="hidden"] {
+  display: none !important;
+}
+
+#channel #hub-search .js-selectlist:hover {
+  border-color: color-mix(in srgb, var(--rsi-accent) 54%, var(--rsi-border));
+}
+
+/* Style option colours while leaving RSI's menu layout and scrollbar behavior intact. */
+#channel #hub-search .js-selectlist > .scrollable.body {
+  box-sizing: border-box;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  border: 1px solid var(--rsi-border);
+  border-radius: 7px;
+  background: var(--rsi-surface);
+  color: var(--rsi-text);
+}
+
+#channel #hub-search .js-selectlist:is(.active, [aria-expanded="true"]) > .scrollable.body {
+  display: block !important;
+}
+
+#channel #hub-search .js-selectlist > .scrollable.body > .viewport.h200 > .content > ul.body > .js-option {
+  color: var(--rsi-text, #e6edf3) !important;
+  -webkit-text-fill-color: var(--rsi-text, #e6edf3) !important;
+  cursor: pointer;
+}
+
+#channel #hub-search .js-selectlist > .scrollable.body > .viewport.h200 > .content > ul.body > .js-option:is(:hover, .selected) {
+  background: color-mix(in srgb, var(--rsi-accent) 24%, var(--rsi-surface));
+  color: var(--rsi-text);
+}
+
+#channel #hub-search .corner-wrapper {
+  box-sizing: border-box;
+  display: block;
+  min-width: 0;
+  width: 100%;
+  height: 42px;
+  margin: 0;
+}
+
+#channel #hub-search .corner-wrapper .corner {
+  display: none;
+}
+
+#channel #hub-search .corner-wrapper input[type="text"] {
+  box-sizing: border-box;
+  width: 100%;
+  height: 42px;
+  padding: 9px 12px;
+  border: 1px solid var(--rsi-border);
+  border-radius: 7px;
+  background: var(--rsi-background);
+  color: var(--rsi-text, #e6edf3) !important;
+  -webkit-text-fill-color: var(--rsi-text, #e6edf3) !important;
+  font: 14px/1.35 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  box-shadow: none;
+}
+
+#channel #hub-search fieldset {
+  box-sizing: border-box;
+  display: flex;
+  align-items: end;
+  justify-self: start;
+  min-width: 0;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+#channel #hub-search input[type="submit"] {
+  box-sizing: border-box;
+  min-height: 42px;
+  padding: 9px 14px;
+  border: 1px solid color-mix(in srgb, var(--rsi-accent) 46%, var(--rsi-border));
+  border-radius: 7px;
+  background: color-mix(in srgb, var(--rsi-accent) 14%, var(--rsi-surface));
+  color: var(--rsi-text);
+  font: 600 13px/1.35 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  cursor: pointer;
+}
+
+#channel #hub-search input[type="submit"]:hover {
+  background: color-mix(in srgb, var(--rsi-accent) 24%, var(--rsi-surface));
+}
+
+@media (max-width: 1120px) {
+  #channel #hub-search {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: none;
+  }
+}
+
+#channel .hub-block {
+  border: 1px solid var(--rsi-border);
+  border-radius: 10px;
+  background-color: var(--rsi-surface);
+  color: var(--rsi-text);
+  text-decoration: none;
+}
+
+#channel .hub-block .title-holder {
+  color: var(--rsi-text);
+}
+
+#channel .hub-block .title-holder .title {
+  color: var(--rsi-text);
+}
+
+#channel .hub-block .text {
+  color: var(--rsi-muted);
+}
+
+#channel .hub-blocks > .hub-block > .over {
+  box-sizing: border-box;
+  display: flex;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 3;
+  align-items: center;
+  justify-content: center;
+  width: auto !important;
+  height: auto !important;
+  max-width: none;
+  max-height: none;
+  padding: clamp(18px, 4vw, 64px);
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgb(5 14 21 / 35%), rgb(8 20 29 / 48%));
+  color: var(--rsi-text);
+}
+
+#channel .hub-blocks > .hub-block > .over > .scroller {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: auto;
+  margin: auto;
+}
+
+#channel .hub-blocks > .hub-block > .over > .scroller > .body {
+  width: min(100%, 1200px);
+  margin-inline: auto;
+  text-align: center;
+  text-shadow: 0 1px 8px rgb(0 0 0 / 75%);
+}
+
+#channel .hub-block :is(img, picture img, figure) {
+  filter: none;
+  -webkit-filter: none;
+}
+
+#channel .hub-block:focus-visible,
+#channel a:focus-visible,
+#hub-search:focus-visible,
+#channel #hub-search .js-selectlist:focus-visible,
+#channel #hub-search input:focus-visible {
+  outline: 2px solid var(--rsi-accent);
+  outline-offset: 3px;
+}
+
+/* RSI's later, card-size-specific rules otherwise reset these layers after styling. */
+#channel .hub-block:is(.full, .one_third, .two_thirds) {
+  isolation: isolate !important;
+}
+
+#channel .hub-block:is(.full, .one_third, .two_thirds) > .background {
+  box-sizing: border-box !important;
+  display: block !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  background-color: transparent !important;
+  background-position: center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  pointer-events: none;
+}
+
+#channel .hub-block:is(.full, .one_third, .two_thirds) > .title-holder {
+  box-sizing: border-box !important;
+  display: flex !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1 !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: clamp(24px, 4vw, 64px) !important;
+  transform: none !important;
+  background: transparent !important;
+}
+
+#channel .hub-block:is(.full, .one_third, .two_thirds) > .title-holder > .title {
+  box-sizing: border-box !important;
+  display: block !important;
+  position: static !important;
+  inset: auto !important;
+  width: 100% !important;
+  height: auto !important;
+  margin: 0 !important;
+  transform: none !important;
+  color: var(--rsi-text) !important;
+  font-size: clamp(24px, 2.5vw, 50px) !important;
+  line-height: 1.12 !important;
+  text-align: center !important;
+  text-transform: none !important;
+  text-shadow: 0 2px 16px rgb(0 0 0 / 78%) !important;
+  overflow-wrap: anywhere;
+}
+
+#channel .hub-block.one_third > .title-holder > .title {
+  font-size: clamp(22px, 1.7vw, 34px) !important;
+}
+
+#channel .hub-block:is(.full, .one_third, .two_thirds) > .text {
+  box-sizing: border-box !important;
+  display: flex !important;
+  position: absolute !important;
+  inset: auto 14px 12px !important;
+  z-index: 2 !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 4px 6px !important;
+  border: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+  color: var(--rsi-text) !important;
+  text-shadow: 0 1px 5px rgb(0 0 0 / 90%);
+}
+
+#channel .hub-block:is(.full, .one_third, .two_thirds) > .text > .comments {
+  position: static !important;
+  inset: auto !important;
+  order: 2;
+  float: none !important;
+  margin: 0 !important;
+}
+
+#channel .hub-block:is(.full, .one_third, .two_thirds) > .text > .time_ago {
+  position: static !important;
+  inset: auto !important;
+  order: 1;
+  float: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+#channel .hub-block:is(.full, .one_third, .two_thirds) > .text > .section {
+  display: none !important;
+}
+
+

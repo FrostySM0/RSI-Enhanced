@@ -1,0 +1,8 @@
+/* Verified SKU information panels; leave product art and purchase controls intact. */
+#platform-client-root .c-skuBanner__infosContainer { color: var(--rsi-text); }
+#platform-client-root .c-skuBanner__details { font-family: var(--rsi-selected-font-family, Arial, Helvetica, sans-serif); }
+#platform-client-root .c-skuBanner__skuTitle,
+#platform-client-root .c-skuBanner .a-priceUnit__amount { color: var(--rsi-text); }
+#platform-client-root .c-skuBanner__category,
+#platform-client-root .c-skuBanner .-before-discount { color: var(--rsi-muted); }
+#platform-client-root .c-skuBanner__link:focus-visible { outline: 2px solid var(--rsi-accent); outline-offset: -3px; }

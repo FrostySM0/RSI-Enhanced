@@ -1,0 +1,480 @@
+/* Keep Dev Tracker's native post links and loading controls inside the shared RSI theme. */
+:scope[data-rsi-dev-text-color="gold"] { --rsi-dev-post-text: #bfa739; }
+:scope[data-rsi-dev-text-color="white"] { --rsi-dev-post-text: #fff; }
+:scope[data-rsi-dev-text-color="off-white"] { --rsi-dev-post-text: #d6d9dd; }
+
+body.devtracker-hub {
+  color-scheme: dark;
+  color: var(--rsi-text);
+  background-color: var(--rsi-background);
+  background-image:
+    radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--rsi-accent) 11%, transparent), transparent 58%),
+    linear-gradient(160deg, color-mix(in srgb, var(--rsi-background) 92%, #142536), var(--rsi-background) 58%, color-mix(in srgb, var(--rsi-background) 88%, #15283a));
+  background-attachment: fixed;
+  font-family: var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+}
+
+body.devtracker-hub #bodyWrapper,
+body.devtracker-hub #contentbody {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  background-color: transparent;
+  background-image: none;
+}
+
+/* The native page shell caps this route near 900px, leaving the feed cramped. */
+body.devtracker-hub #bodyWrapper > .page-wrapper {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  background-color: transparent;
+  background-image: none;
+}
+
+body.devtracker-hub #contentbody > .wrapper {
+  box-sizing: border-box;
+  width: min(1680px, calc(100% - 48px));
+  max-width: none;
+  margin: 28px auto;
+  padding: clamp(16px, 2vw, 26px);
+  border: 1px solid color-mix(in srgb, var(--rsi-border) 78%, transparent);
+  border-radius: 8px;
+  color: var(--rsi-text);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--rsi-surface) 72%, transparent), color-mix(in srgb, var(--rsi-background) 84%, transparent));
+  box-shadow: 0 14px 38px rgb(0 0 0 / 22%), inset 0 1px rgb(255 255 255 / 3%);
+  font-family: var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+}
+
+/* Apply the selected extension font across the Dev Tracker content, preserving icon fonts. */
+body.devtracker-hub :is(#bodyWrapper, #contentbody, #contentbody > .wrapper, .glow-hub-title, .js-devtracker-list, .glow-load-more-btn),
+body.devtracker-hub :is(#bodyWrapper, #contentbody, #contentbody > .wrapper, .glow-hub-title, .js-devtracker-list, .glow-load-more-btn) :not(.icon):not([class*="icon"]):not(.fa):not([class*="fa-"]):not(i):not(svg) {
+  font-family: var(--rsi-selected-font-family, Arial, Helvetica, sans-serif) !important;
+}
+
+body.devtracker-hub .glow-hub-title {
+  display: flex;
+  min-height: 56px;
+  align-items: center;
+  margin: 0 0 18px;
+  padding: 0 16px;
+  border-top: 1px solid color-mix(in srgb, var(--rsi-accent) 74%, var(--rsi-border));
+  border-bottom: 1px solid color-mix(in srgb, var(--rsi-accent) 34%, var(--rsi-border));
+  background: repeating-linear-gradient(0deg, color-mix(in srgb, var(--rsi-accent) 4%, transparent) 0 1px, transparent 1px 4px), linear-gradient(90deg, color-mix(in srgb, var(--rsi-accent) 13%, var(--rsi-surface)), color-mix(in srgb, var(--rsi-surface) 88%, transparent));
+}
+
+body.devtracker-hub .glow-hub-title h1 {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 11px;
+  margin: 0;
+  color: var(--rsi-accent);
+  font: 700 17px/1 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+body.devtracker-hub .glow-hub-title h1::before {
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 11px solid var(--rsi-accent);
+  content: "";
+  filter: drop-shadow(0 0 5px color-mix(in srgb, var(--rsi-accent) 70%, transparent));
+}
+
+body.devtracker-hub .glow-hub-title h1 a {
+  position: relative;
+  inset-block-start: .2em;
+  color: inherit;
+  text-decoration: none;
+}
+
+body.devtracker-hub .glow-hub-title h2 { display: none; }
+
+body.devtracker-hub .js-devtracker-list {
+  display: flow-root;
+  min-width: 0;
+}
+
+body.devtracker-hub .js-devtracker-list > h3.clearfix {
+  display: flex;
+  min-height: 34px;
+  align-items: center;
+  margin: 10px 0;
+  padding: 0 12px;
+  border-bottom: 1px solid color-mix(in srgb, var(--rsi-border) 72%, transparent);
+  border-left: 2px solid var(--rsi-accent);
+  color: var(--rsi-accent);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--rsi-accent) 8%, transparent), transparent 45%);
+  font: 700 12px/1.3 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  letter-spacing: .065em;
+  text-transform: uppercase;
+}
+
+body.devtracker-hub .js-devtracker-list > .devtracker-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-auto-flow: row;
+  min-width: 0;
+  gap: 9px;
+}
+
+body.devtracker-hub a.devpost {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  float: none !important;
+  min-width: 0;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0;
+  max-width: none;
+  max-height: none !important;
+  grid-column: 1 / -1;
+  overflow: visible;
+  border: 1px solid color-mix(in srgb, var(--rsi-border) 74%, transparent);
+  border-radius: 6px;
+  color: var(--rsi-text);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--rsi-surface) 96%, var(--rsi-accent)), color-mix(in srgb, var(--rsi-background) 92%, var(--rsi-surface)));
+  box-shadow: inset 0 1px rgb(255 255 255 / 3%), 0 5px 16px rgb(0 0 0 / 12%);
+  text-decoration: none;
+  transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+
+body.devtracker-hub a.devpost:is(:hover, :focus-visible) {
+  z-index: 1;
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--rsi-accent) 72%, var(--rsi-border));
+  background-image: linear-gradient(135deg, color-mix(in srgb, var(--rsi-hover) 88%, var(--rsi-accent)), color-mix(in srgb, var(--rsi-surface) 92%, var(--rsi-hover)));
+  box-shadow: inset 0 1px rgb(255 255 255 / 5%), 0 0 0 1px color-mix(in srgb, var(--rsi-accent) 24%, transparent), 0 9px 22px rgb(0 0 0 / 22%);
+}
+
+body.devtracker-hub .devpost-wrapper {
+  display: grid;
+  min-width: 0;
+  height: auto !important;
+  min-height: 0;
+  max-height: none !important;
+  overflow: visible;
+  grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  column-gap: 18px;
+  row-gap: 6px;
+  padding: 12px 16px 5px;
+}
+
+body.devtracker-hub .devpost .info {
+  display: grid;
+  grid-column: 1;
+  grid-row: 1 / 3;
+  min-width: 0;
+  grid-template-columns: 69px minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  align-content: center;
+  align-items: center;
+  column-gap: 11px;
+  row-gap: 4px;
+  padding-inline-end: 16px;
+  border-inline-end: 1px solid color-mix(in srgb, var(--rsi-border) 68%, transparent);
+}
+
+body.devtracker-hub .devpost .info > img {
+  display: block;
+  grid-column: 1;
+  grid-row: 1 / 3;
+  box-sizing: border-box;
+  width: 69px !important;
+  height: 69px !important;
+  border: 1px solid color-mix(in srgb, var(--rsi-accent) 34%, var(--rsi-border));
+  border-radius: 50%;
+  background: var(--rsi-background);
+  object-fit: cover;
+}
+
+body.devtracker-hub .devpost .poster {
+  display: grid;
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  gap: 2px;
+}
+
+body.devtracker-hub .devpost .nickname {
+  overflow-wrap: anywhere;
+  color: var(--rsi-text);
+  font: 700 23px/1.35 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+}
+
+body.devtracker-hub .devpost .handle {
+  overflow-wrap: anywhere;
+  color: var(--rsi-muted);
+  font: 18px/1.35 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+}
+
+body.devtracker-hub .devpost .date {
+  display: grid;
+  grid-column: 2;
+  grid-row: 2;
+  gap: 3px;
+  margin: 0;
+  padding: 0;
+  text-align: start;
+}
+
+body.devtracker-hub .devpost .date .label {
+  color: var(--rsi-muted);
+  font: 700 15px/1.25 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+body.devtracker-hub .devpost .date .time {
+  color: var(--rsi-muted);
+  font: 18px/1.4 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  font-variant-numeric: tabular-nums;
+}
+
+body.devtracker-hub .devpost .topic {
+  display: flex;
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 7px 11px;
+  align-self: start;
+  margin: 0;
+}
+
+body.devtracker-hub .devpost .category {
+  flex: 0 0 auto;
+  padding: 4px 8px;
+  border: 1px solid color-mix(in srgb, var(--rsi-accent) 36%, var(--rsi-border));
+  border-left: 2px solid var(--rsi-accent);
+  border-radius: 3px;
+  color: var(--rsi-accent);
+  background: color-mix(in srgb, var(--rsi-accent) 8%, var(--rsi-background));
+  font: 700 10px/1.3 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+
+body.devtracker-hub .devpost .thread {
+  min-width: 0;
+  color: var(--rsi-text);
+  font: 600 16px/1.4 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  overflow-wrap: anywhere;
+}
+
+body.devtracker-hub .rsi-devtracker-context {
+  box-sizing: border-box;
+  display: flex;
+  grid-column: 2;
+  grid-row: 2;
+  min-width: 0;
+  flex-direction: column;
+  overflow: visible;
+  border: 1px solid color-mix(in srgb, var(--rsi-border) 82%, transparent);
+  border-radius: 5px;
+  color: var(--rsi-text);
+  background: linear-gradient(110deg, color-mix(in srgb, var(--rsi-raised) 88%, var(--rsi-accent)), color-mix(in srgb, var(--rsi-background) 90%, var(--rsi-surface)));
+  box-shadow: inset 0 1px rgb(255 255 255 / 3%);
+}
+
+body.devtracker-hub .rsi-devtracker-parent {
+  display: grid;
+  min-width: 0;
+  gap: 8px;
+  margin: 14px;
+  padding: 12px 14px 11px;
+  padding-inline-start: 12px;
+  border: 1px solid color-mix(in srgb, var(--rsi-border) 68%, transparent);
+  border-radius: 5px;
+  background: color-mix(in srgb, var(--rsi-background) 54%, var(--rsi-surface));
+}
+
+body.devtracker-hub .rsi-devtracker-context-heading {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 9px;
+}
+
+body.devtracker-hub .rsi-devtracker-context-label {
+  color: var(--rsi-accent);
+  font: 700 10px/1.3 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+body.devtracker-hub .rsi-devtracker-context-divider {
+  height: 1px;
+  margin-inline: 14px;
+  background: color-mix(in srgb, var(--rsi-accent) 34%, var(--rsi-border));
+}
+
+body.devtracker-hub .rsi-devtracker-response {
+  display: grid;
+  min-width: 0;
+  gap: 8px;
+  padding: 9px 14px 6px;
+}
+
+body.devtracker-hub .rsi-devtracker-response-label {
+  box-sizing: border-box;
+  display: flex;
+  min-height: 22px;
+  align-items: center;
+  gap: 9px;
+  padding: 0;
+  color: var(--rsi-accent);
+  font: 800 12px/1.25 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px color-mix(in srgb, var(--rsi-accent) 24%, transparent);
+}
+
+body.devtracker-hub .rsi-devtracker-response-label::before {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  background: var(--rsi-accent);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--rsi-accent) 72%, transparent);
+  transform: rotate(45deg);
+  content: "";
+}
+
+body.devtracker-hub .rsi-devtracker-context-avatar {
+  display: block;
+  flex: 0 0 30px;
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
+  border: 1px solid color-mix(in srgb, var(--rsi-accent) 58%, var(--rsi-border));
+  border-radius: 50%;
+  background: var(--rsi-background);
+  object-fit: cover;
+}
+
+body.devtracker-hub .rsi-devtracker-context-author {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: var(--rsi-text);
+  font: 700 13px/1.35 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+}
+
+body.devtracker-hub .rsi-devtracker-context-text {
+  display: block;
+  min-width: 0;
+  margin: 0;
+  overflow: visible;
+  color: var(--rsi-text);
+  font: 400 15px/1.6 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+}
+
+body.devtracker-hub .rsi-devtracker-expand {
+  display: inline-flex;
+  width: max-content;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border: 1px solid color-mix(in srgb, var(--rsi-accent) 46%, var(--rsi-border));
+  border-radius: 4px;
+  color: var(--rsi-accent);
+  background: color-mix(in srgb, var(--rsi-accent) 8%, var(--rsi-background));
+  font: 700 11px/1.2 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  cursor: pointer;
+  transition: color 150ms ease, background-color 150ms ease, border-color 150ms ease;
+}
+
+body.devtracker-hub .rsi-devtracker-expand:is(:hover, :focus-visible) {
+  border-color: var(--rsi-accent);
+  color: var(--rsi-text);
+  background: color-mix(in srgb, var(--rsi-accent) 18%, var(--rsi-background));
+}
+
+body.devtracker-hub .rsi-devtracker-context-toggle,
+body.devtracker-hub .rsi-devtracker-response-toggle { justify-self: start; }
+
+body.devtracker-hub .rsi-devtracker-context-status {
+  grid-column: 1 / -1;
+  color: var(--rsi-muted);
+  font: 500 12px/1.4 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+}
+
+body.devtracker-hub .devpost .details {
+  display: block;
+  align-self: start;
+  height: auto !important;
+  min-height: 0;
+  max-height: none !important;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: visible !important;
+  color: var(--rsi-text);
+  background: transparent;
+  font: 400 15px/1.65 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+body.devtracker-hub .devpost .rsi-devtracker-response-preview,
+body.devtracker-hub .devpost .rsi-devtracker-response-full {
+  align-self: start;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  color: var(--rsi-text);
+  background: transparent;
+  font: 400 15px/1.65 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+body.devtracker-hub .devpost .details,
+body.devtracker-hub .devpost .details :not(.icon):not([class*="icon"]):not(.fa):not([class*="fa-"]):not(i):not(svg),
+body.devtracker-hub .devpost .rsi-devtracker-response-preview,
+body.devtracker-hub .devpost .rsi-devtracker-response-full {
+  color: var(--rsi-dev-post-text, var(--rsi-text)) !important;
+}
+
+body.devtracker-hub .devpost .rsi-devtracker-response-toggle { align-self: start; }
+
+body.devtracker-hub .devpost .details[hidden],
+body.devtracker-hub .devpost .rsi-devtracker-response-preview[hidden],
+body.devtracker-hub .devpost .rsi-devtracker-response-full[hidden] { display: none !important; }
+
+body.devtracker-hub .devpost .glow-corners { display: none; }
+
+body.devtracker-hub .glow-load-more-btn {
+  margin: 18px auto 2px;
+  color: var(--rsi-muted);
+}
+
+body.devtracker-hub .glow-load-more-btn .control {
+  color: var(--rsi-accent);
+  text-decoration-color: color-mix(in srgb, var(--rsi-accent) 55%, transparent);
+}
+
+body.devtracker-hub .glow-load-more-btn .control:is(:hover, :focus-visible, .active) {
+  color: var(--rsi-text);
+}
+
+body.devtracker-hub :is(a, button):focus-visible {
+  outline: 2px solid var(--rsi-accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.devtracker-hub a.devpost,
+  body.devtracker-hub a.devpost:is(:hover, :focus-visible) { transition: none; transform: none; }
+}
