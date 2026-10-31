@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en" data-rsi-section="roadmap">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Roadmap Release View fixture</title>
+  <script src="/extension-api.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; background: #0f141b; color: #e6edf3; font: 14px/1.5 Arial, Helvetica, sans-serif; }
+    #platform-bar-head { height: 40px; padding: 12px 24px; background: #0f2c3e; color: #b7c6d0; font-size: 9px; }
+    #platform-bar-navigation { height: 64px; display: flex; align-items: center; gap: 16px; padding: 0 24px; background: #0f2c3e; color: #e6edf3; }
+    #root { min-height: calc(100vh - 104px); }
+    .App__Wrapper-sc-12xftiu-0 { width: min(100%, 1440px); margin: auto; padding: 16px; }
+    /* RSI's desktop app wrapper is block-level; the extension restores the board/nav row. */
+    .App__PageContent-sc-12xftiu-1 { display: block; align-items: stretch; gap: 14px; min-width: 0; }
+    .Navigation-ddgfb5-0 { flex: 0 0 80px; width: 80px; }
+    .Navigation-ddgfb5-0 ul { margin: 0; padding: 0; list-style: none; }
+    .Navigation-ddgfb5-0 li { margin: 0 0 8px; }
+    .Navigation-ddgfb5-0 a { min-height: 72px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; color: #91a7b8; text-align: center; text-decoration: none; font-size: 9px; }
+    .Navigation-ddgfb5-0 svg { width: 30px; height: 30px; }
+    .App__BoardContainer-sc-12xftiu-2 { flex: 1; min-width: 0; }
+    .BoardPage__BoardAnimation-kzob5d-0 { min-width: 0; }
+    .Board__Wrapper-c7lmub-1 { height: 720px; display: grid; grid-template-rows: auto minmax(0, 1fr); overflow: hidden; border: 1px solid #3c5065; border-radius: 7px; background: #0f141b; }
+    .Board__Header-c7lmub-2 { min-height: 145px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; padding: 16px; border-bottom: 1px solid #3c5065; background: #161e28; }
+    .Board__NameAndLastModified-c7lmub-3 { flex: 1 1 300px; display: flex; align-items: baseline; gap: 12px; }
+    .Board__NameAndLastModified-c7lmub-3 h2 { margin: 0; font-size: 26px; }
+    .Board__NameAndLastModified-c7lmub-3 p { margin: 0; color: #afbdcb; font-size: 11px; }
+    .Board__Description-c7lmub-4 { flex: 1 1 100%; color: #afbdcb; font-size: 11px; }
+    .Controls-sc-11a8tn4-0 { flex: 1 1 100%; }
+    .Controls-sc-11a8tn4-0 > div { display: flex; flex-wrap: wrap; gap: 8px; }
+    .Controls-sc-11a8tn4-0 button { min-height: 34px; padding: 0 10px; border: 1px solid #3c5065; border-radius: 4px; background: #1d2835; color: #e6edf3; }
+    .DragScrollStyled-c7lmub-0 { min-height: 0; }
+    .Board__ScrollContent-c7lmub-6 { height: 100%; overflow: auto; }
+    .Board__Releases-c7lmub-7 { display: grid; grid-template-columns: repeat(2, 320px); gap: 10px; height: 100%; }
+    .TogglePreviousReleases-yixp65-1 { width: 42px; }
+    .Release__Wrapper-sc-1y9ya50-0 { height: 100%; display: grid; grid-template-rows: auto minmax(0, 1fr); overflow: hidden; border: 1px solid #3c5065; background: #161e28; }
+    .ReleaseHeader-xqp955-3 { padding: 12px; border-bottom: 1px solid #3c5065; }
+    .ReleaseHeader__ReleaseHeaderName-xqp955-1 { margin: 0; font-size: 22px; }
+    .ReleaseHeader__ReleaseHeaderStatus-xqp955-2 { margin: 6px 0 0; font-size: 9px; }
+    .Release__Scroller-sc-1y9ya50-4 { min-height: 0; overflow-y: auto; }
+    .Release__Categories-sc-1y9ya50-2 { padding: 10px; }
+    .Category__Wrapper-sc-3z36kz-0 { margin: 0 0 9px; overflow: hidden; border: 1px solid #3c5065; border-radius: 5px; background: #1d2835; }
+    .Category__Header-sc-3z36kz-2 { display: flex; justify-content: space-between; padding: 10px; border-bottom: 1px solid #3c5065; }
+    .Category__HeaderText-sc-3z36kz-3 h3 { margin: 0; font-size: 14px; }
+    .Category__HeaderText-sc-3z36kz-3 p { margin: 3px 0 0; color: #afbdcb; font-size: 10px; }
+    .Category__Cards-sc-3z36kz-6 { padding: 8px; }
+    .Card__Wrapper-a2fcbm-0 { border-radius: 5px; }
+    .Card__DragZone-a2fcbm-1 { min-width: 0; }
+    .Card__StyledNavLink-a2fcbm-2 { display: block; overflow: hidden; border: 1px solid #3c5065; border-radius: 5px; background: #111b25; color: inherit; text-decoration: none; }
+    .StatusBar-s9py95-0 { min-height: 23px; display: flex; align-items: center; padding: 4px 8px; background: #56c6e6; color: #08131b; font-size: 8px; font-weight: 800; text-transform: uppercase; }
+    .Card__TitleBar-a2fcbm-4 { padding: 9px; background: #1d2835; }
+    .Card__TitleBar-a2fcbm-4 h3 { margin: 0; font-size: 13px; }
+    .Card__Thumbnail-a2fcbm-5 { display: block; width: 100%; height: 150px; margin: 0; background-position: center; background-size: cover; }
+    .Card__Description-a2fcbm-6 { margin: 0; padding: 10px; color: #afbdcb; font-size: 11px; line-height: 1.5; }
+    .Card__StyledNavLink-a2fcbm-2:focus-visible, .Controls-sc-11a8tn4-0 button:focus-visible { outline: 2px solid #56d8f4; outline-offset: 2px; }
+  </style>
+  <link rel="stylesheet" href="/rsi.css">
+</head>
+<body>
+  <header id="platform-bar-head">ROBERTS SPACE INDUSTRIES®　 Home　 Explore　 Roadmap</header>
+  <header id="platform-bar-navigation"><span aria-hidden="true">☰</span><strong>RSI</strong><span>/　Roadmap</span></header>
+  <div id="root">
+    <div class="App__Wrapper-sc-12xftiu-0">
+      <section class="App__PageContent-sc-12xftiu-1">
+        <nav role="navigation" aria-label="Main" class="Navigation-ddgfb5-0">
+          <ul>
+            <li class="NavigationItem-sc-12o0164-0"><a href="/roadmap/progress-tracker/teams"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M5 34V8m0 26h30M10 28l8-10 6 5 10-14"/></svg><span>Progress Tracker</span></a></li>
+            <li class="NavigationItem-sc-12o0164-0"><a aria-current="page" href="/roadmap/release-view"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="5" y="5" width="12" height="12"/><rect x="23" y="5" width="12" height="12"/><rect x="5" y="23" width="12" height="12"/><rect x="23" y="23" width="12" height="12"/></svg><span>Release View</span></a></li>
+            <li class="NavigationItem-sc-12o0164-0"><a href="/roadmap/release-view/info"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="m20 5 16 29H4Z"/><path d="M20 15v9m0 5v1"/></svg><span>Caveats</span></a></li>
+          </ul>
+        </nav>
+        <div class="BoardSelector__BoardSelectorOverlay-sc-1m6ahvg-0" aria-hidden="true"></div>
+        <div class="App__BoardContainer-sc-12xftiu-2">
+          <div class="BoardPage__BoardAnimation-kzob5d-0">
+            <article class="Board__Wrapper-c7lmub-1">
+              <header class="Board__Header-c7lmub-2">
+                <div class="Board__NameAndLastModified-c7lmub-3"><h2>Release View</h2><p>Updated Oct. 21st 2026</p></div>
+                <div class="Board__Description-c7lmub-4">Live Version: 4.10.2 (<a href="/en/comm-link/transmission/21334-Alpha-4102-RSI-Discovery-Month">more info</a>)　▪　Latest Roadmap Roundup: 21/10/2026 (<a href="/spectrum/community/SC/forum/3/thread/roadmap-roundup-october-21-2026">more info</a>)　▪　PTU Version: 0</div>
+                <div class="Controls-sc-11a8tn4-0"><div class="Group-sc-4jw8h2-0"><button class="Button-sc-1i76va4-2" disabled><span>Expand all categories</span></button><button class="Button-sc-1i76va4-2"><span>Collapse all categories</span></button></div></div>
+              </header>
+              <div class="DragScroll-sc-1nlpwe7-0 Board__DragScrollStyled-c7lmub-0">
+                <div class="Board__ScrollContent-c7lmub-6 c-scrollbar" tabindex="0" role="region" aria-label="Release columns">
+                  <div class="Board__Releases-c7lmub-7">
+                    <button class="TogglePreviousReleases-yixp65-1" aria-expanded="false">‹　Show previous releases</button>
+                    <section class="Release__Wrapper-sc-1y9ya50-0">
+                      <header class="ReleaseHeader-xqp955-3"><div class="ReleaseHeader__ReleaseHeaderIcon-xqp955-0" aria-hidden="true"></div><h2 class="ReleaseHeader__ReleaseHeaderName-xqp955-1">4.10</h2><p class="ReleaseHeader__ReleaseHeaderStatus-xqp955-2"><svg width="12" height="13" viewBox="0 0 12 13"></svg><strong>Released</strong>, Q3 2026</p></header>
+                      <div class="Release__Scroller-sc-1y9ya50-4"><span class="Release__StickyHeader-sc-1y9ya50-1"><svg width="14" height="9" viewBox="0 0 14 9"><path d="M0 0h14v9H0z"></path></svg></span><div class="Release__Categories-sc-1y9ya50-2">
+                        <section class="Category__Wrapper-sc-3z36kz-0"><header class="Category__Header-sc-3z36kz-2"><div class="Category__HeaderText-sc-3z36kz-3"><h3>Characters</h3><p>1 Entry</p></div><div class="Category__CategoryButtonCollapsed-sc-3z36kz-1" aria-hidden="true">⌃</div></header><div class="Category__Cards-sc-3z36kz-6"><section class="Card__Wrapper-a2fcbm-0"><div class="Card__DragZone-a2fcbm-1"><a class="Card__StyledNavLink-a2fcbm-2" href="/roadmap/release-view/1603-Orison-Relief-Support-4101"><div class="StatusBar-s9py95-0"><svg width="12" height="13" viewBox="0 0 12 13" class="StatusBar__StyledIcon-s9py95-1"></svg><span>Released</span></div><header class="Card__TitleBar-a2fcbm-4"><h3>Orison Relief Support (4.10.1)</h3></header><figure draggable="false" media="/hangar-image.svg?card=orison" class="Card__Thumbnail-a2fcbm-5" style="background-image: url('/hangar-image.svg?card=orison')"></figure><p class="Card__Description-a2fcbm-6">A local preview of the native Release View card structure, with a colour image and its original details link.</p></a></div></section></div></section>
+                      </div></div>
+                    </section>
+                    <section class="Release__Wrapper-sc-1y9ya50-0">
+                      <header class="ReleaseHeader-xqp955-3"><div class="ReleaseHeader__ReleaseHeaderIcon-xqp955-0" aria-hidden="true"></div><h2 class="ReleaseHeader__ReleaseHeaderName-xqp955-1">4.11</h2><p class="ReleaseHeader__ReleaseHeaderStatus-xqp955-2"><svg width="10" height="10" viewBox="0 0 10 10"></svg><strong>Tentative</strong>, Q4 2026</p></header>
+                      <div class="Release__Scroller-sc-1y9ya50-4"><span class="Release__StickyHeader-sc-1y9ya50-1"><svg width="14" height="9" viewBox="0 0 14 9"><path d="M0 0h14v9H0z"></path></svg></span><div class="Release__Categories-sc-1y9ya50-2">
+                        <section class="Category__Wrapper-sc-3z36kz-0"><header class="Category__Header-sc-3z36kz-2"><div class="Category__HeaderText-sc-3z36kz-3"><h3>Ships and Vehicles</h3><p>1 Entry</p></div><div class="Category__CategoryButtonCollapsed-sc-3z36kz-1" aria-hidden="true">⌃</div></header><div class="Category__Cards-sc-3z36kz-6"><section class="Card__Wrapper-a2fcbm-0"><div class="Card__DragZone-a2fcbm-1"><a class="Card__StyledNavLink-a2fcbm-2" href="/roadmap/release-view/1604-Flight-Ready-4101"><div class="StatusBar-s9py95-0"><svg width="10" height="10" viewBox="0 0 10 10" class="StatusBar__StyledIcon-s9py95-1"></svg><span>Tentative</span></div><header class="Card__TitleBar-a2fcbm-4"><h3>Flight Ready Update (4.10.1)</h3></header><figure draggable="false" media="/hangar-image.svg?card=flight-ready" class="Card__Thumbnail-a2fcbm-5" style="background-image: url('/hangar-image.svg?card=flight-ready')"></figure><p class="Card__Description-a2fcbm-6">The second card verifies that newly loaded cards keep their image, native link and release layout.</p></a></div></section></div></section>
+                      </div></div>
+                    </section>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <script src="/content.js"></script>
+</body>
+</html>

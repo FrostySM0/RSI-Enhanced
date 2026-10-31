@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" data-rsi-section="commlink" data-rsi-commlink="on">
+<head>
+  <meta charset="utf-8">
+  <title>Patch Notes redesign fixture</title>
+  <style>
+    :root { --rsi-background: #07131d; --rsi-surface: #102332; --rsi-border: #28536b; --rsi-accent: #00cfff; --rsi-text: #e8f5fb; --rsi-muted: #8eacbd; }
+    body { margin: 0; color: var(--rsi-text); background: #050d14; font: 16px Arial, sans-serif; }
+    #bodyWrapper { max-width: 1360px; margin: 32px auto; }
+    #contentbody { background-image: repeating-linear-gradient(90deg, transparent 0 44px, #183348 45px); }
+    #patch-notes > .content-wrapper > .wrapper { max-width: 1140px; margin-inline: auto; }
+    #patch-notes .page-title { position: relative; height: 60px; line-height: 60px; color: #00e7ff; background: #07131d; }
+    #patch-notes .page-title .top-line, #patch-notes .page-title .inner-line, #patch-notes .page-title .bottom-line { position: absolute; inset: auto 0 0; height: 2px; background: #00deff; }
+    #patch-notes .page-title .icon { position: absolute; inset-inline-start: 10px; top: 6px; width: 48px; height: 48px; }
+    #channel .hub-block { position: relative; display: block; height: 280px; margin: 18px 0; overflow: hidden; color: white; background: #142b3a; }
+    #channel .hub-block > .background { position: absolute; inset: 0; background: linear-gradient(130deg, #286b84, #172a40 55%, #75522d); opacity: .6; }
+    #channel .hub-block > .title-holder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+    #channel .hub-block .title { font-size: clamp(24px, 4vw, 48px); text-align: center; text-transform: uppercase; }
+    #channel .hub-block > .text { position: absolute; inset: auto 16px 12px; }
+    #channel .hub-block > .over { position: absolute; inset: 0; display: grid; place-items: center; background: rgb(0 0 0 / 70%); opacity: 0; transition: opacity .2s; }
+    #channel .hub-block:hover > .over { opacity: 1; }
+  </style>
+  <link rel="stylesheet" href="/rsi.css">
+</head>
+<body>
+  <div id="bodyWrapper">
+    <div class="page-wrapper">
+      <div id="contentbody">
+        <div id="patch-notes" class="contentbody">
+          <div class="content-wrapper clearfix">
+            <div class="wrapper">
+              <h1 class="page-title"><span class="top-line"></span><span class="inner-line"></span><span class="icon"></span>Patch-Notes<span class="bottom-line"></span></h1>
+              <div id="channel">
+                <div class="hub-blocks">
+                  <a class="content-block2 hub-block full" href="#patch-4102"><div class="type patchnotes"><div class="icon"></div><span>patchnotes</span></div><div class="background" style="background-image:linear-gradient(130deg,#244e62,#172b3c 52%,#675033)"></div><div class="title-holder"><div class="title">Star Citizen Alpha 4.10.2</div></div><div class="text"><div class="comments">0</div><div class="time_ago">Posted: <span class="value">3 weeks ago</span></div><div class="section"></div></div><div class="over"><div class="scroller"><div class="body"></div></div></div></a>
+                  <a class="content-block2 hub-block full" href="#patch-4101"><div class="type patchnotes"><div class="icon"></div><span>patchnotes</span></div><div class="background" style="background-image:linear-gradient(130deg,#315b76,#202c43,#684c31)"></div><div class="title-holder"><div class="title">Star Citizen Alpha 4.10.1</div></div><div class="text"><div class="comments">0</div><div class="time_ago">Posted: <span class="value">2 months ago</span></div><div class="section"></div></div><div class="over"><div class="scroller"><div class="body"></div></div></div></a>
+                  <a class="content-block2 hub-block full" href="#patch-410"><div class="type patchnotes"><div class="icon"></div><span>patchnotes</span></div><div class="background" style="background-image:linear-gradient(130deg,#604832,#1d3341,#28536b)"></div><div class="title-holder"><div class="title">Star Citizen Alpha 4.10</div></div><div class="text"><div class="comments">0</div><div class="time_ago">Posted: <span class="value">2 months ago</span></div><div class="section"></div></div><div class="over"><div class="scroller"><div class="body"></div></div></div></a>
+                </div>
+                <div class="cboth"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

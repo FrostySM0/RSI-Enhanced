@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" data-rsi-section="hangar" data-rsi-hangar="on">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Buy Back action alignment fixture</title>
+  <link rel="stylesheet" href="/rsi.css">
+  <style>
+    body { margin: 0; font: 14px Arial, Helvetica, sans-serif; }
+    #contentbody { padding: 16px; }
+    .information { display: grid; grid-template-columns: 112px minmax(0, 1fr); align-items: center; gap: 24px; min-height: 148px; margin: 14px 8px; padding: 16px; box-sizing: border-box; background: #1a304c; }
+    .information figure { width: 112px; height: 112px; margin: 0; border: 1px solid #1bacc9; }
+    .information figure img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .information > div { position: relative; min-width: 0; }
+    .pledge-title-row h1 { margin: 0; padding: 0 0 10px; border-bottom: 1px solid #31506e; color: #38d7ef; font-size: 18px; }
+    dl { display: grid; grid-template-columns: max-content 1fr; gap: 3px 5px; margin: 12px 0 0; }
+    dt { color: #8faabd; font-weight: 700; } dd { margin: 0; color: #e0e7ec; }
+    .buyback-action { position: absolute; top: 50%; right: -40px; width: 56px; height: 90px; transform: translateY(-50%); }
+    a.holosmallbtn { position: relative; display: block; width: 56px; height: 90px; border: 1px solid #30465b; border-radius: 7px; background: #1b2838; color: #e0e7ec; text-decoration: none; }
+    .abs-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 0 5px; box-sizing: border-box; text-align: center; white-space: normal; line-height: 1.2; }
+    .holosmallbtn-bottom { display: block; }
+  </style>
+</head>
+<body>
+  <main id="contentbody">
+    <div class="information no-countdown">
+      <figure><img alt="Subscribers Store - P8-AR Dominion Camo Rifle" src="/hangar-image.svg"></figure>
+      <div>
+        <div class="pledge-title-row no-countdown"><h1>Subscribers Store - P8-AR "Dominion Camo" Rifle</h1></div>
+        <dl><dt>Reclaim Date</dt><dd>October 16, 2026</dd><dt>Contained</dt><dd>Behring P8-AR 'Dominion Camo' Rifle</dd></dl>
+        <div class="buyback-action">
+          <a class="holosmallbtn" href="/pledge/buyback/106083416">
+            <span class="holosmallbtn-top abs-overlay trans-02s js-label">Buy Back</span>
+            <span class="holosmallbtn-bottom abs-overlay trans-02s"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="information no-countdown">
+      <figure><img alt="PSX Pistol Case" src="/hangar-image.svg"></figure>
+      <div>
+        <div class="pledge-title-row no-countdown"><h1>Subscribers Store - PSX Pistol Case</h1></div>
+        <dl><dt>Reclaim Date</dt><dd>October 16, 2026</dd><dt>Contained</dt><dd>PSX Pistol Case</dd></dl>
+        <div class="buyback-action">
+          <a class="holosmallbtn" href="/pledge/buyback/106083417">
+            <span class="holosmallbtn-top abs-overlay trans-02s js-label">Buy Back</span>
+            <span class="holosmallbtn-bottom abs-overlay trans-02s"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <output id="geometry" hidden></output>
+  <script>
+    requestAnimationFrame(() => {
+      const rows = [...document.querySelectorAll('.information')];
+      const metrics = rows.map(row => {
+        const rowRect = row.getBoundingClientRect();
+        const buttonRect = row.querySelector('a.holosmallbtn').getBoundingClientRect();
+        const label = row.querySelector('.holosmallbtn-top');
+        const labelRect = label.getBoundingClientRect();
+        return {
+          insideRightEdge: rowRect.right - buttonRect.right,
+          verticalCenterOffset: Math.abs((rowRect.top + rowRect.height / 2) - (buttonRect.top + buttonRect.height / 2)),
+          buttonWidth: buttonRect.width,
+          labelWidth: labelRect.width,
+          labelWhiteSpace: getComputedStyle(label).whiteSpace,
+        };
+      });
+      document.querySelector('#geometry').textContent = JSON.stringify(metrics);
+    });
+  </script>
+</body>
+</html>
