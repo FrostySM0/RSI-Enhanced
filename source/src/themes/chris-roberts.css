@@ -1,0 +1,20 @@
+/* Static holography: no filters on scrolling containers, overlays or animation. */
+:root[data-rsi-preset="chrisRoberts"] #react,
+:root[data-rsi-preset="chrisRoberts"] #react * {
+  -webkit-text-fill-color: transparent;
+  text-shadow: -7px -2px 2px #00eaff, 7px 2px 2px #ff35bc, -3px 4px 3px #408cff, 3px -4px 3px #a5ffef, 0 0 9px #78f5ff;
+}
+:root[data-rsi-preset="chrisRoberts"] #react {
+  background-image: repeating-linear-gradient(0deg, transparent 0 3px, #66eeff08 3px 4px), radial-gradient(ellipse at top, #154b6940, transparent 70%);
+}
+:root[data-rsi-preset="chrisRoberts"] #react :is(.header__title, .title__link, .forum-thread-subject, .member-name, .displayname, .nickname, .channel-name) {
+  text-shadow: -10px -3px 3px #00eaff, 10px 3px 3px #ff35bc, -4px 5px 4px #408cff, 4px -5px 4px #a5ffef, 0 0 14px #43ddff;
+}
+:root[data-rsi-preset="chrisRoberts"] #react :is(.orion-tavern-c-ThreadListItem, .forum-thread-replies > .forum-thread-item, .content-main, .sidebar, .lobby-header) {
+  background-image: repeating-linear-gradient(0deg, transparent 0 3px, #6beaff07 3px 4px), linear-gradient(115deg, #04dfff0d, transparent 45%, #ff36b70a);
+  box-shadow: inset 2px 0 #4ceaff80, inset -2px 0 #ff48c85c, 0 0 12px #00bfff12;
+}
+:root[data-rsi-preset="chrisRoberts"] #react :is(button, .button, .forum-thread-reply-button) {
+  text-shadow: -7px -2px 2px #00eaff, 7px 2px 2px #ff35bc, 0 0 9px #78f5ff;
+  box-shadow: inset 0 0 12px #00dcff20, -2px 0 #00eaff70, 2px 0 #ff35bc70;
+}

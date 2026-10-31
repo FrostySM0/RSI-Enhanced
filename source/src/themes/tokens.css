@@ -1,0 +1,13 @@
+/* Always-defined palette variables are inert when all styling modules are disabled. */
+:root {
+  --rsi-background: #0f141b;
+  --rsi-surface: #161e28;
+  --rsi-raised: #1d2835;
+  --rsi-hover: #263647;
+  --rsi-text: #e6edf3;
+  --rsi-muted: #afbdcb;
+  --rsi-accent: #80ccef;
+  --rsi-border: #3c5065;
+  --rsi-highlight: #bfa739;
+  --rsi-font: var(--rsi-selected-font-family, system-ui, -apple-system, "Segoe UI", sans-serif);
+}

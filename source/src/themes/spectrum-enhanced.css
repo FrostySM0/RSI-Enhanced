@@ -1,0 +1,60 @@
+/* Root, nested legacy app, and portalled components each declare site tokens.
+   Override at those boundaries so nested .theme-dark declarations cannot reset them. */
+:root[data-rsi-preset],
+:root[data-rsi-preset] :is(.theme-dark, #react, #react .theme-dark, .app.theme-dark, #portal-root, .ReactModalPortal .theme-dark) {
+  color-scheme: dark;
+  --font-family-default: var(--rsi-font);
+  --theme-text-color: var(--rsi-text);
+  --theme-util-text-color: var(--rsi-muted);
+  --theme-text-secondary-color: var(--rsi-muted);
+  --theme-highlight-text-color: var(--rsi-accent);
+  --theme-page-header-text-off: var(--rsi-muted);
+  --theme-bg-color-1: var(--rsi-surface);
+  --theme-bg-color-2: var(--rsi-background);
+  --theme-bg-color-3: var(--rsi-raised);
+  --theme-bg-color-4: var(--rsi-background);
+  --theme-bg-color-5: var(--rsi-raised);
+  --theme-bg-color-6: var(--rsi-raised);
+  --theme-bg-color-7: var(--rsi-surface);
+  --theme-bg-color-8: var(--rsi-hover);
+  --theme-bg-color-9: var(--rsi-raised);
+  --theme-border-color-1: var(--rsi-border);
+  --theme-border-color-2: var(--rsi-border);
+  --theme-border-color-3: var(--rsi-border);
+  --theme-header-bg-color: var(--rsi-surface);
+  --theme-page-header-bg-color: var(--rsi-background);
+  --theme-header-active-color: var(--rsi-hover);
+  --theme-search-bg-dark: var(--rsi-background);
+  --theme-search-bg-light: var(--rsi-raised);
+  --theme-search-highlight-bg-color: var(--rsi-hover);
+  --theme-input-bg-color: var(--rsi-background);
+  --theme-input-text-color: var(--rsi-text);
+  --sidebar-bg-color: var(--rsi-background);
+  --sidebar-header-bg-color: var(--rsi-surface);
+  --sidebar-border-color: var(--rsi-border);
+  --sidebar-item-bg-color-hover: var(--rsi-raised);
+  --sidebar-item-bg-color-selected: var(--rsi-hover);
+  --sidebar-item-bg-color-active: var(--rsi-hover);
+  --sidebar-item-text-color-active: var(--rsi-text);
+  --forum-action-bg-color: var(--rsi-raised);
+  --forum-action-border-color: var(--rsi-border);
+  --forum-thread-reply-bg-color: var(--rsi-surface);
+  --forum-footer-bg-color: var(--rsi-raised);
+  --forum-footer-border-color: var(--rsi-border);
+  --forum-input-border-color: var(--rsi-border);
+  --forum-label-bg-color: var(--rsi-raised);
+  --orion-semantic-background: var(--rsi-background);
+  --orion-semantic-default_default: var(--rsi-text);
+  --orion-semantic-default_hover: var(--rsi-accent);
+  --orion-semantic-weak-border: var(--rsi-border);
+  --orion-semantic-weak-hover: var(--rsi-hover);
+  --orion-semantic-focus: var(--rsi-accent);
+  --orion3-semantic-color-surface-default-1: var(--rsi-surface);
+  --orion3-semantic-color-surface-default-1-hovered: var(--rsi-raised);
+  --orion3-semantic-color-surface-default-2: var(--rsi-raised);
+  --orion3-semantic-color-foreground-neutral-primary: var(--rsi-text);
+  --orion3-semantic-color-foreground-neutral-secondary: var(--rsi-muted);
+  --orion3-semantic-color-border-weak-primary: var(--rsi-border);
+  --scrollbar-thumb-background-color-default: var(--rsi-border);
+  --scrollbar-thumb-background-color-hover: var(--rsi-muted);
+}
