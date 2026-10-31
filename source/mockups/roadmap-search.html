@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Roadmap search — visual mockup</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b1821;
+      color: #e6edf3;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-width: 900px; padding: 22px; background: linear-gradient(145deg, #102331, #0b1821 55%); }
+    .board { height: calc(100vh - 44px); min-height: 700px; overflow: hidden; border: 1px solid #344a5d; border-radius: 7px; background: #101b25; box-shadow: 0 18px 45px #0005; }
+    .top { position: relative; z-index: 4; min-height: 184px; display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto auto auto; gap: 12px 28px; align-content: center; padding: 20px 24px 16px; border-bottom: 1px solid #344a5d; background: linear-gradient(130deg, #192633, #121c27 72%); }
+    .eyebrow { color: #80ccef; font-size: 9px; font-weight: 800; letter-spacing: .16em; }
+    h1 { display: inline-block; margin: 4px 12px 0 0; font-size: 29px; letter-spacing: -.04em; }
+    .updated { color: #9fb1c1; font-size: 10px; }
+    .meta { color: #afbdcb; font-size: 12px; }
+    .meta b { color: #e6edf3; font-weight: 600; }
+    .meta a { color: #80ccef; text-decoration: none; }
+    .legend { display: flex; gap: 18px; align-items: center; color: #b9c6d0; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+    .legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; box-shadow: 0 0 8px currentColor; }
+    .tentative-dot { color: #e3bd62; background: currentColor; }
+    .committed-dot { color: #54c6df; background: currentColor; }
+    .released-dot { color: #4dca82; background: currentColor; }
+    .actions { grid-column: 2; grid-row: 1 / 4; display: flex; flex-direction: column; align-items: flex-end; justify-content: center; gap: 10px; }
+    .search-wrap { position: relative; width: min(410px, 35vw); }
+    .search { display: flex; align-items: center; height: 42px; border: 1px solid #4b697e; border-radius: 5px; background: #0d1923; box-shadow: inset 0 1px #ffffff08; }
+    .search:focus-within { border-color: #60c6e5; box-shadow: 0 0 0 2px #50c8e522; }
+    .search-icon { margin: 0 11px 0 13px; color: #8db4c8; font-size: 20px; line-height: 1; }
+    .search input { min-width: 0; flex: 1; height: 100%; border: 0; outline: 0; background: transparent; color: #edf6fb; font-size: 13px; }
+    .search input::placeholder { color: #91a5b5; }
+    .shortcut { margin: 0 10px; padding: 3px 6px; border: 1px solid #42566a; border-radius: 3px; color: #91a5b5; font: 10px Arial, sans-serif; }
+    .results { position: absolute; top: calc(100% + 7px); right: 0; z-index: 8; width: 100%; padding: 6px; border: 1px solid #466174; border-radius: 6px; background: #101d28; box-shadow: 0 14px 30px #0008; }
+    .results-head { display: flex; justify-content: space-between; padding: 7px 9px 8px; color: #8fa5b7; font-size: 9px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    .result { display: block; width: 100%; padding: 10px; border: 1px solid transparent; border-radius: 4px; color: inherit; text-align: left; cursor: pointer; background: transparent; }
+    .result:hover, .result:focus-visible { outline: 0; border-color: #3c7189; background: #1b3040; }
+    .result-title { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 12px; font-weight: 700; }
+    .result-meta { margin-top: 5px; color: #a9b9c6; font-size: 10px; }
+    .result-meta strong { color: #dce7ee; font-weight: 600; }
+    .badge { flex: 0 0 auto; padding: 3px 6px; border: 1px solid; border-radius: 3px; font-size: 8px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+    .badge.released { border-color: #398b61; color: #81dfaa; background: #1e4937; }
+    .badge.committed { border-color: #37879a; color: #8ae0ef; background: #1c4855; }
+    .badge.tentative { border-color: #9a8044; color: #f0d17b; background: #55482c; }
+    .no-results { display: none; padding: 14px 10px; color: #a9b9c6; font-size: 11px; }
+    .actions-row { display: flex; gap: 8px; }
+    .action { padding: 9px 12px; border: 1px solid #3c566b; border-radius: 4px; color: #d2e0e9; background: #1a2b39; font-size: 9px; font-weight: 800; letter-spacing: .04em; }
+    .columns { height: calc(100% - 184px); display: flex; gap: 10px; overflow: auto; padding: 10px; scrollbar-color: #45657a #111b24; }
+    .release { flex: 0 0 232px; min-width: 232px; height: max-content; min-height: 100%; overflow: hidden; border: 1px solid #334c60; border-top: 2px solid #48c882; border-radius: 5px; background: linear-gradient(#17242f, #101922); }
+    .release.tentative-col { border-top-color: #d8b24f; }
+    .release-head { padding: 11px 12px 10px; border-bottom: 1px solid #344b5d; background: #1a2c3b; }
+    .release-head h2 { margin: 0 0 7px; font-size: 18px; }
+    .release-label { display: inline-block; padding: 4px 7px; border: 1px solid #368b60; border-radius: 3px; color: #95dfb0; background: #193e31; font-size: 8px; font-weight: 800; letter-spacing: .04em; }
+    .tentative-col .release-label { border-color: #927942; color: #f1d27d; background: #413822; }
+    .category { margin: 9px 8px; overflow: hidden; border: 1px solid #334c60; border-radius: 4px; background: #14212c; }
+    .category h3 { display: flex; justify-content: space-between; margin: 0; padding: 9px 9px; border-bottom: 1px solid #344b5d; background: #1a2c3b; font-size: 10px; }
+    .category h3 small { color: #a9b9c6; font-size: 9px; font-weight: 400; }
+    .card { margin: 8px; overflow: hidden; border: 1px solid #3d596e; border-radius: 4px; background: #101b25; transition: box-shadow .2s, border-color .2s; }
+    .card.highlight { border-color: #80ccef; box-shadow: 0 0 0 2px #55c9e455, 0 0 22px #55c9e455; }
+    .card-state { padding: 6px 8px; color: #07131b; background: linear-gradient(90deg, #32b979, #56d38c); font-size: 8px; font-weight: 900; letter-spacing: .08em; }
+    .card-state.tentative { color: #211b0e; background: repeating-linear-gradient(135deg, #c6a858 0 6px, #ad914c 6px 12px); }
+    .card-state.committed { color: #07151b; background: linear-gradient(90deg, #43b9d2, #60cde4); }
+    .card-title { min-height: 40px; padding: 10px 9px; font-size: 10px; font-weight: 700; line-height: 1.35; }
+    .art { height: 90px; background: radial-gradient(ellipse at 70% 38%, #567e79, transparent 38%), linear-gradient(135deg, #294759, #101a23 62%, #754c2e); }
+    .art.ship { background: radial-gradient(ellipse at 45% 55%, #52aac7, transparent 25%), linear-gradient(145deg, #12293a, #334858 50%, #0b121a); }
+    .description { padding: 8px 9px 10px; color: #afbdcb; font-size: 9px; line-height: 1.45; }
+    .hint { position: absolute; top: calc(100% + 9px); right: 1px; color: #8fa5b7; font-size: 9px; }
+    @media (max-width: 1100px) { .top { grid-template-columns: 1fr; grid-template-rows: auto auto auto auto; gap: 11px; } .actions { grid-column: 1; grid-row: 4; align-items: flex-start; } .search-wrap { width: min(410px, 90vw); } .columns { height: calc(100% - 250px); } }
+  </style>
+</head>
+<body>
+  <main class="board">
+    <header class="top">
+      <div>
+        <div class="eyebrow">STAR CITIZEN / ROADMAP</div>
+        <h1>RELEASE VIEW</h1><span class="updated">Updated Oct. 21st 2026</span>
+      </div>
+      <div class="meta">▣ &nbsp;Live Version: <b>4.10.2</b> (<a>more info</a>) &nbsp;·&nbsp; Latest Roadmap Roundup: <b>21/10/2026</b> (<a>more info</a>) &nbsp;·&nbsp; PTU Version: <b>0</b></div>
+      <div class="legend"><span><i class="dot tentative-dot"></i>Tentative</span><span><i class="dot committed-dot"></i>Committed</span><span><i class="dot released-dot"></i>Released</span></div>
+      <div class="actions">
+        <div class="search-wrap">
+          <label class="search"><span class="search-icon">⌕</span><input id="roadmap-search" type="search" value="meshing" placeholder="Search roadmap cards…" aria-label="Search roadmap cards"><kbd class="shortcut">Ctrl K</kbd></label>
+          <div class="results" id="search-results" role="listbox" aria-label="Roadmap card results">
+            <div class="results-head"><span>2 matching cards</span><span>Enter to jump</span></div>
+            <button class="result" data-target="dynamic-meshing" role="option">
+              <span class="result-title">Dynamic Server Meshing <span class="badge tentative">Tentative</span></span>
+              <span class="result-meta"><strong>Star Citizen 1.0</strong> &nbsp;·&nbsp; Core Tech</span>
+            </button>
+            <button class="result" data-target="instancing-meshing" role="option">
+              <span class="result-title">Instancing Dynamic Meshing Support <span class="badge released">Released</span></span>
+              <span class="result-meta"><strong>4.10</strong> &nbsp;·&nbsp; Core Tech</span>
+            </button>
+            <div class="no-results" id="no-results">No Roadmap cards match that search.</div>
+          </div>
+          <div class="hint">Choose a result to jump to its patch and card</div>
+        </div>
+        <div class="actions-row"><button class="action">⌄ &nbsp; EXPAND ALL CATEGORIES</button><button class="action">⌃ &nbsp; COLLAPSE ALL CATEGORIES</button></div>
+      </div>
+    </header>
+    <section class="columns" aria-label="Roadmap releases">
+      <article class="release"><header class="release-head"><h2>4.9 <span style="float:right;color:#80ccef">−</span></h2><span class="release-label">↓ &nbsp;RELEASED, Q3 2026</span></header><section class="category"><h3>AI <small>1 entry　⌃</small></h3><div class="card"><div class="card-state">↓ &nbsp;RELEASED</div><div class="card-title">Juvenile and Adult Valakkar Behavior Updates</div><div class="art"></div><div class="description">Improvements to behavior, tracking, repositioning, and attack patterns.</div></div></section></article>
+      <article class="release"><header class="release-head"><h2>4.10 <span style="float:right;color:#80ccef">−</span></h2><span class="release-label">↓ &nbsp;RELEASED, Q3 2026</span></header><section class="category"><h3>Core Tech <small>3 entries　⌃</small></h3><div class="card" id="instancing-meshing"><div class="card-state">↓ &nbsp;RELEASED</div><div class="card-title">Instancing Dynamic Meshing Support</div><div class="art ship"></div><div class="description">Creating closed gameplay spaces with controlled access, managed through the Dynamic Server Meshing initiative.</div></div></section></article>
+      <article class="release tentative-col"><header class="release-head"><h2>4.11 <span style="float:right;color:#80ccef">−</span></h2><span class="release-label">▤ &nbsp;TENTATIVE, Q4 2026</span></header><section class="category"><h3>Characters <small>1 entry　⌃</small></h3><div class="card"><div class="card-state tentative">▤ &nbsp;TENTATIVE</div><div class="card-title">Heavy Combat Armor “Monolith”</div><div class="art"></div><div class="description">A new heavy combat armor for the persistent universe.</div></div></section></article>
+      <article class="release tentative-col"><header class="release-head"><h2>Star Citizen 1.0 <span style="float:right;color:#80ccef">−</span></h2><span class="release-label">▤ &nbsp;TENTATIVE</span></header><section class="category"><h3>Core Tech <small>7 entries　⌃</small></h3><div class="card" id="dynamic-meshing"><div class="card-state tentative">▤ &nbsp;TENTATIVE</div><div class="card-title">Dynamic Server Meshing</div><div class="art ship"></div><div class="description">Dynamic scaling and server reassignment for seamless gameplay across the universe.</div></div></section></article>
+    </section>
+  </main>
+  <script>
+    const input = document.querySelector('#roadmap-search');
+    const results = document.querySelector('#search-results');
+    const options = [...document.querySelectorAll('.result')];
+    const empty = document.querySelector('#no-results');
+    input.addEventListener('input', () => {
+      const query = input.value.trim().toLowerCase();
+      let count = 0;
+      for (const option of options) {
+        const target = document.getElementById(option.dataset.target);
+        const matches = !query || `${option.textContent} ${target?.textContent ?? ''}`.toLowerCase().includes(query);
+        option.hidden = !matches;
+        if (matches) count++;
+      }
+      results.querySelector('.results-head span').textContent = `${count} matching card${count === 1 ? '' : 's'}`;
+      empty.style.display = count ? 'none' : 'block';
+    });
+    for (const option of options) option.addEventListener('click', () => {
+      document.querySelectorAll('.card.highlight').forEach(card => card.classList.remove('highlight'));
+      const card = document.getElementById(option.dataset.target);
+      card.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+      card.classList.add('highlight');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spectrum Messages redesign mockups</title>
+<style>
+  :root { color-scheme: dark; font: 15px/1.5 Arial, Helvetica, sans-serif; background: #08151e; color: #e8f2f7; }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 32px; }
+  header { max-width: 1120px; margin: 0 auto 22px; }
+  h1 { margin: 0; font-size: 24px; }
+  p { margin: 6px 0 0; color: #9bb8c6; }
+  main { display: grid; grid-template-columns: repeat(2, minmax(320px, 430px)); gap: 24px; justify-content: center; }
+  figure { margin: 0; }
+  figcaption { margin: 0 0 9px 5px; color: #77bad8; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+  img { display: block; width: 100%; height: auto; border-radius: 14px; box-shadow: 0 16px 45px #0008; }
+  @media (max-width: 850px) { body { padding: 20px; } main { grid-template-columns: minmax(280px, 430px); } }
+</style>
+<body>
+  <header>
+    <h1>Spectrum Messages</h1>
+    <p>Two proposed states for the same narrow Messages panel. The top navigation, title, New action, and search stay consistent.</p>
+  </header>
+  <main>
+    <figure><figcaption>Empty state</figcaption><img src="spectrum-messages-empty.svg" alt="Spectrum Messages empty-state redesign"></figure>
+    <figure><figcaption>With messages</figcaption><img src="spectrum-messages-populated.svg" alt="Spectrum Messages populated conversation-list redesign"></figure>
+  </main>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="430" height="1180" viewBox="0 0 430 1180" role="img" aria-labelledby="title desc">
+  <title id="title">Spectrum Messages redesign — conversations</title>
+  <desc id="desc">A populated Spectrum Messages panel with the same top navigation, title, New button and search, followed by a compact conversation list with previews and unread signal bars.</desc>
+  <defs>
+    <linearGradient id="nav" x2="0" y2="1"><stop stop-color="#15394b"/><stop offset="1" stop-color="#102c3b"/></linearGradient>
+    <linearGradient id="titleBar" x2="1" y2="0"><stop stop-color="#17455d"/><stop offset="1" stop-color="#14384d"/></linearGradient>
+    <linearGradient id="button" x2="0" y2="1"><stop stop-color="#78ccff"/><stop offset="1" stop-color="#42a8ed"/></linearGradient>
+    <pattern id="stripes" width="28" height="28" patternTransform="skewX(-18)" patternUnits="userSpaceOnUse"><rect width="10" height="28" fill="#3aa8dc" opacity=".055"/></pattern>
+  </defs>
+  <rect width="430" height="1180" rx="14" fill="#071720"/>
+  <rect x="1" y="1" width="428" height="1178" rx="13" fill="none" stroke="#294a5c" stroke-width="2"/>
+  <rect x="2" y="2" width="426" height="64" rx="12" fill="url(#nav)"/>
+  <rect x="18" y="12" width="48" height="42" rx="5" fill="#1c465c"/>
+  <path d="M31 24h21v14H40l-6 5v-5h-3z" fill="none" stroke="#d5efff" stroke-width="2.5" stroke-linejoin="round"/>
+  <circle cx="37" cy="31" r="1.5" fill="#d5efff"/><circle cx="42" cy="31" r="1.5" fill="#d5efff"/><circle cx="47" cy="31" r="1.5" fill="#d5efff"/>
+  <g fill="none" stroke="#a6cadc" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="108" cy="31" r="5"/><circle cx="123" cy="31" r="5"/><path d="M99 48c1-7 14-7 17 0m0-1c2-5 11-5 14 0"/>
+    <circle cx="176" cy="29" r="8"/><path d="m182 35 6 6"/>
+    <path d="M230 30a10 10 0 1 1 20 0v7l3 4h-26l3-4zm7 15a3 3 0 0 0 6 0"/>
+  </g>
+  <circle cx="386" cy="32" r="19" fill="#193f53" stroke="#56b7e9" stroke-width="2"/>
+  <circle cx="386" cy="32" r="12" fill="#42728a"/>
+  <path d="M378 35q8-14 16 0v5h-16z" fill="#a6d5eb" opacity=".85"/>
+  <circle cx="401" cy="47" r="5" fill="#1ae0c0" stroke="#071720" stroke-width="2"/>
+
+  <rect x="2" y="66" width="426" height="76" fill="url(#titleBar)"/>
+  <rect x="2" y="66" width="426" height="76" fill="url(#stripes)"/>
+  <path d="M0 66h180l-35 76H0z" fill="#3197bf" opacity=".07"/>
+  <text x="26" y="114" fill="#f1f6f8" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700">Messages</text>
+  <rect x="321" y="85" width="88" height="36" rx="5" fill="url(#button)"/>
+  <path d="M337 103h12m-6-6v12" stroke="#062033" stroke-width="2.4" stroke-linecap="round"/>
+  <text x="355" y="109" fill="#061c2a" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700">NEW</text>
+
+  <rect x="2" y="142" width="426" height="83" fill="#102e3d"/>
+  <rect x="20" y="157" width="390" height="52" rx="5" fill="#0a202c" stroke="#5ebfff" stroke-width="1.5"/>
+  <circle cx="43" cy="183" r="7" fill="none" stroke="#a6d9f1" stroke-width="2"/>
+  <path d="m48 188 6 6" stroke="#a6d9f1" stroke-width="2" stroke-linecap="round"/>
+  <text x="68" y="189" fill="#bbd5e2" font-family="Arial, Helvetica, sans-serif" font-size="16">Find a Conversation</text>
+
+  <rect x="2" y="225" width="426" height="953" fill="#081b25"/>
+  <path d="M0 226h2v952H0z" fill="#3c9fc8" opacity=".7"/>
+  <text x="24" y="263" fill="#77bad8" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" letter-spacing="1.2">RECENT CONVERSATIONS</text>
+  <text x="399" y="263" text-anchor="end" fill="#789daf" font-family="Arial, Helvetica, sans-serif" font-size="12">6</text>
+
+  <rect x="12" y="278" width="406" height="106" rx="8" fill="#102b39" stroke="#24495c"/>
+  <circle cx="51" cy="320" r="25" fill="#2a5a70" stroke="#55b4df"/>
+  <text x="51" y="326" text-anchor="middle" fill="#e4f3f9" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">MV</text>
+  <circle cx="68" cy="337" r="5" fill="#29d5b5" stroke="#102b39" stroke-width="2"/>
+  <text x="88" y="310" fill="#e9f2f5" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">Mira Voss</text>
+  <text x="398" y="310" text-anchor="end" fill="#8eacbc" font-family="Arial, Helvetica, sans-serif" font-size="11">2 min</text>
+  <text x="88" y="335" fill="#b0c8d3" font-family="Arial, Helvetica, sans-serif" font-size="13">Thanks, that route worked perfectly.</text>
+  <text x="88" y="359" fill="#718f9f" font-family="Arial, Helvetica, sans-serif" font-size="11">You: Glad it helped — see you in the 'verse.</text>
+  <rect x="407" y="316" width="4" height="24" rx="2" fill="#efb15d"/>
+
+  <rect x="12" y="394" width="406" height="106" rx="8" fill="#0c2431" stroke="#1b3949"/>
+  <circle cx="51" cy="436" r="25" fill="#594a71" stroke="#9f87c1"/>
+  <text x="51" y="442" text-anchor="middle" fill="#eee8f7" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">JW</text>
+  <text x="88" y="426" fill="#e9f2f5" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">Juno Ward</text>
+  <text x="398" y="426" text-anchor="end" fill="#8eacbc" font-family="Arial, Helvetica, sans-serif" font-size="11">18 min</text>
+  <text x="88" y="451" fill="#b0c8d3" font-family="Arial, Helvetica, sans-serif" font-size="13">Are you still heading to Area18 tonight?</text>
+  <text x="88" y="475" fill="#718f9f" font-family="Arial, Helvetica, sans-serif" font-size="11">Tap to open conversation</text>
+  <rect x="407" y="432" width="4" height="24" rx="2" fill="#efb15d"/>
+
+  <rect x="12" y="510" width="406" height="106" rx="8" fill="#0c2431" stroke="#1b3949"/>
+  <circle cx="51" cy="552" r="25" fill="#385f52" stroke="#70bd94"/>
+  <text x="51" y="558" text-anchor="middle" fill="#e8f5ed" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">NC</text>
+  <text x="88" y="542" fill="#e9f2f5" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">Nova Crew</text>
+  <text x="398" y="542" text-anchor="end" fill="#8eacbc" font-family="Arial, Helvetica, sans-serif" font-size="11">1 hr</text>
+  <text x="88" y="567" fill="#b0c8d3" font-family="Arial, Helvetica, sans-serif" font-size="13">Kestrel: Meet at the hangar entrance.</text>
+  <text x="88" y="591" fill="#718f9f" font-family="Arial, Helvetica, sans-serif" font-size="11">4 participants</text>
+
+  <rect x="12" y="626" width="406" height="106" rx="8" fill="#0c2431" stroke="#1b3949"/>
+  <circle cx="51" cy="668" r="25" fill="#70533c" stroke="#c79c6f"/>
+  <text x="51" y="674" text-anchor="middle" fill="#fbf0e3" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">KW</text>
+  <text x="88" y="658" fill="#e9f2f5" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">Kellan Ward</text>
+  <text x="398" y="658" text-anchor="end" fill="#8eacbc" font-family="Arial, Helvetica, sans-serif" font-size="11">Yesterday</text>
+  <text x="88" y="683" fill="#b0c8d3" font-family="Arial, Helvetica, sans-serif" font-size="13">I sent over the ship loadout you asked for.</text>
+  <text x="88" y="707" fill="#718f9f" font-family="Arial, Helvetica, sans-serif" font-size="11">You: Perfect, I'll take a look after work.</text>
+
+  <rect x="12" y="742" width="406" height="106" rx="8" fill="#0c2431" stroke="#1b3949"/>
+  <circle cx="51" cy="784" r="25" fill="#34516b" stroke="#6d9fc6"/>
+  <text x="51" y="790" text-anchor="middle" fill="#e4eef7" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">AS</text>
+  <text x="88" y="774" fill="#e9f2f5" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">Ari Sol</text>
+  <text x="398" y="774" text-anchor="end" fill="#8eacbc" font-family="Arial, Helvetica, sans-serif" font-size="11">Mon</text>
+  <text x="88" y="799" fill="#b0c8d3" font-family="Arial, Helvetica, sans-serif" font-size="13">Thanks for sharing the event details!</text>
+  <text x="88" y="823" fill="#718f9f" font-family="Arial, Helvetica, sans-serif" font-size="11">You: No problem.</text>
+
+  <rect x="12" y="858" width="406" height="106" rx="8" fill="#0c2431" stroke="#1b3949"/>
+  <circle cx="51" cy="900" r="25" fill="#64465a" stroke="#c38ca8"/>
+  <text x="51" y="906" text-anchor="middle" fill="#f5e8f0" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">TS</text>
+  <text x="88" y="890" fill="#e9f2f5" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">Tessa Starling</text>
+  <text x="398" y="890" text-anchor="end" fill="#8eacbc" font-family="Arial, Helvetica, sans-serif" font-size="11">Oct 21</text>
+  <text x="88" y="915" fill="#b0c8d3" font-family="Arial, Helvetica, sans-serif" font-size="13">See you in the briefing room.</text>
+  <text x="88" y="939" fill="#718f9f" font-family="Arial, Helvetica, sans-serif" font-size="11">You: Copy that.</text>
+
+  <path d="M22 1004h386" stroke="#1b3949"/>
+  <text x="24" y="1040" fill="#6f91a2" font-family="Arial, Helvetica, sans-serif" font-size="12">Conversations stay in the native Spectrum inbox.</text>
+  <rect x="2" y="1140" width="426" height="38" fill="#0b2430" opacity=".82"/>
+  <text x="20" y="1164" fill="#80b4cd" font-family="Arial, Helvetica, sans-serif" font-size="11" letter-spacing="1.3">WITH MESSAGES</text>
+</svg>

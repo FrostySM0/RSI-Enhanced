@@ -1,0 +1,171 @@
+<div id="spectrum-bookmark-icon-proposal" class="viz-dotted-background">
+  <style>
+    #spectrum-bookmark-icon-proposal .spectrum-sidebar {
+      color-scheme: light dark;
+      --rsi-nav-bg: light-dark(#e8f0f4, #0d2a38);
+      --rsi-nav-row: light-dark(#d6e4eb, #183645);
+      --rsi-nav-text: light-dark(#183748, #d8eaf4);
+      --rsi-nav-muted: light-dark(#526f7f, #9bb5c4);
+      --rsi-nav-accent: light-dark(#087ca6, #70d6f4);
+      --rsi-nav-unread: light-dark(#c96b28, #f5bd88);
+      width: min(360px, 100%);
+      box-sizing: border-box;
+      padding: 14px 12px;
+      color: var(--rsi-nav-text);
+      background: var(--rsi-nav-bg);
+      font: 13px/1.3 Arial, Helvetica, sans-serif;
+    }
+    #spectrum-bookmark-icon-proposal .section-heading,
+    #spectrum-bookmark-icon-proposal .bookmark-row,
+    #spectrum-bookmark-icon-proposal .bookmark-icons,
+    #spectrum-bookmark-icon-proposal .heading-actions {
+      display: flex;
+      align-items: center;
+    }
+    #spectrum-bookmark-icon-proposal .section-heading {
+      justify-content: space-between;
+      min-height: 22px;
+      margin: 0 2px 7px;
+      color: var(--rsi-nav-text);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .035em;
+      text-transform: uppercase;
+    }
+    #spectrum-bookmark-icon-proposal .heading-actions { gap: 13px; color: var(--rsi-nav-muted); }
+    #spectrum-bookmark-icon-proposal .bookmark-list { display: grid; gap: 2px; }
+    #spectrum-bookmark-icon-proposal .chat-list {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid color-mix(in srgb, var(--rsi-nav-muted) 35%, transparent);
+    }
+    #spectrum-bookmark-icon-proposal .bookmark-row {
+      min-height: 34px;
+      gap: 10px;
+      padding: 0 8px;
+      border-radius: 4px;
+      color: var(--rsi-nav-text);
+    }
+    #spectrum-bookmark-icon-proposal .bookmark-row.selected {
+      background: var(--rsi-nav-row);
+      box-shadow: inset 2px 0 var(--rsi-nav-accent);
+    }
+    #spectrum-bookmark-icon-proposal .bookmark-icons { flex: 0 0 auto; gap: 8px; }
+    #spectrum-bookmark-icon-proposal .sc-mark {
+      width: 19px;
+      height: 19px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid color-mix(in srgb, var(--rsi-nav-accent) 72%, transparent);
+      border-radius: 5px;
+      color: var(--rsi-nav-accent);
+      background: color-mix(in srgb, var(--rsi-nav-accent) 10%, transparent);
+    }
+    #spectrum-bookmark-icon-proposal .forum-mark,
+    #spectrum-bookmark-icon-proposal .chat-mark { color: var(--rsi-nav-accent); }
+    #spectrum-bookmark-icon-proposal i[data-lucide] { display: inline-flex; }
+    #spectrum-bookmark-icon-proposal .bookmark-label { flex: 1; min-width: 0; }
+    #spectrum-bookmark-icon-proposal .unread {
+      flex: 0 0 auto;
+      color: var(--rsi-nav-unread);
+    }
+    #spectrum-bookmark-icon-proposal .unread-beacon {
+      width: 11px;
+      height: 11px;
+      display: grid;
+      place-items: center;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px color-mix(in srgb, currentColor 16%, transparent);
+    }
+    #spectrum-bookmark-icon-proposal .unread-beacon::before {
+      content: "";
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: currentColor;
+      box-shadow: 0 0 5px currentColor;
+    }
+    #spectrum-bookmark-icon-proposal .unread-signal {
+      width: 4px;
+      height: 15px;
+      border-radius: 4px;
+      background: linear-gradient(180deg, color-mix(in srgb, currentColor 68%, white), currentColor 45%);
+      box-shadow: 0 0 7px color-mix(in srgb, currentColor 52%, transparent);
+    }
+    #spectrum-bookmark-icon-proposal .unread-badge {
+      padding: 2px 5px;
+      border: 1px solid color-mix(in srgb, currentColor 75%, transparent);
+      border-radius: 3px;
+      background: color-mix(in srgb, currentColor 13%, transparent);
+      color: var(--rsi-nav-unread);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      line-height: 1;
+    }
+  </style>
+  <div class="viz-carousel" aria-label="Spectrum unread marker designs">
+    <section data-variant="Signal Bar" aria-label="Signal bar unread marker">
+      <div class="spectrum-sidebar">
+        <div class="section-heading">
+          <span>Bookmarks</span>
+          <span class="heading-actions" aria-hidden="true">
+            <i data-lucide="settings-2"></i>
+            <i data-lucide="ellipsis-vertical"></i>
+          </span>
+        </div>
+        <div class="bookmark-list" aria-label="Forum bookmarks">
+          <div class="bookmark-row"><span class="bookmark-icons" aria-hidden="true"><span class="sc-mark"><i data-lucide="orbit"></i></span><i class="forum-mark" data-lucide="messages-square"></i></span><span class="bookmark-label">Announcements</span></div>
+          <div class="bookmark-row"><span class="bookmark-icons" aria-hidden="true"><span class="sc-mark"><i data-lucide="orbit"></i></span><i class="forum-mark" data-lucide="messages-square"></i></span><span class="bookmark-label">Patch Notes</span></div>
+          <div class="bookmark-row"><span class="bookmark-icons" aria-hidden="true"><span class="sc-mark"><i data-lucide="orbit"></i></span><i class="forum-mark" data-lucide="messages-square"></i></span><span class="bookmark-label">Focus Testing</span></div>
+          <div class="bookmark-row selected"><span class="bookmark-icons" aria-hidden="true"><span class="sc-mark"><i data-lucide="orbit"></i></span><i class="forum-mark" data-lucide="messages-square"></i></span><span class="bookmark-label">General</span><span class="unread unread-signal" aria-label="Unread activity"></span></div>
+          <div class="bookmark-row"><span class="bookmark-icons" aria-hidden="true"><span class="sc-mark"><i data-lucide="orbit"></i></span><i class="forum-mark" data-lucide="messages-square"></i></span><span class="bookmark-label">Ask The Devs</span></div>
+        </div>
+        <div class="bookmark-list chat-list" aria-label="Live chat bookmarks">
+          <div class="bookmark-row"><span class="bookmark-icons" aria-hidden="true"><span class="sc-mark"><i data-lucide="orbit"></i></span><i class="chat-mark" data-lucide="message-circle-more"></i></span><span class="bookmark-label">SC General</span><span class="unread unread-signal" aria-label="Unread activity"></span></div>
+          <div class="bookmark-row"><span class="bookmark-icons" aria-hidden="true"><span class="sc-mark"><i data-lucide="orbit"></i></span><i class="chat-mark" data-lucide="message-circle-more"></i></span><span class="bookmark-label">SC testing chat</span><span class="unread unread-signal" aria-label="Unread activity"></span></div>
+        </div>
+      </div>
+    </section>
+    <section data-variant="Beacon" aria-label="Beacon unread marker" hidden>
+      <div class="spectrum-sidebar">
+        <div class="section-heading">
+          <span>Bookmarks</span>
+          <span class="heading-actions" aria-hidden="true"><i data-lucide="settings-2"></i><i data-lucide="ellipsis-vertical"></i></span>
+        </div>
+        <div class="bookmark-list" aria-label="Forum bookmarks">
+          <div class="bookmark-row"><span class="bookmark-icons" aria-hidden="true"><span class="sc-mark"><i data-lucide="orbit"></i></span><i class="forum-mark" data-lucide="messages-square"></i></span><span class="bookmark-label">Announcements</span></div>
+          <div class="bookmark-row"><span class="bookmark-icons" aria-hidden="true"><span class="sc-mark"><i data-lucide="orbit"></i></span><i class="forum-mark" data-lucide="messages-square"></i></span><span class="bookmark-label">Patch Notes</span></div>
+          <div class="bookmark-row"><span class="bookmark-icons" aria-hidden="true"><span class="sc-mark"><i data-lucide="orbit"></i></span><i class="forum-mark" data-lucide="messages-square"></i></span><span class="bookmark-label">Focus Testing</span></div>
+          <div class="bookmark-row selected"><span class="bookmark-icons" aria-hidden="true"><span class="sc-mark"><i data-lucide="orbit"></i></span><i class="forum-mark" data-lucide="messages-square"></i></span><span class="bookmark-label">General</span><span class="unread unread-beacon" aria-label="Unread activity"></span></div>
+          <div class="bookmark-row"><span class="bookmark-icons" aria-hidden="true"><span class="sc-mark"><i data-lucide="orbit"></i></span><i class="forum-mark" data-lucide="messages-square"></i></span><span class="bookmark-label">Ask The Devs</span></div>
+        </div>
+        <div class="bookmark-list chat-list" aria-label="Live chat bookmarks">
+          <div class="bookmark-row"><span class="bookmark-icons" aria-hidden="true"><span class="sc-mark"><i data-lucide="orbit"></i></span><i class="chat-mark" data-lucide="message-circle-more"></i></span><span class="bookmark-label">SC General</span><span class="unread unread-beacon" aria-label="Unread activity"></span></div>
+          <div class="bookmark-row"><span class="bookmark-icons" aria-hidden="true"><span class="sc-mark"><i data-lucide="orbit"></i></span><i class="chat-mark" data-lucide="message-circle-more"></i></span><span class="bookmark-label">SC testing chat</span><span class="unread unread-beacon" aria-label="Unread activity"></span></div>
+        </div>
+      </div>
+    </section>
+    <section data-variant="NEW Badge" aria-label="NEW badge unread marker" hidden>
+      <div class="spectrum-sidebar">
+        <div class="section-heading">
+          <span>Bookmarks</span>
+          <span class="heading-actions" aria-hidden="true"><i data-lucide="settings-2"></i><i data-lucide="ellipsis-vertical"></i></span>
+        </div>
+        <div class="bookmark-list" aria-label="Forum bookmarks">
+          <div class="bookmark-row"><span class="bookmark-icons" aria-hidden="true"><span class="sc-mark"><i data-lucide="orbit"></i></span><i class="forum-mark" data-lucide="messages-square"></i></span><span class="bookmark-label">Announcements</span></div>
+          <div class="bookmark-row"><span class="bookmark-icons" aria-hidden="true"><span class="sc-mark"><i data-lucide="orbit"></i></span><i class="forum-mark" data-lucide="messages-square"></i></span><span class="bookmark-label">Patch Notes</span></div>
+          <div class="bookmark-row"><span class="bookmark-icons" aria-hidden="true"><span class="sc-mark"><i data-lucide="orbit"></i></span><i class="forum-mark" data-lucide="messages-square"></i></span><span class="bookmark-label">Focus Testing</span></div>
+          <div class="bookmark-row selected"><span class="bookmark-icons" aria-hidden="true"><span class="sc-mark"><i data-lucide="orbit"></i></span><i class="forum-mark" data-lucide="messages-square"></i></span><span class="bookmark-label">General</span><span class="unread unread-badge" aria-label="Unread activity">NEW</span></div>
+          <div class="bookmark-row"><span class="bookmark-icons" aria-hidden="true"><span class="sc-mark"><i data-lucide="orbit"></i></span><i class="forum-mark" data-lucide="messages-square"></i></span><span class="bookmark-label">Ask The Devs</span></div>
+        </div>
+        <div class="bookmark-list chat-list" aria-label="Live chat bookmarks">
+          <div class="bookmark-row"><span class="bookmark-icons" aria-hidden="true"><span class="sc-mark"><i data-lucide="orbit"></i></span><i class="chat-mark" data-lucide="message-circle-more"></i></span><span class="bookmark-label">SC General</span><span class="unread unread-badge" aria-label="Unread activity">NEW</span></div>
+          <div class="bookmark-row"><span class="bookmark-icons" aria-hidden="true"><span class="sc-mark"><i data-lucide="orbit"></i></span><i class="chat-mark" data-lucide="message-circle-more"></i></span><span class="bookmark-label">SC testing chat</span><span class="unread unread-badge" aria-label="Unread activity">NEW</span></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
