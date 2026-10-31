@@ -1,0 +1,20 @@
+/* Developer text preference is independent of the selected theme and limited to marked forum authors. */
+:root[data-rsi-dev-text-color="white"] { --rsi-dev-post-text: #fff; }
+:root[data-rsi-dev-text-color="off-white"] { --rsi-dev-post-text: #d6d9dd; }
+
+:root:is([data-rsi-dev-text-color="white"], [data-rsi-dev-text-color="off-white"]) #react .thread-list-screen
+  .orion-tavern-c-ThreadListItem:has(.orion-tavern-c-ThreadListItem__role-line)
+  .orion-tavern-c-ThreadListItem__last-reply :is(a, .displayname, .nickname) {
+  color: var(--rsi-dev-post-text) !important;
+}
+
+:root:is([data-rsi-dev-text-color="white"], [data-rsi-dev-text-color="off-white"]) #react .forum-thread.discussion .forum-thread-item:has(> .content > .content-main .content-header .member-name > .displayname:is([style*="191, 167, 57" i], [style*="191,167,57" i], [style*="#bfa739" i]))
+  > .content > .content-main
+  :is(
+    .forum-thread-subject,
+    .content-header .member-name > .displayname,
+    .content-blocks .content-block.text,
+    .content-blocks .content-block.text :not(a, a *)
+  ) {
+  color: var(--rsi-dev-post-text) !important;
+}

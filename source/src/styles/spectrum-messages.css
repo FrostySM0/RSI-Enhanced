@@ -1,0 +1,327 @@
+/* Match Messages to Spectrum's compact Friends and Notifications quick panels. */
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .sidebarRight {
+  color: var(--rsi-text);
+  background: var(--rsi-surface);
+  border-inline-start: 1px solid var(--rsi-border);
+  font-family: var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-sidebarRight {
+  color: var(--rsi-text);
+  background: var(--rsi-surface);
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-sidebarRightHeader {
+  color: var(--rsi-text);
+  background: var(--rsi-surface);
+  border-block-end: 1px solid var(--rsi-border);
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-sidebarRightHeader__top {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto auto;
+  align-items: center;
+  column-gap: 8px;
+  row-gap: 1px;
+  min-height: 56px;
+  padding: 8px 14px;
+  border-block-end: 1px solid var(--rsi-border);
+  background: var(--rsi-raised);
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) :is(.orion-tavern-c-sidebarRightHeader__decoration, .orion-tavern-c-sidebarRightHeader__background) {
+  display: none;
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-sidebarRightHeader__heading {
+  display: contents;
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-sidebarRightHeader__title[title="Messages"] {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+  margin: 0;
+  color: var(--rsi-text);
+  font: 700 16px/1.2 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-sidebarRightHeader__heading > div:has(> .a-button.-filled) {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  justify-self: end;
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .rsi-spectrum-message-summary {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: start;
+  min-width: 0;
+  margin: 0;
+  color: var(--rsi-muted);
+  font: 600 11px/1.3 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  white-space: nowrap;
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-sidebarRightHeader__top:has(> .rsi-spectrum-message-summary) > .orion-tavern-c-sidebarRightHeader__counter {
+  display: none;
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-sidebarRightHeader__heading .a-button.-filled,
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .m-emptyState__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 34px;
+  padding: 6px 12px;
+  border: 1px solid var(--rsi-accent);
+  border-radius: 5px;
+  background: var(--rsi-accent);
+  color: var(--rsi-background);
+  box-shadow: none;
+  font: 700 12px/1.2 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-sidebarRightHeader__heading .a-button.-filled {
+  min-height: 30px;
+  padding: 4px 11px;
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-sidebarRightHeader__heading .a-button.-filled:hover,
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .m-emptyState__button:hover {
+  border-color: var(--rsi-accent);
+  background: color-mix(in srgb, var(--rsi-accent) 84%, var(--rsi-text));
+  color: var(--rsi-background);
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-sidebarRightHeader__heading .a-button.-filled .a-button__background,
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .m-emptyState__button .a-button__background {
+  display: none;
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-sidebarRightHeader__heading .a-button.-filled .a-button__content,
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-sidebarRightHeader__heading .a-button.-filled .a-button__text,
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-sidebarRightHeader__heading .a-button.-filled .a-button__icon,
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .m-emptyState__button .a-button__content,
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .m-emptyState__button .a-button__text,
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .m-emptyState__button .a-button__icon {
+  color: var(--rsi-background);
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-sidebarRightHeader__content {
+  padding: 10px 12px;
+  background: var(--rsi-surface);
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .m-inputBase__input {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  border: 1px solid color-mix(in srgb, var(--rsi-accent) 72%, var(--rsi-border));
+  border-radius: 7px;
+  background: var(--rsi-background);
+  color: var(--rsi-muted);
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .m-inputBase__input:focus-within {
+  border-color: var(--rsi-accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--rsi-accent) 22%, transparent);
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .m-inputBase__input input[data-cy-id="input"] {
+  box-sizing: border-box;
+  min-width: 0;
+  height: 32px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--rsi-text);
+  font: 14px/1.3 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .m-inputBase__input input[data-cy-id="input"]::placeholder,
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .a-inputLabel__text {
+  color: var(--rsi-muted);
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .m-inputBase__startOverlay .a-icon {
+  color: var(--rsi-accent);
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-sidebarRightContent {
+  color: var(--rsi-text);
+  background: var(--rsi-surface);
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) a.orion-tavern-c-SidebarRightDirectMessage {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  min-height: 72px;
+  margin: 8px 10px;
+  padding: 10px 18px 10px 12px;
+  border: 1px solid var(--rsi-border);
+  border-radius: 8px;
+  background: var(--rsi-raised);
+  color: var(--rsi-text);
+  font-family: var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  text-decoration: none;
+  transition: background-color .12s ease;
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) a.orion-tavern-c-SidebarRightDirectMessage:hover {
+  background: var(--rsi-hover);
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) a.orion-tavern-c-SidebarRightDirectMessage:has(.orion-tavern-c-SidebarRightDirectMessage__counter)::after {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-end: 7px;
+  width: 4px;
+  height: 24px;
+  border-radius: 3px;
+  background: var(--rsi-highlight);
+  content: "";
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-SidebarRightDirectMessage__avatar {
+  box-sizing: border-box;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--rsi-border);
+  border-radius: var(--rsi-avatar-radius, 6px);
+  background: var(--rsi-raised);
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-SidebarRightDirectMessage__avatar .orion-c-avatar__wrapper,
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-SidebarRightDirectMessage__avatar .orion-c-avatar__image {
+  border-radius: var(--rsi-avatar-radius, 6px);
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-SidebarRightDirectMessage__content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-SidebarRightDirectMessage__names {
+  overflow: hidden;
+  margin: 0;
+  color: var(--rsi-text);
+  font: 600 12px/1.25 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-SidebarRightDirectMessage__excerpt {
+  overflow: hidden;
+  margin: 2px 0 0;
+  color: var(--rsi-muted);
+  font: 11px/1.25 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) :is(.orion-tavern-c-SidebarRightDirectMessage__names, .orion-tavern-c-SidebarRightDirectMessage__excerpt).-bold {
+  font-weight: 700;
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-SidebarRightDirectMessage__counter {
+  display: inline-flex;
+  flex: 0 0 auto;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-width: 28px;
+  min-height: 24px;
+  padding: 3px 6px;
+  border: 1px solid var(--rsi-border);
+  border-radius: 12px;
+  background: var(--rsi-raised);
+  color: var(--rsi-accent);
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-SidebarRightDirectMessage__counter p {
+  margin: 0;
+  color: inherit;
+  font: 700 10px/1.1 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-SidebarRightDirectMessage__counter .a-icon {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--rsi-accent);
+  color: transparent;
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-SidebarRightDirectMessage__close-button {
+  display: inline-flex;
+  flex: 0 0 24px;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin-inline-end: 8px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--rsi-muted);
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-SidebarRightDirectMessage__close-button .a-button__background {
+  background: transparent;
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-SidebarRightDirectMessage__close-button:hover {
+  border-color: var(--rsi-border);
+  background: var(--rsi-hover);
+  color: var(--rsi-accent);
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-SidebarRightDirectMessage__close-button:hover .a-button__background {
+  background: var(--rsi-hover);
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .m-emptyState.t-messagesEmptyState {
+  color: var(--rsi-text);
+  background: var(--rsi-surface);
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-sidebarRight__emptyState-backgroundImage {
+  opacity: .36;
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .orion-tavern-c-sidebarRight__emptyState-icon path {
+  fill: color-mix(in srgb, var(--rsi-accent) 10%, var(--rsi-background));
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .m-emptyState__text h2 {
+  color: var(--rsi-text);
+  font: 700 26px/1.2 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  letter-spacing: .035em;
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) .m-emptyState__text p {
+  color: var(--rsi-muted);
+  font: 14px/1.35 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+}
+
+#react .mainLayout__sidebar.mainLayout__right:has(.orion-tavern-c-sidebarRightHeader__title[title="Messages"]) :is(a, button):focus-visible {
+  outline: 2px solid var(--rsi-accent);
+  outline-offset: 2px;
+}

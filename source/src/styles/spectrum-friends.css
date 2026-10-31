@@ -1,0 +1,280 @@
+/* Friends shares the native virtualized roster markup, but is available from the
+   global quick-access menu. The unique search placeholder scopes these rules. */
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]),
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) :is(.quick-access-header, .lobby-member-presences, .members-list) {
+  background-color: var(--rsi-surface);
+  color: var(--rsi-text);
+  border-color: var(--rsi-border);
+  font-family: var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+}
+
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) {
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px var(--rsi-border), 0 14px 34px rgb(0 0 0 / .34);
+}
+
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) .quick-access-header {
+  padding: 10px 12px 8px;
+  border-bottom: 1px solid var(--rsi-border);
+  background-color: var(--rsi-raised);
+}
+
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) .quick-access-header-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+  color: var(--rsi-text);
+  font: 700 13px/1.3 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  letter-spacing: .035em;
+  text-transform: uppercase;
+}
+
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) .online-count {
+  margin: 3px 0 0;
+  color: var(--rsi-muted);
+  font: 600 11px/1.3 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  letter-spacing: 0;
+}
+
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) .quick-access-header-settings {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 0 0 auto;
+}
+
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) .quick-access-header-settings > span {
+  display: grid;
+  flex: 0 0 28px;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  color: var(--rsi-muted);
+  cursor: pointer;
+}
+
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) .quick-access-header-settings > span:hover {
+  background-color: var(--rsi-hover);
+  color: var(--rsi-accent);
+}
+
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) .quick-access-header-settings svg {
+  width: 15px;
+  height: 15px;
+}
+
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) .action-button.action-button--outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 28px;
+  padding: 4px 8px;
+  border: 1px solid var(--rsi-border);
+  border-radius: 6px;
+  background-color: transparent;
+  color: var(--rsi-muted);
+  font: 600 11px/1.2 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  white-space: nowrap;
+}
+
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) .action-button.action-button--outline:hover {
+  border-color: var(--rsi-accent);
+  background-color: var(--rsi-hover);
+  color: var(--rsi-accent);
+}
+
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) .action-button.action-button--outline:focus-visible,
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) .quick-access-header-settings > span:focus-visible {
+  outline: 2px solid var(--rsi-accent);
+  outline-offset: 2px;
+}
+
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) .action-button__icon {
+  width: 12px;
+  height: 12px;
+}
+
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) .lobby-member-presences .search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 34px;
+  margin: 8px 10px;
+  padding-inline: 10px;
+  border: 1px solid var(--rsi-border);
+  border-radius: 7px;
+  background-color: var(--rsi-background);
+  color: var(--rsi-muted);
+}
+
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) .lobby-member-presences .search:focus-within {
+  border-color: var(--rsi-accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--rsi-accent) 22%, transparent);
+}
+
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) .lobby-member-presences .search > svg {
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+  color: var(--rsi-accent);
+}
+
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) .lobby-member-presences .search input {
+  box-sizing: border-box;
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  padding: 7px 0;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  background-color: transparent;
+  color: var(--rsi-text);
+  font: 12px/1.3 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+}
+
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) .lobby-member-presences .search input::placeholder {
+  color: var(--rsi-muted);
+  opacity: 1;
+}
+
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) .lobby-presence-item {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-inline: 8px;
+  border-radius: 5px;
+}
+
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) .lobby-presence-item:hover {
+  background-color: var(--rsi-hover);
+}
+
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) .lobby-presence-item .member-avatar,
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) .lobby-presence-item .member-presence {
+  flex: 0 0 auto;
+}
+
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) .lobby-presence-item .member-avatar .avatar {
+  overflow: hidden;
+  border-radius: var(--rsi-avatar-radius, 6px);
+}
+
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) .lobby-presence-item .member-avatar .avatar img {
+  border-radius: var(--rsi-avatar-radius, 6px);
+}
+
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) .lobby-presence-item .member-info {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) .lobby-presence-item .member-name {
+  display: block;
+  overflow: hidden;
+  color: var(--rsi-text);
+  font: 12px/1.25 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) .lobby-presence-item--offline .member-name,
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) .lobby-presence-item .member-presence-info {
+  color: var(--rsi-muted);
+}
+
+:root:has(#react) .quick-access-panel:has(.lobby-member-presences .search input[placeholder="Filter friends"]) .lobby-presence-item .member-presence-info {
+  overflow: hidden;
+  margin-top: 1px;
+  font: italic 10px/1.15 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* The Friends gear menu is rendered separately from the roster panel. Style its
+   native links and option rows with the same palette while preserving state icons. */
+:root:has(#react) .quick-access-settings {
+  box-sizing: border-box;
+  min-width: 190px;
+  padding: 6px;
+  border: 1px solid var(--rsi-border);
+  border-radius: 7px;
+  background-color: var(--rsi-surface);
+  box-shadow: 0 8px 24px rgb(0 0 0 / .32);
+  color: var(--rsi-text);
+  font-family: var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+}
+
+:root:has(#react) .quick-access-settings a {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 6px 9px;
+  border-radius: 5px;
+  color: var(--rsi-muted);
+  font: 600 12px/1.3 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  letter-spacing: 0;
+  text-decoration: none;
+  text-transform: none;
+  transition: background-color .12s ease, color .12s ease;
+}
+
+:root:has(#react) .quick-access-settings a:hover {
+  background-color: var(--rsi-hover);
+  color: var(--rsi-accent);
+}
+
+:root:has(#react) .quick-access-settings a:focus-visible {
+  outline: 2px solid var(--rsi-accent);
+  outline-offset: -2px;
+}
+
+:root:has(#react) .quick-access-settings hr {
+  height: 0;
+  margin: 6px 3px;
+  border: 0;
+  border-top: 1px solid var(--rsi-border);
+}
+
+:root:has(#react) .quick-access-settings .smart-checkbox {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 30px;
+  padding: 5px 9px;
+  border-radius: 5px;
+  color: var(--rsi-text);
+  font: 600 12px/1.3 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  text-transform: none;
+  transition: background-color .12s ease, color .12s ease;
+}
+
+:root:has(#react) .quick-access-settings .smart-checkbox:hover {
+  background-color: var(--rsi-hover);
+}
+
+:root:has(#react) .quick-access-settings .smart-checkbox label {
+  cursor: inherit;
+}
+
+:root:has(#react) .quick-access-settings .smart-checkbox .widget {
+  display: grid;
+  flex: 0 0 16px;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+:root:has(#react) .quick-access-settings .smart-checkbox .widget svg {
+  display: block;
+  width: 10px;
+  height: 10px;
+}

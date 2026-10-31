@@ -1,0 +1,9 @@
+/* The account avatar lives in RSI's shared platform navigation on both site and Spectrum routes. */
+#platform-bar-navigation .orion3-c-avatar__wrapper,
+#platform-bar-navigation .orion3-c-avatar__image,
+#platform-bar-navigation .orion-c-avatar__wrapper,
+#platform-bar-navigation .orion-c-avatar__image,
+:root .orion-c-presenceOverlay__mask .orion-c-avatar__wrapper,
+:root .orion-c-presenceOverlay__mask .orion-c-avatar__image {
+  border-radius: var(--rsi-avatar-radius, 50%);
+}

@@ -1,0 +1,545 @@
+/* Desktop chat only. Keep native message ordering, scroll containers and editor logic. */
+:root {
+  --rsi-chat-font: var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  --rsi-chat-avatar-size: 48px;
+  --rsi-chat-padding: 12px;
+  --rsi-chat-group-padding: 4px;
+}
+
+:root[data-rsi-density="compact"] {
+  --rsi-chat-avatar-size: 36px;
+  --rsi-chat-padding: 7px;
+  --rsi-chat-group-padding: 2px;
+}
+
+#react #page.lobby,
+#react #page.lobby .page-content,
+#react #page.lobby #page-main .messages-list {
+  background-color: var(--rsi-background);
+  color: var(--rsi-text);
+  font-family: var(--rsi-chat-font);
+}
+
+#react #page.lobby #page-main .lobby-header,
+#react #page.lobby :is(.lobby-footer, .lobby-footer > .top) {
+  background-color: var(--rsi-surface);
+  border-color: var(--rsi-border);
+}
+
+#react #page.lobby .lobby-name {
+  color: var(--rsi-text);
+  font: 600 17px/1.4 var(--rsi-chat-font);
+}
+
+#react #page.lobby .message-item {
+  box-sizing: border-box;
+  padding-block: var(--rsi-chat-padding);
+  padding-inline: 16px;
+  border-color: var(--rsi-border);
+}
+
+#react #page.lobby .message-item.status-default:not(.edit-mode):is(:hover, :active, .reaction-open) {
+  background-color: var(--rsi-surface);
+}
+
+#react #page.lobby .message-item.edit-mode {
+  background-color: var(--rsi-raised);
+}
+
+#react #page.lobby #page-main .message-item:not(.edit-mode):has(.mention.current-member) {
+  background-color: color-mix(in srgb, var(--rsi-accent) 9%, var(--rsi-surface));
+  box-shadow: inset 3px 0 var(--rsi-accent);
+}
+
+#react #page.lobby .message-item.type-small {
+  padding-top: 2px;
+  padding-bottom: var(--rsi-chat-group-padding);
+}
+
+#react #page.lobby .message-item > .gutter {
+  width: var(--rsi-chat-avatar-size);
+  min-width: var(--rsi-chat-avatar-size);
+  flex: 0 0 var(--rsi-chat-avatar-size);
+  margin-inline-end: 12px;
+}
+
+#react #page.lobby .message-item > .content {
+  min-width: 0;
+}
+
+#react #page.lobby #page-main .message-item.status-default:not(.type-small) {
+  padding-block: calc(var(--rsi-chat-padding) + 2px);
+  border-block-end: 1px solid color-mix(in srgb, var(--rsi-border) 72%, transparent);
+}
+
+#react #page.lobby #page-main .message-item.status-default[data-rsi-chat-same-author-next="true"] {
+  border-block-end-color: transparent;
+}
+
+#react #page.lobby #page-main .message-item.status-default.type-small {
+  border-block-end-color: transparent;
+}
+
+#react #page.lobby #page-main .message-item.status-default.type-small[data-rsi-chat-author-boundary-after="true"] {
+  border-block-end: 1px solid color-mix(in srgb, var(--rsi-border) 72%, transparent);
+}
+
+#react #page.lobby .message-item > .content > .top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 8px;
+  margin-block-end: 4px;
+  line-height: 1.35;
+}
+
+#react #page.lobby #page-main .message-item:not(.edit-mode):has(.mention.current-member) > .content > .top::after {
+  content: "Mentioned you";
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 6px;
+  border: 1px solid color-mix(in srgb, var(--rsi-accent) 58%, transparent);
+  border-radius: 3px;
+  background-color: color-mix(in srgb, var(--rsi-accent) 12%, var(--rsi-background));
+  color: var(--rsi-accent);
+  font: 600 9px/1.2 var(--rsi-chat-font);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+#react #page.lobby .message-item .member-name {
+  font-weight: 600;
+}
+
+#react #page.lobby .message-item .displayname {
+  font-weight: 700;
+}
+
+#react #page.lobby .message-item :is(.member-nickname, .time) {
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .01em;
+}
+
+#react #page.lobby .message-item .member-avatar .avatar {
+  width: var(--rsi-chat-avatar-size);
+  height: var(--rsi-chat-avatar-size);
+  border-radius: var(--rsi-avatar-radius, 50%);
+}
+
+#react #page.lobby .message-item .member-avatar .avatar > img {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--rsi-avatar-radius, 50%);
+  object-fit: cover;
+}
+
+#react #page.lobby .message-item :is(.displayname, .nickname, .member-nickname, .time) {
+  font-family: var(--rsi-chat-font);
+}
+
+#react #page.lobby .message-item :is(.member-nickname, .time) {
+  color: var(--rsi-muted);
+  font-size: 12px;
+}
+
+#react #page.lobby .message-item > .content > .bottom .body {
+  color: var(--rsi-text);
+  font: var(--rsi-font-size, 15px)/1.6 var(--rsi-chat-font);
+  overflow-wrap: anywhere;
+}
+
+#react #page.lobby .message-item .body a {
+  color: var(--rsi-accent);
+  text-decoration: underline;
+  text-underline-offset: .18em;
+}
+
+#react #page.lobby .message-item .mention {
+  padding: 1px 4px;
+  border-radius: 4px;
+  background-color: var(--rsi-raised);
+  color: var(--rsi-accent);
+  line-height: inherit;
+}
+
+#react #page.lobby .message-item .mention.current-member {
+  border: 1px solid color-mix(in srgb, var(--rsi-accent) 70%, transparent);
+  background-color: color-mix(in srgb, var(--rsi-accent) 14%, var(--rsi-background));
+  box-shadow: none;
+}
+
+#react #page.lobby .message-item .body pre {
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 12px;
+  overflow-x: auto;
+  white-space: pre;
+  overflow-wrap: normal;
+  background-color: var(--rsi-surface);
+  color: var(--rsi-text);
+  border-color: var(--rsi-border);
+  border-radius: 6px;
+}
+
+#react #page.lobby .message-item .body :is(pre, code) {
+  font-family: ui-monospace, Consolas, monospace;
+}
+
+#react #page.lobby .message-media {
+  box-sizing: border-box;
+  max-width: 100%;
+  border-color: var(--rsi-border);
+}
+
+#react #page.lobby .message-media :is(.message-media-rich, figure) {
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+  margin-inline: 0;
+  background-color: var(--rsi-raised);
+  border-radius: 6px;
+}
+
+#react #page.lobby .message-media :is(.image, img) {
+  max-width: 100%;
+  border-radius: 6px;
+}
+
+#react #page.lobby .message-media :is(.handle, .message-media-meta) {
+  background-color: var(--rsi-raised);
+  color: var(--rsi-muted);
+  font: 13px/1.5 var(--rsi-chat-font);
+  overflow-wrap: anywhere;
+}
+
+#react #page.lobby .message-media :is(.provider, .title) {
+  color: var(--rsi-accent);
+}
+
+#react #page.lobby .lobby-message--motd {
+  box-sizing: border-box;
+  margin-block: 10px;
+  padding: 14px 52px 14px 16px;
+  background-color: var(--rsi-surface);
+  color: var(--rsi-text);
+  border: 1px solid var(--rsi-border);
+  border-inline-start: 4px solid var(--rsi-accent);
+  border-radius: 8px;
+  line-height: 1.55;
+}
+
+#react #page.lobby #page-main .lobby-message--motd :where(*) {
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+#react #page.lobby .lobby-message--motd :is(h1, h2, h3, strong) {
+  color: var(--rsi-text);
+  font-weight: 700;
+}
+
+#react #page.lobby .lobby-message--motd :is(time, small) {
+  color: var(--rsi-muted);
+  font-size: 12px;
+}
+
+#react #page.lobby .lobby-message--motd :is(p, ul, ol) {
+  margin-block: 8px 0;
+}
+
+#react #page.lobby .lobby-message--motd li + li {
+  margin-block-start: 5px;
+}
+
+#react #page.lobby .lobby-message--motd a {
+  color: var(--rsi-accent);
+  text-decoration: underline;
+  text-underline-offset: .18em;
+}
+
+#react #page.lobby #page-main .lobby-message--motd :is(button, [role="button"]) {
+  color: var(--rsi-muted);
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  border-radius: 6px;
+}
+
+#react #page.lobby #page-main .lobby-message--motd :is(button, [role="button"]):hover {
+  background-color: var(--rsi-hover);
+  color: var(--rsi-accent);
+}
+
+#react #page.lobby .lobby-message--motd :is(a, button, [role="button"]):focus-visible {
+  outline: 2px solid var(--rsi-accent);
+  outline-offset: 2px;
+}
+
+/* Composer structure verified in current site CSS; preserve .error and counters. */
+#react #page.lobby .lobby-footer {
+  border-top: 1px solid var(--rsi-border);
+}
+
+#react #page.lobby .lobby-footer > .message-input {
+  background-color: transparent;
+}
+
+#react #page.lobby .message-input .message-row > .input:not(.error) {
+  background-color: var(--rsi-raised);
+  border: 1px solid var(--rsi-border);
+  border-radius: 8px;
+}
+
+#react #page.lobby .message-input .draft-extend {
+  color: var(--rsi-text);
+  font-family: var(--rsi-chat-font);
+}
+
+#react #page.lobby .message-input .message-row > .input:not(.error):focus-within {
+  border-color: var(--rsi-accent);
+  outline: 2px solid var(--rsi-accent);
+  outline-offset: 2px;
+}
+
+#react #page.lobby .message-input .draft-extend:focus-within {
+  outline: none;
+}
+
+/* Bookmarks sit outside #page. Follow the native selected class across Spectrum sections. */
+#react .orion-tavern-c-SidebarLeftBookmark {
+  border-radius: 6px;
+}
+
+#react .orion-tavern-c-SidebarLeftBookmark.-isSelected {
+  background-color: var(--rsi-raised);
+  box-shadow: inset 3px 0 var(--rsi-accent);
+}
+
+#react:has(#page.lobby) .orion-tavern-c-SidebarLeftBookmark[href*="/lobby/"] .orion-tavern-c-SidebarLeftBookmark__names {
+  font-family: var(--rsi-chat-font);
+}
+
+/* The online roster lives beside #page, so scope through its parent route. Keep
+   its virtualized rows and native presence-state icons under Spectrum control. */
+#react:has(#page.lobby) .quick-access.lobby-users .quick-access-panel {
+  box-sizing: border-box;
+  border: 1px solid var(--rsi-border);
+  border-radius: 7px;
+  background-color: var(--rsi-surface);
+  box-shadow: 0 10px 28px rgb(0 0 0 / .32);
+  color: var(--rsi-text);
+  font-family: var(--rsi-chat-font);
+}
+
+#react:has(#page.lobby) .quick-access.lobby-users .quick-access-header {
+  padding: 9px 11px;
+  border-bottom: 1px solid var(--rsi-border);
+  background-color: var(--rsi-surface);
+}
+
+#react:has(#page.lobby) .quick-access.lobby-users .quick-access-header-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+  color: var(--rsi-text);
+  font: 700 13px/1.3 var(--rsi-chat-font);
+  letter-spacing: .035em;
+  text-transform: uppercase;
+}
+
+#react:has(#page.lobby) .quick-access.lobby-users .quick-access-header-title > span {
+  min-width: 0;
+}
+
+#react:has(#page.lobby) .quick-access.lobby-users .online-count {
+  margin-inline-start: 4px;
+  color: var(--rsi-text);
+  font: 600 11px/1.3 var(--rsi-chat-font);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+}
+
+#react:has(#page.lobby) .quick-access.lobby-users .quick-access-header-settings {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex: 0 0 auto;
+}
+
+#react:has(#page.lobby) .quick-access.lobby-users .quick-access-header-settings > span {
+  display: grid;
+  flex: 0 0 26px;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 5px;
+  color: var(--rsi-muted);
+  cursor: pointer;
+}
+
+#react:has(#page.lobby) .quick-access.lobby-users .quick-access-header-settings > span:hover {
+  background-color: var(--rsi-hover);
+  color: var(--rsi-accent);
+}
+
+#react:has(#page.lobby) .quick-access.lobby-users .quick-access-header-settings > span:focus-visible {
+  outline: 2px solid var(--rsi-accent);
+  outline-offset: 1px;
+}
+
+#react:has(#page.lobby) .quick-access.lobby-users .quick-access-header-settings svg {
+  width: 15px;
+  height: 15px;
+}
+
+#react:has(#page.lobby) .quick-access.lobby-users .lobby-member-presences,
+#react:has(#page.lobby) .quick-access.lobby-users .members-list {
+  background-color: var(--rsi-surface);
+  color: var(--rsi-text);
+  font-family: var(--rsi-chat-font);
+}
+
+#react:has(#page.lobby) .quick-access.lobby-users .lobby-member-presences .search {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 34px;
+  margin: 8px 9px;
+  padding-inline: 9px;
+  border: 1px solid var(--rsi-border);
+  border-radius: 6px;
+  background-color: var(--rsi-background);
+  color: var(--rsi-muted);
+}
+
+#react:has(#page.lobby) .quick-access.lobby-users .lobby-member-presences .search:focus-within {
+  border-color: var(--rsi-accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--rsi-accent) 22%, transparent);
+}
+
+#react:has(#page.lobby) .quick-access.lobby-users .lobby-member-presences .search > svg {
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+  color: var(--rsi-accent);
+}
+
+#react:has(#page.lobby) .quick-access.lobby-users .lobby-member-presences .search input {
+  box-sizing: border-box;
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  padding: 7px 0;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  background-color: transparent;
+  color: var(--rsi-text);
+  font: italic 12px/1.3 var(--rsi-chat-font);
+}
+
+#react:has(#page.lobby) .quick-access.lobby-users .lobby-member-presences .search input::placeholder {
+  color: var(--rsi-muted);
+  opacity: 1;
+}
+
+#react:has(#page.lobby) .quick-access.lobby-users .members-list-group-header {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-inline: 6px;
+  box-shadow: inset 3px 0 currentColor;
+  font: 700 12px/1.2 var(--rsi-chat-font);
+  letter-spacing: .035em;
+  text-transform: uppercase;
+}
+
+#react:has(#page.lobby) .quick-access.lobby-users .members-list-group-gutter {
+  display: flex;
+  flex: 0 0 10px;
+  align-items: center;
+}
+
+#react:has(#page.lobby) .quick-access.lobby-users .members-list-group-gutter svg {
+  width: 8px;
+  height: 5px;
+}
+
+#react:has(#page.lobby) .quick-access.lobby-users .members-list-group-name {
+  min-width: 0;
+}
+
+#react:has(#page.lobby) .quick-access.lobby-users .members-list-group-info {
+  margin-inline-start: auto;
+  font: 600 10px/1.2 var(--rsi-chat-font);
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+#react:has(#page.lobby) .quick-access.lobby-users .lobby-presence-item {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: 100%;
+  padding-inline: 7px;
+  border-radius: 4px;
+  color: var(--rsi-text);
+  font-family: var(--rsi-chat-font);
+}
+
+#react:has(#page.lobby) .quick-access.lobby-users .lobby-presence-item:hover {
+  background-color: var(--rsi-hover);
+}
+
+#react:has(#page.lobby) .quick-access.lobby-users .lobby-presence-item .member-avatar,
+#react:has(#page.lobby) .quick-access.lobby-users .lobby-presence-item .member-presence {
+  flex: 0 0 auto;
+}
+
+#react:has(#page.lobby) .quick-access.lobby-users .lobby-presence-item .member-avatar .avatar {
+  box-sizing: border-box;
+  width: 28px;
+  height: 28px;
+  overflow: hidden;
+  border: 1px solid currentColor;
+  border-radius: var(--rsi-avatar-radius, 50%);
+}
+
+#react:has(#page.lobby) .quick-access.lobby-users .lobby-presence-item .member-avatar .avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--rsi-avatar-radius, 50%);
+  object-fit: cover;
+}
+
+#react:has(#page.lobby) .quick-access.lobby-users .lobby-presence-item .member-info {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+#react:has(#page.lobby) .quick-access.lobby-users .lobby-presence-item .member-name {
+  display: block;
+  overflow: hidden;
+  color: var(--rsi-text);
+  font: 13px/1.25 var(--rsi-chat-font);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#react:has(#page.lobby) .quick-access.lobby-users .lobby-presence-item .member-presence-info {
+  overflow: hidden;
+  margin-top: 1px;
+  color: var(--rsi-muted);
+  font: italic 10px/1.15 var(--rsi-chat-font);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

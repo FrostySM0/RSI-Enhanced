@@ -1,0 +1,125 @@
+#react .thread-list-screen .rsi-saved-thread-toggle {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  margin-inline-start: 5px;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--rsi-muted);
+  font: 15px/1 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  cursor: pointer;
+  opacity: .8;
+}
+
+#react .thread-list-screen .rsi-saved-thread-toggle:hover,
+#react .thread-list-screen .rsi-saved-thread-toggle:focus-visible {
+  background: var(--rsi-hover);
+  color: var(--rsi-accent);
+  opacity: 1;
+}
+
+#react .thread-list-screen .rsi-saved-thread-toggle[aria-pressed="true"] {
+  color: var(--rsi-accent);
+  opacity: 1;
+}
+
+#react .thread-list-screen .rsi-saved-thread-toggle:focus-visible {
+  outline: 2px solid var(--rsi-accent);
+  outline-offset: 1px;
+}
+
+#react .rsi-saved-threads {
+  min-width: 0;
+  margin: 10px 8px 0;
+  padding: 10px 0 0;
+  border-top: 1px solid var(--rsi-border);
+}
+
+#react li.rsi-saved-threads {
+  list-style: none;
+}
+
+#react .rsi-saved-threads__heading {
+  padding: 0 10px 6px;
+  color: var(--rsi-muted);
+  font: 600 11px/1.4 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+#react .rsi-saved-threads__list {
+  display: grid;
+  gap: 2px;
+}
+
+#react .rsi-saved-threads__item {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 2px;
+}
+
+#react .rsi-saved-threads__link {
+  display: block;
+  flex: 1;
+  min-width: 0;
+  padding: 6px 10px;
+  overflow: hidden;
+  border-radius: 5px;
+  color: var(--rsi-text);
+  font: 12px/1.4 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+#react .rsi-saved-threads__link:hover,
+#react .rsi-saved-threads__link:focus-visible {
+  background: var(--rsi-raised);
+  color: var(--rsi-accent);
+}
+
+#react .rsi-saved-threads__link:focus-visible {
+  outline: 2px solid var(--rsi-accent);
+  outline-offset: -2px;
+}
+
+#react .rsi-saved-threads__link--active {
+  box-shadow: inset 2px 0 var(--rsi-accent);
+}
+
+#react .rsi-saved-threads__remove {
+  display: inline-flex;
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--rsi-accent);
+  font: 12px/1 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  cursor: pointer;
+  opacity: .78;
+}
+
+#react .rsi-saved-threads__remove:hover,
+#react .rsi-saved-threads__remove:focus-visible {
+  background: var(--rsi-hover);
+  opacity: 1;
+}
+
+#react .rsi-saved-threads__remove:focus-visible {
+  outline: 2px solid var(--rsi-accent);
+  outline-offset: 1px;
+}
+
+#react .rsi-saved-threads__remove:disabled {
+  cursor: default;
+}

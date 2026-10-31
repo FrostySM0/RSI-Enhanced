@@ -1,0 +1,485 @@
+/* Phase 3: forum-only layout. Settings will own these extension attributes in Phase 5. */
+#react #page.forum-thread h3 .rsi-extend-conversation { display: inline-flex; align-items: baseline; width: auto; margin-inline-start: .65em; padding: 0; border: 0; background: transparent; box-shadow: none; color: var(--rsi-accent); font: inherit; font-size: .82em; font-weight: 600; line-height: inherit; text-align: inherit; text-transform: uppercase; vertical-align: baseline; cursor: pointer; }
+#react #page.forum-thread h3 .rsi-extend-conversation::before { content: '·'; margin-inline-end: .65em; color: var(--rsi-muted); }
+#react #page.forum-thread h3 .rsi-extend-conversation:hover { color: var(--rsi-text); text-decoration: underline; }
+#react #page.forum-thread h3 .rsi-extend-conversation:focus-visible { outline: 2px solid var(--rsi-accent); outline-offset: 3px; }
+#react #page.forum-thread h3 .rsi-extend-conversation:disabled { color: var(--rsi-muted); cursor: progress; }
+#react #page .rsi-conversation-context[hidden] { display: none; }
+#react #page .rsi-conversation-context { background: var(--rsi-surface); }
+#react #page .rsi-conversation-card { margin: 0; padding: 0; color: var(--rsi-text); font: var(--rsi-font-size,15px)/1.6 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif); }
+#react #page .rsi-conversation-body { padding: 18px 22px; }
+#react #page .rsi-conversation-children { margin-inline-start: 40px; border-inline-start: 2px solid var(--rsi-border); }
+#react #page .rsi-conversation-children:empty { display: none; }
+#react #page .rsi-conversation-children .rsi-conversation-children .rsi-conversation-children .rsi-conversation-children .rsi-conversation-children .rsi-conversation-children .rsi-conversation-children { margin-inline-start: 0; }
+#react #page .rsi-conversation-identity { min-width: 0; }
+#react #page .rsi-conversation-identity strong { color: var(--rsi-accent); font-size: 20px; font-weight: 400; }
+#react #page .rsi-conversation-identity span { color: var(--rsi-accent); font-size: 13px; }
+#react #page .rsi-conversation-identity time { display: block; }
+#react #page .rsi-conversation-avatar-slot { position: relative; display: grid; place-items: center; width: 56px; height: 56px; flex: 0 0 56px; overflow: hidden; border-radius: var(--rsi-forum-avatar-radius); background: var(--rsi-raised); color: var(--rsi-accent); }
+#react #page .rsi-conversation-avatar-initials { font: 600 18px/1 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif); }
+#react #page .rsi-conversation-avatar-slot img { position: absolute; inset: 0; }
+#react #page .rsi-conversation-card header img.rsi-conversation-avatar { width: 56px; height: 56px; border-radius: var(--rsi-forum-avatar-radius); object-fit: cover; flex: 0 0 56px; }
+#react #page .rsi-conversation-card .rsi-conversation-replying-to { margin: 10px 0 0; color: var(--rsi-muted); font-size: 12px; }
+#react #page .rsi-conversation-card header { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+#react #page .rsi-conversation-card header a { margin-inline-start: auto; color: var(--rsi-accent); }
+#react #page .rsi-conversation-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-block-start: 14px; padding-block-start: 10px; border-block-start: 1px solid var(--rsi-border); }
+#react #page .rsi-conversation-reply-action { display: inline-flex; align-items: center; max-width: 100%; min-height: 30px; padding: 5px 10px; color: var(--rsi-accent); background: var(--rsi-raised); border: 1px solid var(--rsi-border); border-radius: 3px; font: 600 12px/1.25 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif); letter-spacing: .04em; text-decoration: none; text-transform: uppercase; white-space: normal; overflow-wrap: anywhere; }
+#react #page .rsi-conversation-reply-action:hover { color: var(--rsi-text); background: var(--rsi-hover); border-color: var(--rsi-accent); }
+#react #page .rsi-conversation-reply-action:focus-visible { outline: 2px solid var(--rsi-accent); outline-offset: 2px; }
+#react #page .rsi-conversation-card time { color: var(--rsi-muted); font-size: 12px; }
+#react #page .rsi-conversation-card :is(p,blockquote,pre) { white-space: pre-wrap; overflow-wrap: anywhere; }
+#react #page .rsi-conversation-card pre { overflow: auto; }
+#react #page .rsi-conversation-card img { max-width: 100%; max-height: 360px; object-fit: contain; }
+#react #page .rsi-conversation-marker { margin: 12px 0; color: #ffd84d; font: 600 13px/1.5 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif); }
+#react #page.forum-thread .forum-thread-replies .forum-thread-item.rsi-conversation-target { position: relative; z-index: 1; outline: 3px solid #ffd84d !important; outline-offset: -3px; box-shadow: 0 0 16px rgba(255,216,77,.32), inset 0 0 0 1px #ffd84d !important; scroll-margin-block: 24px; }
+:root {
+  --rsi-forum-width: 100%;
+  --rsi-forum-font: var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  --rsi-forum-padding: 8px;
+  --rsi-forum-gap: 8px;
+  --rsi-forum-card-gap: 8px;
+  --rsi-forum-avatar-radius: var(--rsi-avatar-radius, 50%);
+  --rsi-forum-post-avatar-size: 80px;
+  --rsi-forum-reply-avatar-size: 56px;
+  --rsi-forum-reply-padding: 22px;
+  --rsi-forum-reply-gap: 18px;
+}
+
+:root[data-rsi-density="compact"] {
+  --rsi-forum-padding: 4px;
+  --rsi-forum-gap: 6px;
+  --rsi-forum-card-gap: 6px;
+  --rsi-forum-reply-padding: 14px;
+  --rsi-forum-reply-gap: 12px;
+}
+
+:root[data-rsi-density="comfortable"] {
+  --rsi-forum-padding: 16px;
+  --rsi-forum-gap: 10px;
+  --rsi-forum-card-gap: 10px;
+  --rsi-forum-reply-padding: 28px;
+  --rsi-forum-reply-gap: 24px;
+}
+
+:root[data-rsi-avatar="circle"] { --rsi-forum-avatar-radius: 50%; }
+:root[data-rsi-avatar="rounded"] { --rsi-forum-avatar-radius: 8px; }
+:root[data-rsi-avatar="square"] { --rsi-forum-avatar-radius: 0px; }
+
+/* Do not change the shared subgrid or the screen's scroll container. */
+#react .thread-list-screen > .screen-layout__main,
+#react .forum-thread.discussion {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--rsi-forum-width);
+  min-width: 0;
+  margin-inline: 0;
+}
+
+/* Spectrum assigns fonts directly to newer typography components. Root inheritance
+   alone does not replace them, so include verified component text explicitly. */
+#react .thread-list-screen,
+#react .thread-list-screen :is(.a-fontStyle, .title__link),
+#react .forum-thread.discussion,
+#react .forum-thread.discussion :is(.content-blocks, .member-name, .displayname, .nickname, .forum-thread-subject, .forum-thread-time-created) {
+  font-family: var(--rsi-forum-font);
+}
+
+#react .thread-list-screen .header__title {
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+#react .thread-list-screen :is(.orion-tavern-c-ThreadListItem__subtitle, .orion-tavern-c-ThreadListItem__last-reply, .orion-tavern-c-ThreadListItem__stats .a-fontStyle) {
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+#react .forum-thread.discussion .content-blocks {
+  font-size: var(--rsi-font-size, 15px);
+}
+
+#react .thread-list-screen__thread-list {
+  row-gap: var(--rsi-forum-gap);
+}
+
+#react .thread-list-screen__thread-list > .orion-c-divider {
+  display: none;
+}
+
+#react .thread-list-screen .orion-tavern-c-ThreadListItem {
+  --_padding: var(--rsi-forum-padding);
+  --_gap: var(--rsi-forum-card-gap);
+  position: relative;
+  padding-inline-end: max(8px, var(--rsi-forum-padding));
+  border: 1px solid var(--rsi-border);
+  border-radius: 8px;
+  background: var(--rsi-surface);
+  transition: background-color .14s ease, border-color .14s ease;
+}
+
+#react .thread-list-screen .orion-tavern-c-ThreadListItem:hover {
+  border-color: color-mix(in srgb, var(--rsi-accent) 35%, var(--rsi-border));
+  background: var(--rsi-raised);
+}
+
+#react .thread-list-screen .orion-tavern-c-ThreadListItem:has(.orion-tavern-c-ThreadListItem__role-line)::before {
+  position: absolute;
+  z-index: 1;
+  inset-block: 8px;
+  inset-inline-start: 0;
+  width: 3px;
+  border-radius: 3px;
+  background: var(--rsi-highlight);
+  content: "";
+  pointer-events: none;
+}
+
+#react .thread-list-screen .orion-tavern-c-ThreadListItem__header {
+  min-width: 0;
+}
+
+/* Reference rows separate the reply and counts columns with fine inset rules. */
+#react .thread-list-screen :is(.orion-tavern-c-ThreadListItem__last-reply, .orion-tavern-c-ThreadListItem__stats) {
+  position: relative;
+}
+
+#react .thread-list-screen .orion-tavern-c-ThreadListItem__stats {
+  padding-inline-end: 16px;
+}
+
+#react .thread-list-screen .orion-tavern-c-ThreadListItem__last-reply::before,
+#react .thread-list-screen .orion-tavern-c-ThreadListItem__stats::before,
+#react .thread-list-screen .orion-tavern-c-ThreadListItem__stats::after {
+  position: absolute;
+  z-index: 0;
+  inset-block: -4px;
+  width: 1px;
+  background: var(--rsi-border);
+  content: "";
+  pointer-events: none;
+}
+
+#react .thread-list-screen .orion-tavern-c-ThreadListItem__last-reply::before,
+#react .thread-list-screen .orion-tavern-c-ThreadListItem__stats::before {
+  inset-inline-start: calc(var(--_gap, 8px) / -2);
+}
+
+#react .thread-list-screen .orion-tavern-c-ThreadListItem__stats::after {
+  inset-inline-end: calc(var(--_gap, 8px) / -2);
+}
+
+#react .thread-list-screen .title__link {
+  overflow-wrap: anywhere;
+  text-underline-offset: .18em;
+}
+
+#react .thread-list-screen .orion-tavern-c-ThreadListItem.-isRead .title__link {
+  color: var(--rsi-muted);
+}
+
+/* Reference layout: an author rail beside the complete original post. */
+#react .forum-thread.discussion > .type-forum_thread {
+  display: block;
+}
+
+#react .forum-thread.discussion > .type-forum_thread > .content {
+  width: 100%;
+  margin: 0;
+}
+
+#react .forum-thread.discussion > .type-forum_thread > .content > .content-main {
+  box-sizing: border-box;
+  min-width: 0;
+  padding: var(--rsi-forum-reply-padding);
+  padding-inline-start: calc(var(--rsi-forum-post-avatar-size) + var(--rsi-forum-reply-padding) + 16px);
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+#react .forum-thread.discussion > .type-forum_thread > .content > .content-main > .content-header {
+  box-sizing: border-box;
+  min-height: var(--rsi-forum-post-avatar-size);
+  padding-inline-start: 0;
+  align-items: flex-start;
+}
+
+/* One surface includes votes, author and text. Nested replies use a thread divider,
+   rather than stacking the site's alternating blue boxes behind extra inner cards.
+   #page is verified; both IDs beat the legacy depth selectors without broad !important. */
+#react #page.forum-thread,
+#react #page.forum-thread .page-content,
+#react #page.forum-thread .forum-thread.discussion {
+  background-color: var(--rsi-background);
+}
+
+#react #page.forum-thread .forum-thread-replies > .forum-thread-item.type-forum_thread_reply {
+  box-sizing: border-box;
+  margin: 0 0 var(--rsi-forum-reply-gap);
+  padding: var(--rsi-forum-reply-padding);
+  padding-inline-start: 30px;
+  background-color: var(--rsi-surface);
+  border: 0;
+  border-radius: 3px;
+}
+
+/* Newly posted top-level replies can be inserted outside Spectrum's reply-list
+   wrapper; give those rows the same threaded gutter without touching descendants. */
+:scope[data-rsi-comment-layout="threaded"] #react #page.forum-thread :where(.forum-thread-item.type-forum_thread_reply:not(.forum-thread-item-children-replies .forum-thread-item)) {
+  box-sizing: border-box;
+  margin: 0 0 var(--rsi-forum-reply-gap);
+  padding: var(--rsi-forum-reply-padding);
+  padding-inline-start: 30px;
+  background-color: var(--rsi-surface);
+  border: 0;
+  border-radius: 3px;
+}
+
+#react #page .forum-thread-replies .forum-thread-item > .content > .content-main {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+#react #page .forum-thread-item-children-replies > .forum-thread-item {
+  margin: 16px 0 0;
+  padding: 16px 0 0 26px;
+  background-color: transparent;
+  border: 0;
+  border-inline-start: 2px solid var(--rsi-border);
+  border-radius: 0;
+}
+
+/* Compact threaded keeps the reply tree but trims the vertical rhythm. */
+:scope[data-rsi-comment-layout="compact"] #react #page.forum-thread .forum-thread-replies > .forum-thread-item.type-forum_thread_reply {
+  margin-block-end: 8px;
+  padding: 10px 12px;
+}
+:scope[data-rsi-comment-layout="compact"] #react #page.forum-thread .forum-thread-item-children-replies > .forum-thread-item.type-forum_thread_reply {
+  margin-block-start: 8px;
+  padding: 8px 0 0 16px;
+}
+
+/* Flat mode removes visual depth while keeping the native nested DOM and collapse controls. */
+
+/* Flat mode removes visual depth while keeping the native nested DOM and collapse controls. */
+:scope[data-rsi-comment-layout="flat"] #react #page.forum-thread .forum-thread-item-children-replies { display: contents; }
+:scope[data-rsi-comment-layout="flat"] #react #page.forum-thread .forum-thread-item-children-replies[hidden] { display: none !important; }
+:scope[data-rsi-comment-layout="flat"] #react #page.forum-thread .forum-thread-replies > .forum-thread-item.type-forum_thread_reply,
+:scope[data-rsi-comment-layout="flat"] #react #page.forum-thread .forum-thread-item-children-replies > .forum-thread-item.type-forum_thread_reply {
+  margin: 0;
+  padding: var(--rsi-forum-reply-padding) 0;
+  background: transparent;
+  border: 0;
+  border-block-end: 1px solid var(--rsi-border);
+  border-radius: 0;
+}
+
+/* Card stack gives every reply a theme-aware surface and preserves a single ancestry rail. */
+:scope[data-rsi-comment-layout="cards"] #react #page.forum-thread .forum-thread-replies > .forum-thread-item.type-forum_thread_reply,
+:scope[data-rsi-comment-layout="cards"] #react #page.forum-thread .forum-thread-item-children-replies > .forum-thread-item.type-forum_thread_reply {
+  box-sizing: border-box;
+  margin: 0 0 var(--rsi-forum-reply-gap);
+  padding: var(--rsi-forum-reply-padding);
+  background: var(--rsi-raised);
+  border: 1px solid var(--rsi-border);
+  border-radius: 6px;
+}
+:scope[data-rsi-comment-layout="cards"] #react #page.forum-thread .forum-thread-item-children-replies {
+  margin-inline-start: 22px;
+  padding-inline-start: 18px;
+  border-inline-start: 1px solid var(--rsi-border);
+}
+:scope[data-rsi-comment-layout="cards"] #react #page.forum-thread .forum-thread-item-children-replies > .forum-thread-item.type-forum_thread_reply {
+  margin-block-start: var(--rsi-forum-reply-gap);
+  border-inline-start: 1px solid var(--rsi-border);
+}
+
+/* Bubble mode places native reply content on a theme surface with a small tail. */
+:scope[data-rsi-comment-layout="bubbles"] #react #page.forum-thread .forum-thread-replies > .forum-thread-item.type-forum_thread_reply {
+  margin: 0 0 var(--rsi-forum-reply-gap);
+  padding-block: 0;
+  background: transparent;
+  border: 0;
+}
+:scope[data-rsi-comment-layout="bubbles"] #react #page.forum-thread .forum-thread-item-children-replies > .forum-thread-item.type-forum_thread_reply {
+  margin-block-start: var(--rsi-forum-reply-gap);
+  padding-block-start: 0;
+  background: transparent;
+  border-block: 0;
+  border-inline-end: 0;
+}
+:scope[data-rsi-comment-layout="bubbles"] #react #page.forum-thread .forum-thread-replies .forum-thread-item.type-forum_thread_reply > .content > .content-main {
+  position: relative;
+  box-sizing: border-box;
+  width: fit-content;
+  max-width: min(100%, 880px);
+  padding: var(--rsi-forum-reply-padding);
+  overflow: visible;
+  background: var(--rsi-raised);
+  border: 1px solid var(--rsi-border);
+  border-radius: 12px;
+}
+:scope[data-rsi-comment-layout="bubbles"] #react #page.forum-thread .forum-thread-replies .forum-thread-item.type-forum_thread_reply > .content > .content-main::before {
+  position: absolute;
+  inset-block-start: 22px;
+  inset-inline-start: -7px;
+  width: 12px;
+  height: 12px;
+  content: '';
+  background: var(--rsi-raised);
+  border-block-end: 1px solid var(--rsi-border);
+  border-inline-start: 1px solid var(--rsi-border);
+  transform: rotate(45deg);
+}
+:scope[data-rsi-comment-layout="bubbles"] #react #page.forum-thread .forum-thread-replies .forum-thread-item:is(.unread, .flash, .is-editor-reply) > .content > .content-main {
+  background: var(--rsi-hover) !important;
+}
+
+/* Conversation stream flattens the visual tree and adds theme-aware parent labels. */
+:scope[data-rsi-comment-layout="conversation"] #react #page.forum-thread .forum-thread-item-children-replies { display: contents; }
+:scope[data-rsi-comment-layout="conversation"] #react #page.forum-thread .forum-thread-item-children-replies[hidden] { display: none !important; }
+:scope[data-rsi-comment-layout="conversation"] #react #page.forum-thread .forum-thread-replies > .forum-thread-item.type-forum_thread_reply,
+:scope[data-rsi-comment-layout="conversation"] #react #page.forum-thread .forum-thread-item-children-replies > .forum-thread-item.type-forum_thread_reply {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 12px 0;
+  background: transparent;
+  border: 0;
+  border-block-end: 1px solid var(--rsi-border);
+  border-radius: 0;
+}
+:scope[data-rsi-comment-layout="conversation"] #react #page.forum-thread .rsi-reply-context {
+  display: table;
+  max-width: 100%;
+  margin-block-end: 7px;
+  padding: 3px 8px;
+  overflow-wrap: anywhere;
+  color: var(--rsi-muted);
+  background: var(--rsi-raised);
+  border-inline-start: 2px solid var(--rsi-accent);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* Extend conversation can reveal any reply depth; keep the linked target's ancestry cue
+   above each layout's native reply spacing rules. Its reconstructed panel stays separate. */
+#react #page.forum-thread .forum-thread-item.rsi-conversation-target.rsi-conversation-nested-target {
+  margin-inline-start: min(calc(var(--rsi-conversation-depth) * 42px), 30%);
+  border-inline-start: 2px solid var(--rsi-border);
+}
+
+/* Keep real unread/flash/editor states visible on the single surface. The site marks
+   these backgrounds !important; limit the matching override to those same states. */
+#react #page .forum-thread-replies .forum-thread-item:is(.unread, .flash, .is-editor-reply) {
+  background-color: var(--rsi-hover) !important;
+  box-shadow: inset 3px 0 0 var(--rsi-accent);
+}
+
+#react .forum-thread .member-avatar :is(.avatar, .avatar > img) {
+  border-radius: var(--rsi-forum-avatar-radius);
+}
+
+#react .forum-thread-item.type-forum_thread > .gutter {
+  position: absolute;
+  top: var(--rsi-forum-reply-padding);
+  left: var(--rsi-forum-reply-padding);
+  z-index: 1;
+  margin: 0;
+  min-width: var(--rsi-forum-post-avatar-size);
+  flex-shrink: 0;
+}
+
+#react .forum-thread-item.type-forum_thread > .gutter .member-avatar,
+#react .forum-thread-item.type-forum_thread > .gutter .member-avatar .avatar {
+  width: var(--rsi-forum-post-avatar-size);
+  height: var(--rsi-forum-post-avatar-size);
+}
+
+#react .forum-thread-item > .content .content-header > .left .member-avatar,
+#react .forum-thread-item > .content .content-header > .left .member-avatar .avatar {
+  width: var(--rsi-forum-reply-avatar-size);
+  height: var(--rsi-forum-reply-avatar-size);
+  flex-shrink: 0;
+}
+
+#react .forum-thread .member-avatar .avatar > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#react .forum-thread .content-blocks {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+#react .forum-thread .content-blocks blockquote {
+  box-sizing: border-box;
+  margin: 12px 0;
+  padding: 12px 16px;
+  background-color: var(--rsi-raised);
+  color: var(--rsi-text);
+  border: 0;
+  border-inline-start: 3px solid var(--rsi-accent);
+  border-radius: 0 6px 6px 0;
+}
+
+#react .forum-thread .content-blocks pre {
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 12px;
+  overflow-x: auto;
+  white-space: pre;
+  overflow-wrap: normal;
+  background-color: var(--rsi-background);
+  color: var(--rsi-text);
+  border: 1px solid var(--rsi-border);
+  border-radius: 6px;
+}
+
+#react .forum-thread .content-blocks code {
+  font-family: ui-monospace, Consolas, monospace;
+  background-color: var(--rsi-raised);
+  border-radius: 3px;
+}
+
+#react .forum-thread .content-blocks pre code {
+  background-color: transparent;
+  white-space: inherit;
+}
+
+/* Preserve native media links, video aspect ratios, consent placeholders and controls. */
+#react .forum-thread .content-blocks :is(.content-block-media, .media-embed-wrapper) {
+  max-width: 100%;
+}
+
+#react .forum-thread .content-blocks .content-block-media img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+/* Verified single-image blocks are flex-centred full-width panels in Spectrum.
+   Let adjacent attachments share a row while retaining links and media actions. */
+#react .forum-thread .content-blocks .content-block.image.single {
+  display: inline-flex;
+  width: fit-content;
+  max-width: calc(100% - 12px);
+  justify-content: flex-start;
+  vertical-align: top;
+  margin: 0 12px 12px 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+
+#react .forum-thread .content-blocks .content-block.image.single .content-block-media {
+  margin: 0;
+}
+
+#react .forum-thread .content-blocks .content-block.image.single > .block-icon {
+  display: none;
+}

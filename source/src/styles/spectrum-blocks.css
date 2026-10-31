@@ -1,0 +1,13 @@
+/* Independent of appearance modules: a user-selected removal must stay active. */
+:root[data-rsi-enhanced-blocks="on"] .rsi-j3pt-block { display: flex; align-items: center; gap: 10px; margin: 16px 24px; padding: 12px 16px; border: 1px solid var(--rsi-border,#3c5065); border-radius: 6px; color: var(--rsi-text,#e6edf3); font: 14px/1.5 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif); cursor: pointer; }
+:root[data-rsi-enhanced-blocks="on"] :is(.message-item,.orion-tavern-c-ThreadListItem,.blocked-content).rsi-remove-author,
+:root[data-rsi-enhanced-blocks="on"] .rsi-conversation-body.rsi-remove-author,
+:root[data-rsi-enhanced-blocks="on"] .forum-thread-item.rsi-remove-author > .gutter,
+:root[data-rsi-enhanced-blocks="on"] .forum-thread-item.rsi-remove-author > .content > .content-main { display: none !important; }
+/* Hidden authors still lose their content in every layout. Threaded mode keeps
+   the forum module's row geometry so reply roots and their child tree stay aligned. */
+:root[data-rsi-enhanced-blocks="on"]:not([data-rsi-comment-layout="threaded"]) #react #page .forum-thread-item.rsi-remove-author { background: transparent !important; border: 0; outline: none; padding: 0; margin-block: 0; min-height: 0; }
+:root[data-rsi-enhanced-blocks="on"] .rsi-remove-posts-toggle { display: inline-flex; align-items: center; gap: 6px; margin-inline-start: 12px; color: var(--rsi-text,#e6edf3); font: 12px/1.5 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif); cursor: pointer; }
+:root[data-rsi-enhanced-blocks="on"] button.profile-action.rsi-enhanced-block-control { display: inline-flex; align-items: center; width: auto; padding: 0 0 0 10px; background: transparent; border: 0; color: var(--rsi-accent,#80ccef); text-align: left; cursor: pointer; }
+:root[data-rsi-enhanced-blocks="on"] .rsi-enhanced-block-icon { display: block; width: 12px; height: 12px; flex: 0 0 12px; }
+:root[data-rsi-enhanced-blocks="on"] .rsi-enhanced-block-control:focus-visible { outline: 2px solid var(--rsi-accent,#80ccef); outline-offset: 2px; }

@@ -1,0 +1,75 @@
+/* Verified against the live community, forum list, discussion and legacy modal.
+   Keep layout, role colours, unread/error states and media behavior owned by RSI. */
+:root[data-rsi-preset] body {
+  background-color: var(--rsi-background);
+  color: var(--rsi-text);
+}
+
+:root[data-rsi-preset] #react {
+  background-color: var(--rsi-background);
+  color: var(--rsi-text);
+  font-family: var(--rsi-font);
+}
+
+:root[data-rsi-preset] #react :is(.mainLayout, .mainLayout__body, .mainLayout__content, .screen-layout, .app-content, .sidebar) {
+  background-color: var(--rsi-background);
+  color: var(--rsi-text);
+}
+
+:root[data-rsi-preset] #react :is(.orion-tavern-c-ThreadListHeader, .orion-tavern-c-ThreadListItem) {
+  background-color: var(--rsi-surface);
+  border-color: var(--rsi-border);
+}
+
+:root[data-rsi-preset] #react .orion-tavern-c-ThreadListItem:hover {
+  background-color: var(--rsi-raised);
+}
+
+:root[data-rsi-preset] #react :is(.orion-tavern-c-ThreadListItem__header, .orion-tavern-c-ThreadListHeader__header-title) {
+  color: var(--rsi-text);
+}
+
+:root[data-rsi-preset] #react :is(.orion-tavern-c-ThreadListItem__subtitle, .forum-thread-time-created) {
+  color: var(--rsi-muted);
+}
+
+:root[data-rsi-preset] #react .forum-thread .content-blocks {
+  color: var(--rsi-text);
+  font-family: var(--rsi-font);
+  line-height: 1.65;
+}
+
+:root[data-rsi-preset] #react .forum-thread .content-blocks a {
+  color: var(--rsi-accent);
+  text-decoration: underline;
+  text-underline-offset: .18em;
+}
+
+/* Portals live outside #react, but the manifest restricts this CSS to Spectrum. */
+:root .ReactModalPortal .theme-dark .modal .modal-content {
+  background-color: var(--rsi-surface);
+  color: var(--rsi-text);
+  font-family: var(--rsi-font);
+}
+
+:root .ReactModalPortal .theme-dark .modal :is(.c-modal-header, .modal-content-footer) {
+  border-color: var(--rsi-border);
+}
+
+:root .ReactModalPortal .theme-dark .modal :is(textarea, select, .fake-select) {
+  background-color: var(--rsi-background);
+  color: var(--rsi-text);
+  border-color: var(--rsi-border);
+  font-family: var(--rsi-font);
+}
+
+/* Keep danger, positive and disabled action styles intact. */
+:root .ReactModalPortal .theme-dark .action-button:not(.action-button--error):not(:disabled) {
+  color: var(--rsi-text);
+  border-color: var(--rsi-border);
+}
+
+:is(#react, .ReactModalPortal) :is(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--rsi-accent);
+  outline-offset: 2px;
+}

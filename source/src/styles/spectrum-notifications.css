@@ -1,0 +1,225 @@
+/* Restyle the native notification popup while leaving its position and list scrolling to Spectrum. */
+:root:has(#react) aside.quick-access.notifications,
+:root:has(#react) aside.quick-access.notifications #notifications,
+:root:has(#react) aside.quick-access.notifications .notifications-main,
+:root:has(#react) aside.quick-access.notifications .notifications-list {
+  background-color: var(--rsi-surface);
+  color: var(--rsi-text);
+  font-family: var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+}
+
+:root:has(#react) aside.quick-access.notifications {
+  border-color: var(--rsi-border);
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px var(--rsi-border), 0 14px 34px rgb(0 0 0 / .34);
+}
+
+:root:has(#react) aside.quick-access.notifications .quick-access-header {
+  padding: 10px 12px 8px;
+  border-bottom: 1px solid var(--rsi-border);
+  background-color: var(--rsi-raised);
+}
+
+:root:has(#react) aside.quick-access.notifications .quick-access-header-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-width: 0;
+  color: var(--rsi-text);
+  font: 700 13px/1.3 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  letter-spacing: .035em;
+  text-transform: uppercase;
+}
+
+:root:has(#react) aside.quick-access.notifications .action-button.action-button--outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 5px 8px;
+  border: 1px solid var(--rsi-border);
+  border-radius: 5px;
+  background-color: var(--rsi-background);
+  color: var(--rsi-accent);
+  font: 600 11px/1.2 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  cursor: pointer;
+  transition: background-color .12s ease, border-color .12s ease;
+}
+
+:root:has(#react) aside.quick-access.notifications .action-button.action-button--outline:hover {
+  border-color: var(--rsi-accent);
+  background-color: var(--rsi-hover);
+}
+
+:root:has(#react) aside.quick-access.notifications .action-button.action-button--outline:focus-visible {
+  outline: 2px solid var(--rsi-accent);
+  outline-offset: 2px;
+}
+
+:root:has(#react) aside.quick-access.notifications .action-button__icon {
+  width: 12px;
+  height: 12px;
+  color: currentColor;
+}
+
+/* Compact notification filters occupy the native gap between the header and list. */
+:root:has(#react) aside.quick-access.notifications .rsi-notification-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--rsi-border);
+  background-color: var(--rsi-surface);
+  font-family: var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+}
+
+:root:has(#react) aside.quick-access.notifications .rsi-notification-filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  min-width: 0;
+}
+
+:root:has(#react) aside.quick-access.notifications .rsi-notification-filter {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-height: 25px;
+  padding: 4px 7px;
+  border: 1px solid var(--rsi-border);
+  border-radius: 4px;
+  background-color: var(--rsi-background);
+  color: var(--rsi-muted);
+  font: 600 10px/1.2 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color .12s ease, border-color .12s ease, color .12s ease;
+}
+
+:root:has(#react) aside.quick-access.notifications .rsi-notification-filter:hover {
+  border-color: var(--rsi-accent);
+  color: var(--rsi-accent);
+}
+
+:root:has(#react) aside.quick-access.notifications .rsi-notification-filter[aria-pressed="true"] {
+  border-color: var(--rsi-accent);
+  background-color: var(--rsi-hover);
+  color: var(--rsi-accent);
+}
+
+:root:has(#react) aside.quick-access.notifications .rsi-notification-filter:focus-visible {
+  outline: 2px solid var(--rsi-accent);
+  outline-offset: 2px;
+}
+
+:root:has(#react) aside.quick-access.notifications .rsi-notification-filter-marker {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border-radius: 50%;
+  background-color: #e6ad45;
+}
+
+:root:has(#react) aside.quick-access.notifications .rsi-notification-filter-status {
+  min-height: 11px;
+  color: var(--rsi-muted);
+  font: 10px/1.2 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  text-align: right;
+}
+
+:root:has(#react) aside.quick-access.notifications .notifications-list > .notifications-item[hidden] {
+  display: none !important;
+}
+
+:root:has(#react) aside.quick-access.notifications .notifications-item {
+  border-color: var(--rsi-border);
+  background-color: var(--rsi-surface);
+  color: var(--rsi-text);
+  font-family: var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+}
+
+:root:has(#react) aside.quick-access.notifications a.notifications-item {
+  text-decoration: none;
+  transition: background-color .12s ease;
+}
+
+:root:has(#react) aside.quick-access.notifications a.notifications-item:hover {
+  background-color: var(--rsi-hover);
+}
+
+:root:has(#react) aside.quick-access.notifications a.notifications-item:focus-visible {
+  outline: 2px solid var(--rsi-accent);
+  outline-offset: -2px;
+}
+
+/* Spectrum renders moderation notices as non-link rows. Keep their amber alert treatment fixed across themes. */
+:root:has(#react) aside.quick-access.notifications .notifications-list > div.notifications-item {
+  background-color: #30271a;
+  color: #f4e6ca;
+  box-shadow: inset 3px 0 #e6ad45;
+}
+
+:root:has(#react) aside.quick-access.notifications .notifications-list > div.notifications-item .item-text {
+  color: #f4e6ca;
+}
+
+:root:has(#react) aside.quick-access.notifications .notifications-list > div.notifications-item .item-text strong {
+  color: #ffd27a;
+}
+
+:root:has(#react) aside.quick-access.notifications .notifications-list > div.notifications-item .item-timestamp,
+:root:has(#react) aside.quick-access.notifications .notifications-list > div.notifications-item .item-timestamp .icon {
+  color: #d7c092;
+}
+
+:root:has(#react) aside.quick-access.notifications .item-avatar {
+  border: 1px solid var(--rsi-border);
+  border-radius: var(--rsi-avatar-radius, 6px);
+  background-position: center;
+  background-size: cover;
+}
+
+:root:has(#react) aside.quick-access.notifications .item-details {
+  min-width: 0;
+}
+
+:root:has(#react) aside.quick-access.notifications .item-text {
+  color: var(--rsi-text);
+  font: 12px/1.35 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+  overflow-wrap: anywhere;
+}
+
+:root:has(#react) aside.quick-access.notifications .item-text strong {
+  color: var(--rsi-accent);
+  font-weight: 650;
+}
+
+:root:has(#react) aside.quick-access.notifications .item-timestamp {
+  color: var(--rsi-muted);
+  font: 11px/1.3 var(--rsi-selected-font-family, Arial, Helvetica, sans-serif);
+}
+
+:root:has(#react) aside.quick-access.notifications .item-timestamp .icon {
+  width: 12px;
+  height: 11px;
+  color: var(--rsi-muted);
+}
+
+:root:has(#react) aside.quick-access.notifications .item-menu {
+  border-radius: 4px;
+  background-color: transparent;
+  color: var(--rsi-muted);
+}
+
+:root:has(#react) aside.quick-access.notifications .item-menu:hover {
+  background-color: var(--rsi-hover);
+  color: var(--rsi-accent);
+}
+
+:root:has(#react) aside.quick-access.notifications .item-menu:focus-visible {
+  outline: 2px solid var(--rsi-accent);
+  outline-offset: 1px;
+}
