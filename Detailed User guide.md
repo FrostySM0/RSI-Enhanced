@@ -1,6 +1,6 @@
 RSI Enhanced
 
-Detailed user guide for version 0.13.48
+Detailed user guide for version 1.0.0
 
 RSI Enhanced lets you adjust the look of Star Citizen’s RSI website and adds optional tools to Spectrum, My Hangar, Roadmap, Funding Goals, and other RSI sections. Choose which parts of the extension you want to use in its settings. RSI’s own links, account actions, and page controls remain available alongside the added styling and tools.
 
