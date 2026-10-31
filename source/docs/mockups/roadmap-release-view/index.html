@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    <title>Release View — RSI Enhanced mockup</title>
+    <link rel="stylesheet" href="../../../src/themes/tokens.css">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./preview.js" defer></script>
+  </head>
+  <body>
+    <header class="rsi-site-header" aria-label="Roberts Space Industries site header">
+      <div class="platform-bar-head">
+        <a class="platform-company" href="https://robertsspaceindustries.com/">ROBERTS SPACE INDUSTRIES<sup>®</sup></a>
+        <span class="platform-head-divider" aria-hidden="true"></span>
+        <nav class="platform-breadcrumbs" aria-label="Site navigation">
+          <a href="https://robertsspaceindustries.com/">Home</a>
+          <span>Explore</span>
+          <span aria-current="page">Roadmap</span>
+        </nav>
+      </div>
+      <div class="platform-bar-navigation">
+        <button class="platform-menu" type="button" aria-label="Open site menu"><span></span><span></span><span></span></button>
+        <a class="platform-logo" href="https://robertsspaceindustries.com/" aria-label="Roberts Space Industries home">
+          <img src="https://cdn.robertsspaceindustries.com/orion-v3/logotypes/robertsspaceindustries_multicolor_simplified-1200d799.svg" alt="RSI">
+        </a>
+        <a class="platform-product-name" href="https://robertsspaceindustries.com/roadmap">
+          <span class="platform-separator" aria-hidden="true"></span>
+          <span class="platform-page-name">Roadmap</span>
+        </a>
+      </div>
+    </header>
+
+    <div class="app-layout" id="top">
+      <aside class="side-rail" aria-label="Roadmap sections">
+        <a class="rail-link" href="https://robertsspaceindustries.com/roadmap/progress-tracker/teams" title="Progress Tracker">
+          <span class="rail-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V5m0 14h16M8 15l3-4 3 2 5-7"/><circle cx="19" cy="6" r="1"/></svg></span>
+          <span>Progress<br>Tracker</span>
+        </a>
+        <a class="rail-link is-active" href="https://robertsspaceindustries.com/roadmap/release-view" aria-current="page" title="Release View">
+          <span class="rail-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="4" width="7" height="7" rx="1"/><rect x="13.5" y="4" width="7" height="7" rx="1"/><rect x="3.5" y="14" width="7" height="7" rx="1"/><rect x="13.5" y="14" width="7" height="7" rx="1"/></svg></span>
+          <span>Release<br>View</span>
+        </a>
+        <a class="rail-link rail-caveats" href="https://robertsspaceindustries.com/roadmap/release-view/info" title="Caveats">
+          <span class="rail-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 22 20H2L12 3Z"/><path d="M12 9v5m0 3h.01"/></svg></span>
+          <span>Caveats</span>
+        </a>
+      </aside>
+
+      <main class="main-content">
+        <section class="page-heading" aria-labelledby="page-title">
+          <div class="heading-copy">
+            <p class="eyebrow">STAR CITIZEN <span> / </span> ROADMAP</p>
+            <div class="title-line">
+              <div>
+                <h1 id="page-title">Release View</h1>
+                <p class="heading-subtitle">Explore planned and released features across the ‘verse.</p>
+              </div>
+              <div class="updated-stamp"><span class="pulse-dot"></span><span>RSI data updated <b>Oct 21, 2026</b></span></div>
+            </div>
+          </div>
+          <div class="roadmap-meta" aria-label="Roadmap versions">
+            <div class="meta-item"><span class="meta-icon" aria-hidden="true">⌁</span><span>LIVE VERSION</span><b>4.10.2</b><a href="https://robertsspaceindustries.com/en/comm-link/transmission/21334-Alpha-4102-RSI-Discovery-Month" target="_blank" rel="noreferrer">More info <span aria-hidden="true">↗</span></a></div>
+            <div class="meta-item roundup"><span class="meta-icon" aria-hidden="true">↗</span><span>LATEST ROADMAP ROUNDUP</span><b>21 / 10 / 2026</b><a href="https://robertsspaceindustries.com/spectrum/community/SC/forum/3/thread/roadmap-roundup-october-21-2026" target="_blank" rel="noreferrer">More info <span aria-hidden="true">↗</span></a></div>
+            <div class="meta-item ptu"><span class="meta-icon" aria-hidden="true">◌</span><span>PTU VERSION</span><b>0</b></div>
+          </div>
+        </section>
+
+        <div class="section-nav-mobile" aria-label="Roadmap sections">
+          <a href="https://robertsspaceindustries.com/roadmap/progress-tracker/teams">Progress Tracker</a>
+          <a class="is-active" href="https://robertsspaceindustries.com/roadmap/release-view" aria-current="page">Release View</a>
+          <a href="https://robertsspaceindustries.com/roadmap/release-view/info">Caveats</a>
+        </div>
+
+        <section class="release-board" aria-labelledby="release-board-title">
+          <div class="board-toolbar">
+            <div class="toolbar-title">
+              <span class="toolbar-kicker">ROADMAP ARCHIVE</span>
+              <h2 id="release-board-title">Releases</h2>
+              <span class="release-range">4.6 <span>—</span> Star Citizen 1.0</span>
+            </div>
+            <div class="toolbar-actions">
+              <button class="control-button" id="expand-all" type="button"><span class="control-glyph">＋</span> Expand all categories</button>
+              <button class="control-button" id="collapse-all" type="button"><span class="control-glyph">−</span> Collapse all categories</button>
+              <button class="control-button previous-button" id="previous-releases" type="button" aria-expanded="false"><span class="control-glyph">‹</span> Show previous releases</button>
+            </div>
+          </div>
+          <p class="preview-notice"><span aria-hidden="true">ⓘ</span> Local design preview. The release counts and featured examples reflect the RSI page; the full card set is loaded from RSI in the live extension.</p>
+
+          <div class="track-shell">
+            <button class="track-arrow track-arrow-left" type="button" data-scroll="-1" aria-label="Scroll releases left"><span aria-hidden="true">‹</span></button>
+            <div class="release-track" id="release-track" tabindex="0" role="region" aria-label="Release columns, horizontally scrollable">
+              <div class="lane-skeleton" aria-hidden="true"></div>
+            </div>
+            <button class="track-arrow track-arrow-right" type="button" data-scroll="1" aria-label="Scroll releases right"><span aria-hidden="true">›</span></button>
+          </div>
+          <div class="track-footer"><span><i></i> RELEASED</span><span><i></i> TENTATIVE</span><span class="track-hint">Scroll horizontally to move between releases <b aria-hidden="true">→</b></span></div>
+        </section>
+
+        <footer class="page-footer">
+          <span>RELEASE VIEW <b>·</b> LOCAL DESIGN PREVIEW</span>
+          <span>Source checked Oct 29, 2026 <b>·</b> RSI data updated Oct 21, 2026</span>
+        </footer>
+      </main>
+    </div>
+
+    <dialog class="feature-dialog" id="feature-dialog" aria-labelledby="dialog-title">
+      <div class="dialog-topline"><span class="eyebrow">ROADMAP FEATURE</span><button class="icon-button" type="button" data-close-dialog aria-label="Close feature details">×</button></div>
+      <div class="dialog-body">
+        <div class="dialog-status" id="dialog-status"></div>
+        <p class="dialog-category" id="dialog-category"></p>
+        <h2 id="dialog-title"></h2>
+        <p class="dialog-description" id="dialog-description"></p>
+        <div class="dialog-release" id="dialog-release"></div>
+        <p class="dialog-preview-note">This detail panel demonstrates the proposed card interaction. Full feature details remain on RSI.</p>
+        <a class="primary-link" id="dialog-native-link" href="#" target="_blank" rel="noreferrer" hidden>Open on RSI <span aria-hidden="true">↗</span></a>
+      </div>
+    </dialog>
+
+    <div class="toast" id="preview-toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
