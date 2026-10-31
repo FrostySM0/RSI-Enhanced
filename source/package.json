@@ -1,0 +1,25 @@
+{
+  "name": "rsi-enhanced",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.25.0",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "scripts": {
+    "dev": "node scripts/build.mjs --watch",
+    "build": "node scripts/build.mjs",
+    "test": "pnpm build && node --test",
+    "verify": "pnpm test && pnpm check:release",
+    "check:scaffold": "node --test tests/scaffold.test.mjs",
+    "check:theme": "node --test tests/spectrum-theme.test.mjs",
+    "check:settings": "tsc -p tsconfig.settings.json && node --test tests/settings.test.mjs tests/settings-storage.test.mjs tests/settings-runtime.test.mjs tests/spectrum-reply-context.test.mjs",
+    "check:release": "node scripts/check-release.mjs"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.3.6",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5"
+  }
+}

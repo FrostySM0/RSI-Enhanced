@@ -1,0 +1,4 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["src/shared/**/*.ts", "src/themes/palettes.ts", "src/content/**/*.ts", "src/popup/index.ts"]
+}
