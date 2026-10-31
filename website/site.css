@@ -109,6 +109,33 @@
     .foot { display: flex; justify-content: space-between; gap: 24px; align-items: center; }
     .foot-links { display: flex; gap: 22px; }
     .foot a:hover { color: var(--cyan); }
+    @keyframes rsi-hero-enter {
+      from { opacity: 0; translate: 0 14px; }
+      to { opacity: 1; translate: 0 0; }
+    }
+    @keyframes rsi-hero-drift {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+    @keyframes rsi-signal-pulse {
+      0%, 100% { opacity: .82; box-shadow: 0 0 8px rgba(111, 211, 160, .45); }
+      50% { opacity: 1; box-shadow: 0 0 14px rgba(111, 211, 160, .7); }
+    }
+    .hero-grid > :first-child { animation: rsi-hero-enter 620ms cubic-bezier(.2, .7, .2, 1) both; }
+    .hero-art { animation: rsi-hero-enter 700ms cubic-bezier(.2, .7, .2, 1) 90ms both; }
+    .hero-art img { animation: rsi-hero-drift 8s ease-in-out 800ms infinite; }
+    .feature { animation: rsi-hero-enter 560ms cubic-bezier(.2, .7, .2, 1) both; transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease; }
+    .feature:nth-child(2) { animation-delay: 70ms; }
+    .feature:nth-child(3) { animation-delay: 140ms; }
+    .feature:hover { transform: translateY(-4px); border-color: var(--line-bright); box-shadow: 0 14px 34px rgba(0, 0, 0, .2); }
+    .shot { transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease; }
+    .shot img { transition: transform 350ms ease; }
+    .shot:hover { transform: translateY(-3px); border-color: var(--line-bright); box-shadow: 0 12px 30px rgba(0, 0, 0, .2); }
+    .shot:hover img { transform: scale(1.025); }
+    .button { transition: transform 180ms ease, filter 180ms ease, box-shadow 180ms ease; }
+    .button:hover { transform: translateY(-2px); }
+    .button:active { transform: translateY(0); filter: brightness(.98); }
+    .signal::before { animation: rsi-signal-pulse 3s ease-in-out infinite; }
     @media (max-width: 850px) {
       .hero-grid { grid-template-columns: 1fr; gap: 37px; }
       .hero { padding-top: 55px; }
@@ -134,4 +161,10 @@
       .privacy-panel .button { justify-self: start; }
       .foot { align-items: start; flex-direction: column; }
     }
-    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition-duration: .01ms !important;
+      }
+    }
