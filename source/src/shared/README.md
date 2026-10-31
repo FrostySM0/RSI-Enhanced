@@ -1,0 +1,1 @@
+`settings.ts` owns defaults, validation and palette resolution. `storage.ts` reads/writes only `rsiEnhanced.settings` in `chrome.storage.local` and subscribes before its initial read to avoid races. Keep shared logic independent of popup/site DOM; DOM application belongs to `src/content/apply-settings.ts`.
