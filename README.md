@@ -1,6 +1,6 @@
 ## **RSI Enhanced** ##
 
-RSI Enhanced is an independent companion for Cloud Imperium Games RSI website. It gives you more control over Spectrum’s appearance and adds practical tools to the RSI pages you already use.
+RSI Enhanced is an extension for Cloud Imperium Games RSI website. It gives you more control over Spectrum’s appearance and adds practical tools to the RSI pages you already use.
 This extension covers these areas;
 - Spectrum
 - Roadmap (Release view)
@@ -24,6 +24,8 @@ This GitHub serves as a location for the source files for the extension. As per 
 **Disclaimer:**
 This extension was made using AI. I do not claim to be a programmer or know how to code. I, as a backer, just wanted better functionality and experience while using CIG's website. This was meant to be a personal extension but it grew over time and I thought it would be more beneficial to release it to everyone.
 If you do not like that AI was used, I do encourage you to use other extensions that adds some functionality like HangerXPLOR or CCU Game. They are very good and informative extensions.
+
+RSI Enhanced does not rewrite or permanently modify the RSI website’s source code. It uses CSS to change the appearance of supported page elements in your browser. Some interactive features also use browser-side scripts; these do not alter RSI’s website files or server code.
 
 **Data and permissions:**
 Your preferences and saved items are kept in your browser’s local extension storage. RSI Enhanced has no analytics or telemetry. The funding history feature reads a public Google Sheet (Thank you to CCUGame for the sheet); Google receives the usual request details, such as your IP address and request time. That request does not include RSI account or Hangar information. The extension does not include analytics or telemetry and does not upload your settings or Hangar details to an extension developer service. Conversation expansion and Hangar page tools make read-only requests to RSI on the same site when you use them. No user information is gathered for external use or to be sold to third parties. Everything is stored locally.
