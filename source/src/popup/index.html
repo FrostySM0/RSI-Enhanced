@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RSI Enhanced settings</title>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">YOUR SPECTRUM</p>
+    <h1>RSI Enhanced</h1>
+    <p class="subtitle">Spectrum settings</p>
+    <div class="maker-mark">
+      <img class="maker-mark__logo" src="./assets/MadeByTheCommunity_White.png" alt="" aria-hidden="true" />
+      <span>Made by Frosty assisted with AI</span>
+    </div>
+  </header>
+
+  <main id="privacy-gate" class="privacy-gate" aria-labelledby="privacy-gate-title">
+    <div class="privacy-gate__heading">
+      <span class="privacy-gate__eyebrow">YOUR DATA, YOUR CHOICE</span>
+      <h2 id="privacy-gate-title">Before you enable RSI Enhanced</h2>
+    </div>
+    <div class="privacy-gate__copy">
+      <p>RSI Enhanced reads relevant RSI pages to apply your appearance settings and the optional tools you choose to use.</p>
+      <p>It stores settings, saved Spectrum thread links and titles, hidden-user handles and names, Hangar favourites, view choices and search details, and cached public funding figures in this browser.</p>
+      <p>Some tools make read-only requests to RSI using your existing sign-in session. The extension does not read or store your password or session cookies. Funding data comes from a public Google Sheet; no RSI account or Hangar data is sent to Google.</p>
+      <p>Your saved extension data is not sent to the developer. RSI Enhanced has no analytics or telemetry. You can remove locally saved data by clearing the extension’s stored data in your browser.</p>
+    </div>
+    <a class="privacy-gate__policy" href="../../privacy-policy.html" target="_blank" rel="noreferrer">Read the full privacy policy</a>
+    <p id="privacy-status" class="privacy-gate__status" role="status" aria-live="polite"></p>
+    <div class="privacy-gate__actions">
+      <button id="privacy-not-now" class="secondary" type="button">Not now</button>
+      <button id="privacy-agree" type="button">Agree and enable</button>
+    </div>
+  </main>
+
+  <main id="settings-area" hidden>
+  <form id="settings">
+    <fieldset id="settings-fields" disabled>
+      <nav class="settings-tabs" role="tablist" aria-label="Settings categories">
+        <button id="tab-appearance" type="button" role="tab" aria-selected="true" aria-controls="panel-appearance">Appearance</button>
+        <button id="tab-layout" type="button" role="tab" aria-selected="false" aria-controls="panel-layout" tabindex="-1">Layout</button>
+        <button id="tab-modules" type="button" role="tab" aria-selected="false" aria-controls="panel-modules" tabindex="-1">Spectrum</button>
+        <button id="tab-rsi" type="button" role="tab" aria-selected="false" aria-controls="panel-rsi" tabindex="-1">RSI website</button>
+      </nav>
+
+      <div class="settings-panels">
+        <section id="panel-appearance" role="tabpanel" aria-labelledby="tab-appearance">
+          <h2>Appearance</h2>
+          <p class="section-intro">Choose how Spectrum and the RSI website look on this device.</p>
+          <div class="control-card">
+            <div class="stacked-control">
+              <label for="theme">Theme</label>
+              <select id="theme"></select>
+            </div>
+            <div class="row">
+              <label for="accent">Accent colour</label>
+              <div class="accent-controls">
+                <input id="accent" type="color" value="#80ccef" />
+                <button type="button" id="theme-accent" class="quiet">Reset to theme default</button>
+              </div>
+            </div>
+            <div class="row">
+              <label for="font-family">Website font</label>
+              <select id="font-family">
+                <option value="default">Site default</option>
+                <option value="arial">Arial</option>
+                <option value="segoe-ui">Segoe UI</option>
+                <option value="verdana">Verdana</option>
+                <option value="tahoma">Tahoma</option>
+                <option value="trebuchet-ms">Trebuchet MS</option>
+                <option value="system-ui">System UI</option>
+                <option value="comic-sans">Comic Sans</option>
+              </select>
+            </div>
+          </div>
+          <p class="hint">Choose a readable font across Spectrum and the RSI website. Site default keeps each area’s current font; the preview updates as you change selections.</p>
+          <div id="appearance-comment-preview" class="comment-preview-mount"></div>
+          <div id="preview" aria-label="Theme preview">
+            <span class="preview-tag">PREVIEW</span>
+            <strong>A clearer view of the ’verse.</strong>
+            <span id="preview-note">Your chosen palette</span>
+          </div>
+        </section>
+
+        <section id="panel-layout" role="tabpanel" aria-labelledby="tab-layout" hidden>
+          <h2>Layout</h2>
+          <p class="section-intro">Set the reading space and profile style that work for you.</p>
+          <div class="control-card">
+            <div class="row">
+              <label for="forum-width">Forum width</label>
+              <div class="width-fields">
+                <input id="forum-width" type="number" min="50" max="100" step="1" value="100" required />
+                <select id="forum-unit" aria-label="Forum width unit"><option value="%">%</option><option value="px">px</option></select>
+              </div>
+            </div>
+            <p class="hint">100% uses all space beside the sidebar.</p>
+            <div class="row">
+              <label for="density">Interface density</label>
+              <select id="density"><option value="compact">Compact</option><option value="balanced">Balanced</option><option value="comfortable">Comfortable</option></select>
+            </div>
+            <div class="row">
+              <label for="comment-layout">Comment layout</label>
+              <select id="comment-layout">
+                <option value="threaded">Threaded</option>
+                <option value="compact">Compact threaded</option>
+                <option value="flat">Flat</option>
+                <option value="cards">Card stack</option>
+                <option value="bubbles">Bubble</option>
+                <option value="conversation">Conversation stream</option>
+              </select>
+            </div>
+            <p class="hint">Choose how Spectrum replies are arranged. The preview reflects your selected layout, font and theme.</p>
+            <div id="layout-comment-preview" class="comment-preview-mount"></div>
+            <div class="row">
+              <label for="font-size">Post &amp; message text</label>
+              <div class="number-field"><input id="font-size" type="number" min="13" max="20" step="1" value="15" required /><span>px</span></div>
+            </div>
+            <div class="row">
+              <label for="avatar">Avatar shape</label>
+              <select id="avatar"><option value="circle">Circle</option><option value="rounded">Rounded</option><option value="square">Square</option></select>
+            </div>
+            <div class="row">
+              <label for="dev-text-color">Developer post text</label>
+              <select id="dev-text-color"><option value="gold">Gold</option><option value="white">White</option><option value="off-white">Off-white</option></select>
+            </div>
+          </div>
+          <p class="hint">Gold keeps Spectrum’s original colour. White and off-white recolour developer text in forum lists and posts.</p>
+        </section>
+
+        <section id="panel-modules" role="tabpanel" aria-labelledby="tab-modules" hidden>
+          <h2>Spectrum</h2>
+          <p class="section-intro">Choose which Spectrum features are active.</p>
+          <div class="control-card toggle-list">
+            <label class="toggle"><span>Spectrum theme and sidebar styling</span><input id="module-theme" type="checkbox" checked /></label>
+            <label class="toggle"><span>Forum enhancements</span><input id="module-forums" type="checkbox" checked /></label>
+            <label class="toggle"><span>Chat enhancements</span><input id="module-chat" type="checkbox" checked /></label>
+            <label class="toggle"><span>Messages panel styling</span><input id="module-messages" type="checkbox" checked /></label>
+            <label class="toggle"><span>Friends panel styling</span><input id="module-friends" type="checkbox" checked /></label>
+            <label class="toggle"><span>Saved forum threads</span><input id="module-savedThreads" type="checkbox" checked /></label>
+            <label class="toggle"><span>Notification filters</span><input id="module-notifications" type="checkbox" checked /></label>
+            <label class="toggle"><span>Enhanced post blocks</span><input id="module-blocks" type="checkbox" checked /></label>
+          </div>
+          <p class="hint">The shared theme switch controls Spectrum styling and sidebar bookmarks. Messages, Friends, forums, chat, saved threads, notification filters and enhanced post blocks have separate switches. Saved threads and post-block preferences stay saved when switched off.</p>
+        </section>
+
+        <section id="panel-rsi" role="tabpanel" aria-labelledby="tab-rsi" hidden>
+          <h2>RSI website</h2>
+          <p class="section-intro">Enable the appearance enhancements you want on RSI pages.</p>
+          <div id="rsi-modules" class="control-card toggle-list"></div>
+          <div class="control-card">
+            <div class="row">
+              <label for="roadmap-landing-view">Roadmap opens to</label>
+              <select id="roadmap-landing-view">
+                <option value="release-view">Release View</option>
+                <option value="progress-tracker">Progress Tracker</option>
+              </select>
+            </div>
+          </div>
+          <p class="hint">Each section can use your theme independently.</p>
+        </section>
+      </div>
+
+      <template id="comment-preview-template">
+        <section class="comment-preview" aria-label="Example Spectrum conversation using current choices">
+          <div class="comment-preview-heading">
+            <span class="comment-preview-title">COMMENT PREVIEW</span>
+            <span class="comment-preview-choice"></span>
+          </div>
+          <div class="comment-preview-thread">
+            <article class="sample-comment sample-comment--root">
+              <header class="sample-comment-author">
+                <span class="sample-avatar" aria-hidden="true">NV</span>
+                <span class="sample-identity"><strong>Nova</strong><small>@nova · just now</small></span>
+              </header>
+              <p>Looking forward to seeing how this comes together.</p>
+            </article>
+            <article class="sample-comment sample-comment--reply">
+              <div class="sample-reply-context">Replying to Nova</div>
+              <header class="sample-comment-author">
+                <span class="sample-avatar" aria-hidden="true">AS</span>
+                <span class="sample-identity"><strong>Aster</strong><small>@aster · 1 min ago</small></span>
+              </header>
+              <p>Same here. The new layout makes the thread easier to follow.</p>
+            </article>
+          </div>
+        </section>
+      </template>
+
+      <div class="actions">
+        <button id="reset" type="button" class="secondary">Reset defaults</button>
+        <button type="submit" id="save">Save changes</button>
+      </div>
+    </fieldset>
+  </form>
+
+  <div class="feedback">
+    <p id="status" role="status" aria-live="polite">Loading preferences…</p>
+    <button id="retry" type="button" hidden>Retry loading</button>
+  </div>
+  </main>
+  <footer>Saved on this browser <span>v<span id="version">1.0.0</span></span></footer>
+  <script type="module" src="./index.ts"></script>
+</body>
+</html>
