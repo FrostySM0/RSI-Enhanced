@@ -39,3 +39,5 @@ Your preferences and saved items are kept in your browser’s local extension st
 <img width="2548" height="1168" alt="image" src="https://github.com/user-attachments/assets/32284a27-544b-46bb-b574-9a5b66fb611d" />
 
 There are many other areas of the site that has been redesigned I would invite you to explore the site and see how different it looks.
+
+Star Citizen , Squadron 42 , Roberts Space Industries , and Cloud Imperium  are registered trademarks of Cloud Imperium Rights LLC
