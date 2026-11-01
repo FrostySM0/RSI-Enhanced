@@ -21,6 +21,8 @@ This only currently supports chromium based browsers. Non-chromium support will 
 
 This GitHub serves as a location for the source files for the extension. As per licensing you have permission to download and modify the source code. I only ask that you credit me when feasible.
 
+Chrome version is available at: https://chromewebstore.google.com/detail/rsi-enhanced/dhpcnkklknjpbncbebljoefdnkikgcmi
+
 **Disclaimer:**
 This extension was made using AI. I do not claim to be a programmer or know how to code. I, as a backer, just wanted better functionality and experience while using CIG's website. This was meant to be a personal extension but it grew over time and I thought it would be more beneficial to release it to everyone.
 If you do not like that AI was used, I do encourage you to use other extensions that adds some functionality like HangerXPLOR or CCU Game. They are very good and informative extensions.
