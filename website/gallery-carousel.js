@@ -178,4 +178,3 @@
   selectSlide(activeIndex, false);
   scheduleAutoplay();
 })();
-

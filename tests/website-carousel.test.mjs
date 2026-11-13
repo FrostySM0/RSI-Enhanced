@@ -256,4 +256,3 @@ test('autoplay pauses for hover, focus, hidden pages and reduced motion, then re
   const reduced = createHarness({ reducedMotion: true });
   assert.equal(reduced.timerMap.size, 0, 'reduced-motion users should never start autoplay');
 });
-
