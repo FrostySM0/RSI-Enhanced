@@ -19,6 +19,7 @@
       <nav class="links" aria-label="Main navigation">
         <a href="#features">Features</a>
         <a href="#screenshots">Screenshots</a>
+        <a href="#changelog">What’s new</a>
         <a href="#getting-started">Get started</a>
         <a href="#privacy">Privacy</a>
         <a class="button secondary" href="#install">Install options <span aria-hidden="true">↓</span></a>
@@ -41,9 +42,10 @@
               <span>Add to Firefox</span><span class="button-arrow" aria-hidden="true">↗</span>
             </a>
           </div>
-          <p class="compatibility-note">Chrome users can install from the Chrome Web Store. Edge and Brave use the Chrome Web Store build. Firefox users can install from Firefox Add-ons; the Firefox listing is available now.</p>
           <div class="quick-facts" aria-label="Extension highlights">
-            <span class="fact"><b>16</b> Spectrum themes</span>
+          <span class="fact"><b>61</b> Spectrum themes</span>
+          <span class="fact"><b>9</b> reply layouts</span>
+          <span class="fact"><b>Version</b> 1.1.0</span>
             <span class="fact">Chrome · Edge · Brave</span>
             <span class="fact">Firefox · Available now</span>
           </div>
@@ -79,7 +81,7 @@
           <article class="feature">
             <div class="feature-num">01 / SPECTRUM</div>
             <h3>Your Spectrum, your way</h3>
-            <p>Choose from 16 themes or tune colours, fonts, text size and forum width. Switch between six reply layouts, and control forum, chat, messages, friends and notification tools separately.</p>
+            <p>Choose from 61 themes or tune colours, fonts, text size and forum width. Switch between nine reply layouts, and control forum, chat, messages, friends and notification tools separately.</p>
             <span class="tag">Forums · Chat · Messages</span>
           </article>
           <article class="feature">
@@ -102,26 +104,110 @@
       <div class="wrap">
         <div class="section-head">
           <div><div class="eyebrow">A look around</div><h2>See it on the pages themselves.</h2></div>
-          <p class="section-intro">These screenshots show the extension in use across Spectrum and the RSI site.</p>
+          <p class="section-intro">Explore ten parts of Spectrum and the RSI site. Screenshots were taken with different included themes, so colours and accents vary between images.</p>
         </div>
-        <div class="gallery">
-          <figure class="shot">
-            <img src="website/assets/my-hangar.png" alt="My Hangar with search, filters, item sorting and a list of pledge items" loading="lazy">
-            <figcaption><strong>My Hangar</strong><span>Search, sort and organize your items</span></figcaption>
+        <div class="feature-carousel" data-feature-carousel data-carousel-asset-base="website/assets/" role="region" aria-roledescription="carousel" aria-label="RSI Enhanced feature screenshots">
+          <figure class="carousel-figure">
+            <div class="carousel-image-frame">
+              <img data-carousel-image src="website/assets/spectrum-community.png" alt="Spectrum community with forums, chat lobbies, saved threads and the RSI Enhanced sidebar" width="1280" height="800" loading="lazy" decoding="async">
+            </div>
+            <figcaption class="carousel-caption">
+              <div class="carousel-caption-copy">
+                <strong data-carousel-title>Spectrum Community</strong>
+                <span data-carousel-description>Browse forums, chat lobbies and saved threads from a themed Spectrum workspace.</span>
+              </div>
+              <span class="carousel-count" data-carousel-count aria-hidden="true">01 / 10</span>
+            </figcaption>
           </figure>
-          <figure class="shot">
-            <img src="website/assets/dev-tracker.png" alt="Dev Tracker with grouped posts and readable reply context" loading="lazy">
-            <figcaption><strong>Dev Tracker</strong><span>Read posts and developer replies in context</span></figcaption>
-          </figure>
-          <figure class="shot">
-            <img src="website/assets/roadmap-release-view.png" alt="Roadmap Release View with release status and roadmap cards" loading="lazy">
-            <figcaption><strong>Roadmap Release View</strong><span>Follow releases and browse roadmap cards</span></figcaption>
-          </figure>
-          <figure class="shot">
-            <img src="website/assets/spectrum-general.png" alt="Spectrum General with the redesigned sidebar and forum list" loading="lazy">
-            <figcaption><strong>Spectrum General</strong><span>Updated sidebar and clearer forum layout</span></figcaption>
-          </figure>
+          <div class="carousel-controls">
+            <button class="carousel-arrow" type="button" data-carousel-action="previous" aria-label="Previous screenshot"><svg class="carousel-arrow-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 12H5m7 7-7-7 7-7" /></svg></button>
+            <div class="carousel-dots" role="group" aria-label="Choose a feature screenshot">
+              <button class="carousel-dot" type="button" data-carousel-slide="0" aria-label="Show Spectrum Community" aria-current="true"><span class="sr-only">Spectrum Community</span></button>
+              <button class="carousel-dot" type="button" data-carousel-slide="1" aria-label="Show Personal Dashboard"><span class="sr-only">Personal Dashboard</span></button>
+              <button class="carousel-dot" type="button" data-carousel-slide="2" aria-label="Show My Hangar"><span class="sr-only">My Hangar</span></button>
+              <button class="carousel-dot" type="button" data-carousel-slide="3" aria-label="Show Funding Stats"><span class="sr-only">Funding Stats</span></button>
+              <button class="carousel-dot" type="button" data-carousel-slide="4" aria-label="Show Roadmap Release View"><span class="sr-only">Roadmap Release View</span></button>
+              <button class="carousel-dot" type="button" data-carousel-slide="5" aria-label="Show Dev Tracker"><span class="sr-only">Dev Tracker</span></button>
+              <button class="carousel-dot" type="button" data-carousel-slide="6" aria-label="Show Pledge Store: Ships"><span class="sr-only">Pledge Store: Ships</span></button>
+              <button class="carousel-dot" type="button" data-carousel-slide="7" aria-label="Show Pledge Store: Gear"><span class="sr-only">Pledge Store: Gear</span></button>
+              <button class="carousel-dot" type="button" data-carousel-slide="8" aria-label="Show Organizations"><span class="sr-only">Organizations</span></button>
+              <button class="carousel-dot" type="button" data-carousel-slide="9" aria-label="Show Comm-Link"><span class="sr-only">Comm-Link</span></button>
+            </div>
+            <button class="carousel-arrow" type="button" data-carousel-action="next" aria-label="Next screenshot"><svg class="carousel-arrow-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7" /></svg></button>
+          </div>
+          <p class="sr-only" data-carousel-announcement aria-live="polite" aria-atomic="true"></p>
         </div>
+      </div>
+    </section>
+
+    <section class="section changelog-section" id="changelog">
+      <div class="wrap">
+        <details class="release-notes">
+          <summary><span class="release-notes-title" role="heading" aria-level="2">What’s new in RSI Enhanced 1.1.0</span><span class="release-notes-hint">View release notes</span></summary>
+          <div class="release-notes-content">
+            <p class="release-notes-intro">Release 1.1.0 brings a new settings dashboard with built-in release notes, expanded Spectrum and RSI tools, Firefox support, and improvements across My Hangar and the Pledge Store.</p>
+            <section class="release-group">
+              <h3>ADDED</h3>
+              <ul>
+                <li>The full-tab settings dashboard includes a Release notes section with the complete current release notes.</li>
+                <li>My Hangar indexes automatically on first use. Opening the Personal Dashboard builds the same browser-local index if it is missing or expired; both entry points reuse the valid 24-hour cache without duplicate Hangar-route indexing. Requests are sequential, read-only, and same-origin.</li>
+                <li>A full-tab settings dashboard with independent feature switches, live preference updates, searchable theme and font galleries, and settings backup and restore.</li>
+                <li>Forty new theme presets (61 total), including nine IAE event themes and OLED Gold.</li>
+                <li>The Personal Star Citizen dashboard brings together Hangar data, saved Spectrum discussions, the Roadmap watchlist, Funding Stats, and Concierge progress. Personal data stays in local browser storage.</li>
+                <li>Spectrum tools for saved threads, inline conversation context, author controls, notification filters, and saved-discussion organization. Timeline, Author rail, and Branch cards bring the reply-layout gallery to nine choices.</li>
+                <li>Spectrum forum threads mark the original author and their replies with a theme-independent gold OP badge.</li>
+                <li>Ten independently controlled RSI modules covering Account and Citizen Dossier, My Hangar, Pledge Store, Ship Matrix, Organizations, Comm-Link and Patch Notes, Roadmap, Funding Goals, Dev Tracker, and Terms of Service.</li>
+                <li>My Hangar fleet insights, List and Grid views, cross-page search and filters, favourites, exports, image previews, and a redesigned Hangar Log.</li>
+                <li>A Ship Upgrade Planner that compares ships against the full Ship Matrix catalog using public price references and saves plans on this device.</li>
+                <li>Expandable Advanced Funding History with monthly and annual charts using the existing public funding history.</li>
+                <li>Terms of Service comparison between previous and current wording.</li>
+                <li>A global ON/OFF control in the shared RSI and Spectrum header; saved module choices are preserved.</li>
+                <li>A Firefox desktop build alongside the Chromium build.</li>
+              </ul>
+            </section>
+            <section class="release-group">
+              <h3>CHANGED</h3>
+              <ul>
+                <li>The privacy notice now describes automatic first-use Hangar indexing and Concierge progress lookups. Notice version 18 asks existing users to review the updated disclosure.</li>
+                <li>Supported RSI and Spectrum pages, shared headers, and navigation menus now follow the selected theme while retaining native navigation, account, and commerce controls.</li>
+                <li>Spectrum&#39;s Find a Guide page themes its backdrop, filters, tiles, cards, and controls while retaining RSI&#39;s hero artwork and dark side margins.</li>
+                <li>Funding Goals now uses the selected theme for its page background; the blue honeycomb and campaign-image layers are removed, and excess space above Funding Stats is reduced.</li>
+                <li>Roadmap Release View adds card search, category and status filters, watchlist controls, and card details. Roadmap status labels retain their established colours across themes.</li>
+                <li>The website feature gallery now shows ten captioned views of Spectrum and RSI pages. Screenshots use different included themes, so their colours and accents vary.</li>
+                <li>Pledge Store, ship detail, Organizations, Comm-Link, Patch Notes, Dev Tracker, and Citizen Dossier pages receive clearer themed layouts while keeping native content and actions.</li>
+                <li>Spectrum forums and chat use theme-aware layouts, clearer reply and media controls, and improved desktop spacing while preserving native interactions.</li>
+                <li>Hangar indexing now requests pages through the signed-in RSI page&#39;s same-origin fetch context in Firefox and Chromium, with a 20-second request limit.</li>
+                <li>My Hangar page-size choices now match RSI&#39;s ten-item native page: 10, 20, 40, or All. Numbered views show the selected count when enough items remain, and older saved 9/18/36 choices migrate to 10/20/40.</li>
+                <li>Route-specific code and styles load only on relevant pages; optional features wait until opened. Improving extension performance and website page loading.</li>
+              </ul>
+            </section>
+            <section class="release-group">
+              <h3>FIXED</h3>
+              <ul>
+                <li>Hangar favourites and package ship labels now handle titles nested inside RSI heading markup, and package stars can resolve pledge IDs from the containing card. A Hangar-scoped observer refreshes changed cards when RSI supplies summaries, pledge IDs, or ship details after activation, so package names, ship artwork, and favourite stars update without a manual refresh; it disconnects when Hangar enhancements are disabled.</li>
+                <li>Favourite controls now discover ship and package cards when RSI inserts extra wrappers between a Hangar list item and its row, keeping the star available on standalone ships and ship packages.</li>
+                <li>My Hangar and Personal Dashboard Hangar indexing retry temporarily unavailable pages up to three times. The My Hangar failure status identifies the page and response reason.</li>
+                <li>My Hangar normalizes filtered, sorted, paged, or extra-query URLs to the safe unfiltered page-one route before crawling, allowing it to discover every Hangar page.</li>
+                <li>Firefox My Hangar and Personal Dashboard indexing no longer stall on URLSearchParams iterator incompatibilities while validating page URLs.</li>
+                <li>My Hangar Concierge lookup rechecks progress after attaching its observer and reads the same-origin dashboard document without accessing Firefox&#39;s wrapped frame-window location.</li>
+                <li>My Hangar&#39;s quick Filters popover provides a category selector when RSI supplies no usable native options. Advanced type, status, and value filters narrow visible Hangar cards as well as search results and exports.</li>
+                <li>Saved Hangar ship and package favourites now stay at the top of the 10, 20, 40, and All item views, ahead of the selected sort order, even when the saved-favorites reference panel is present.</li>
+                <li>Standalone ship cards with RSI&#39;s native &quot;Standalone Ships - Ship Name&quot; title now show the favourite star before their details are expanded. The star also stays beside ship names on enhanced package headings.</li>
+                <li>Hangar package cards now show the contained current ship summary and update to its image when RSI loads ship details; disabling the module restores the pledge title and artwork. Ship and Upgrade filters now classify from pledge labels and item kinds, excluding unrelated rewards that mention &quot;ship&quot; and including &quot;Upgrade - …&quot; pledges. Saved indexes recalculate categories on read.</li>
+                <li>The Ships filter includes standalone ship and vehicle pledges plus ship/vehicle packages. The Packages filter shows only packages containing a ship or vehicle, excluding gear-only packages.</li>
+                <li>OP badges now use the selected Spectrum font while retaining their theme-independent gold treatment.</li>
+                <li>Light Spectrum forum themes now use readable contrast for post text, author names, timestamps, and sidebar labels; dark theme colors are unchanged.</li>
+                <li>Funding Goals number counters now use the selected font, matching the page text while preserving aligned tabular digits.</li>
+                <li>The dashboard now refreshes the complete next-patch card set from RSI&#39;s public Release View data when opened, without requiring a prior Roadmap visit. Scanning waits for lazy and incremental card rendering and preserves category states.</li>
+                <li>Standalone ship pledge galleries and purchase panels now use the selected theme&#39;s surfaces instead of fixed blue-gray fills.</li>
+                <li>Standalone ship and vehicle pledge galleries keep RSI&#39;s native zoom button interactive beneath the custom enlarge icon, so gallery images open in both browser builds.</li>
+                <li>Firefox Pledge Store detail enhancements now resolve their lazy feature modules from the extension API global, so ship, standalone-ship, gear, and package pages initialize their redesigns.</li>
+                <li>Standalone ship browse cards now match their product titles to the longest exact base-model name in RSI&#39;s Ship Matrix, so variant pledge URLs still show the correct manufacturer name and logo. Exact profile URLs remain preferred, unknown or ambiguous cards stay unlabelled, and Firefox logo URLs resolve through the isolated extension runtime.</li>
+                <li>Pledge Store browse Add to Cart buttons now anchor the chevron near the right edge and shift the label left, reserving a clear gap between the label and arrow.</li>
+              </ul>
+            </section>
+          </div>
+        </details>
       </div>
     </section>
 
@@ -131,7 +217,7 @@
           <div>
             <div class="eyebrow">Privacy, in plain language</div>
             <h2>Your saved choices stay in your browser.</h2>
-            <p>Settings and saved feature data are stored locally by the extension. RSI Enhanced has no analytics or telemetry and does not send your saved data to the developer. Some optional features request page or reply data from RSI, and Funding Goals reads a public spreadsheet. Read the full policy for details.</p>
+            <p>Settings and saved feature data stay in your browser. RSI Enhanced has no analytics or telemetry and does not send saved data to the developer. Optional tools may request RSI page data, public ship prices from the SC Wiki API, or funding history from Google Sheets when you use them. Read the full policy for details.</p>
           </div>
           <a class="button secondary" href="https://frostysm0.github.io/RSI-Enhanced/privacy-policy.html">Read the privacy policy <span aria-hidden="true">↗</span></a>
         </div>
@@ -157,6 +243,7 @@
       </nav>
     </div>
   </footer>
+  <script src="website/gallery-carousel.js" defer></script>
 </body>
 </html>
 
