@@ -97,8 +97,15 @@
     .feature .tag { display: inline-flex; margin-top: 18px; color: #d5e3ec; font-size: 11px; padding: 4px 8px; border-radius: 5px; background: rgba(69, 113, 140, .2); border: 1px solid rgba(99, 149, 178, .25); }
     .feature-carousel { overflow: hidden; border: 1px solid var(--line-bright); border-radius: 15px; background: linear-gradient(150deg, rgba(25, 44, 59, .92), rgba(11, 20, 29, .98)); box-shadow: 0 22px 58px rgba(0, 0, 0, .25); }
     .carousel-image-frame { display: grid; place-items: center; padding: clamp(10px, 2vw, 22px); background: radial-gradient(ellipse at center, rgba(34, 75, 98, .22), transparent 72%), #0a1118; }
+    .carousel-image-open { display: block; width: min(100%, 1120px); padding: 0; border: 0; background: transparent; cursor: zoom-in; }
     .carousel-image-frame img { display: block; width: min(100%, 1120px); height: auto; max-height: min(68vw, 700px); aspect-ratio: 16 / 10; object-fit: contain; border: 1px solid rgba(119, 200, 237, .22); border-radius: 8px; background: #090f15; box-shadow: 0 12px 34px rgba(0, 0, 0, .3); }
+    .carousel-image-open:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; border-radius: 8px; }
     .carousel-image-frame img.is-changing { opacity: .55; }
+    .carousel-lightbox { position: fixed; width: min(96vw, 1800px); max-width: 96vw; max-height: 96vh; padding: 48px 18px 18px; overflow: auto; border: 1px solid var(--line-bright); border-radius: 12px; background: #080d12; color: var(--text); box-shadow: 0 24px 80px rgba(0, 0, 0, .72); }
+    .carousel-lightbox::backdrop { background: rgba(2, 7, 11, .88); backdrop-filter: blur(3px); }
+    .carousel-lightbox-image { display: block; width: auto; max-width: 100%; height: auto; max-height: calc(96vh - 80px); margin: 0 auto; object-fit: contain; }
+    .carousel-lightbox-close { position: absolute; top: 10px; right: 12px; padding: 7px 12px; border: 1px solid var(--line-bright); border-radius: 7px; background: var(--surface-2); color: var(--text); font: inherit; cursor: pointer; }
+    .carousel-lightbox-close:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
     .carousel-caption { display: flex; justify-content: space-between; align-items: center; gap: 18px; padding: 18px 22px 11px; }
     .carousel-caption-copy { display: grid; gap: 2px; }
     .carousel-caption-copy strong { color: var(--text); font-size: 16px; }
@@ -192,6 +199,7 @@
       .hero-art { padding: 9px; border-radius: 13px; }
       .section { padding: 52px 0; }
       .carousel-caption { padding: 14px 15px 8px; }
+      .carousel-lightbox { padding: 46px 8px 8px; }
       .carousel-controls { grid-template-columns: 38px 1fr 38px; gap: 9px; padding: 9px 14px 14px; }
       .carousel-arrow { width: 38px; height: 38px; }
       .carousel-dots { gap: 5px; }

@@ -3,6 +3,8 @@
   if (!carousel) return;
 
   const image = carousel.querySelector('[data-carousel-image]');
+  const lightbox = carousel.querySelector('[data-carousel-lightbox]');
+  const lightboxImage = carousel.querySelector('[data-carousel-full-image]');
   const title = carousel.querySelector('[data-carousel-title]');
   const description = carousel.querySelector('[data-carousel-description]');
   const counter = carousel.querySelector('[data-carousel-count]');
@@ -85,7 +87,7 @@
     timer = null;
   };
 
-  const autoplayAllowed = () => !hovered && !focused && !document.hidden && !reducedMotion.matches;
+  const autoplayAllowed = () => !hovered && !focused && !document.hidden && !reducedMotion.matches && !lightbox?.open;
 
   const scheduleAutoplay = () => {
     stopAutoplay();
@@ -135,16 +137,32 @@
   };
 
   carousel.addEventListener('click', (event) => {
-    const control = event.target.closest?.('[data-carousel-action], [data-carousel-slide]');
+    const control = event.target.closest?.('[data-carousel-action], [data-carousel-slide], [data-carousel-open], [data-carousel-close]');
     if (!control || !carousel.contains(control)) return;
 
     if (control.dataset.carouselAction === 'next') selectSlide(activeIndex + 1, true);
     else if (control.dataset.carouselAction === 'previous') selectSlide(activeIndex - 1, true);
+    else if (control.dataset.carouselAction === 'open-image' && lightbox && lightboxImage && typeof lightbox.showModal === 'function') {
+      stopAutoplay();
+      lightboxImage.setAttribute('src', image.getAttribute('src'));
+      lightboxImage.setAttribute('alt', image.getAttribute('alt'));
+      lightbox.showModal();
+      return;
+    } else if (control.dataset.carouselAction === 'close-image' && lightbox?.open && typeof lightbox.close === 'function') {
+      lightbox.close();
+      return;
+    }
     else if (control.dataset.carouselSlide !== undefined) selectSlide(Number(control.dataset.carouselSlide), true);
     else return;
 
     scheduleAutoplay();
   });
+  if (lightbox) {
+    lightbox.addEventListener('close', scheduleAutoplay);
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) lightbox.close();
+    });
+  }
 
   carousel.addEventListener('pointerenter', (event) => {
     if (event.pointerType === 'touch') return;

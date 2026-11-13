@@ -109,7 +109,9 @@
         <div class="feature-carousel" data-feature-carousel data-carousel-asset-base="assets/" role="region" aria-roledescription="carousel" aria-label="RSI Enhanced feature screenshots">
           <figure class="carousel-figure">
             <div class="carousel-image-frame">
-              <img data-carousel-image src="assets/spectrum-community.png" alt="Spectrum community with forums, chat lobbies, saved threads and the RSI Enhanced sidebar" width="1280" height="800" loading="lazy" decoding="async">
+              <button class="carousel-image-open" type="button" data-carousel-action="open-image" data-carousel-open aria-label="Open full-size screenshot">
+                <img data-carousel-image src="assets/spectrum-community.png" alt="Spectrum community with forums, chat lobbies, saved threads and the RSI Enhanced sidebar" width="2547" height="1273" loading="lazy" decoding="async">
+              </button>
             </div>
             <figcaption class="carousel-caption">
               <div class="carousel-caption-copy">
@@ -119,6 +121,10 @@
               <span class="carousel-count" data-carousel-count aria-hidden="true">01 / 10</span>
             </figcaption>
           </figure>
+          <dialog class="carousel-lightbox" data-carousel-lightbox aria-label="Full-size screenshot">
+            <button class="carousel-lightbox-close" type="button" data-carousel-action="close-image" data-carousel-close>Close</button>
+            <img class="carousel-lightbox-image" data-carousel-full-image alt="">
+          </dialog>
           <div class="carousel-controls">
             <button class="carousel-arrow" type="button" data-carousel-action="previous" aria-label="Previous screenshot"><svg class="carousel-arrow-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 12H5m7 7-7-7 7-7" /></svg></button>
             <div class="carousel-dots" role="group" aria-label="Choose a feature screenshot">

@@ -31,6 +31,8 @@ class Element {
   removeEventListener(type, handler) { if (this.listeners.get(type) === handler) this.listeners.delete(type); }
   dispatch(type) { this.listeners.get(type)?.({ type, target: this }); }
   closest() { return this; }
+  showModal() { this.open = true; }
+  close() { this.open = false; }
 }
 
 function createHarness({ reducedMotion = false, assetBase = 'assets/' } = {}) {
@@ -38,6 +40,10 @@ function createHarness({ reducedMotion = false, assetBase = 'assets/' } = {}) {
   const source = readFileSync(scriptPath, 'utf8');
   const image = new Element();
   image.setAttribute('src', 'assets/spectrum-community.png');
+  const openImage = new Element({ carouselAction: 'open-image' }, true);
+  const lightbox = new Element();
+  const fullImage = new Element();
+  const closeLightbox = new Element({ carouselAction: 'close-image' }, true);
   const title = new Element();
   const description = new Element();
   const counter = new Element();
@@ -45,6 +51,9 @@ function createHarness({ reducedMotion = false, assetBase = 'assets/' } = {}) {
   const dots = Array.from({ length: 10 }, (_, index) => new Element({ carouselSlide: String(index) }, true));
   const elements = new Map([
     ['[data-carousel-image]', image],
+    ['[data-carousel-lightbox]', lightbox],
+    ['[data-carousel-full-image]', fullImage],
+    ['[data-carousel-open]', openImage],
     ['[data-carousel-title]', title],
     ['[data-carousel-description]', description],
     ['[data-carousel-count]', counter],
@@ -94,7 +103,7 @@ function createHarness({ reducedMotion = false, assetBase = 'assets/' } = {}) {
     listener({ type, target, ...extra });
   };
 
-  return { image, title, description, counter, announcement, dots, root, media, document, timerMap, fireTimer, dispatch };
+  return { image, title, description, counter, announcement, dots, root, media, document, timerMap, fireTimer, dispatch, lightbox, fullImage, openImage, closeLightbox };
 }
 
 test('feature carousel shows one labelled slide, ten accessible selectors, and the theme caveat', () => {
@@ -105,8 +114,12 @@ test('feature carousel shows one labelled slide, ten accessible selectors, and t
   assert.match(section, /data-feature-carousel[^>]*role="region"/i);
   assert.match(section, /aria-roledescription="carousel"/i);
   assert.match(section, /data-carousel-image[^>]*src="assets\/spectrum-community\.png"/i);
-  assert.equal([...section.matchAll(/<img\b/gi)].length, 1,
-    'non-selected screenshots should not be embedded and fetched in advance');
+  assert.equal([...section.matchAll(/<img\b/gi)].length, 2,
+    'the lightbox image should be present without loading a second screenshot in advance');
+  assert.match(section, /data-carousel-open[^>]*aria-label="Open full-size screenshot"/i);
+  assert.match(section, /<dialog[^>]*data-carousel-lightbox/i);
+  assert.match(section, /data-carousel-full-image(?![^>]*\bsrc=)/i,
+    'the full-size image should not load until a visitor opens it');
   assert.equal([...section.matchAll(/data-carousel-slide="(?:[0-9])"/g)].length, 10,
     'there should be one selector for each of the ten feature slides');
   assert.match(section, /explore ten parts/i);
@@ -120,6 +133,19 @@ test('feature carousel shows one labelled slide, ten accessible selectors, and t
     'the ten selectors should fit beside the arrows on narrow screens');
   assert.match(compactRules, /\.carousel-dot\s*\{[^}]*width:\s*8px[^}]*height:\s*8px/i);
   assert.match(compactRules, /\.carousel-dot\[aria-current="true"\]\s*\{[^}]*width:\s*18px/i);
+});
+
+test('opening the active screenshot loads its original source in a closable modal', () => {
+  const { image, fullImage, lightbox, openImage, closeLightbox, dispatch } = createHarness();
+
+  assert.equal(fullImage.getAttribute('src'), null, 'the full-size image should stay unloaded until requested');
+  dispatch('click', openImage);
+  assert.equal(lightbox.open, true);
+  assert.equal(fullImage.getAttribute('src'), image.getAttribute('src'));
+  assert.equal(fullImage.getAttribute('alt'), image.getAttribute('alt'));
+
+  dispatch('click', closeLightbox);
+  assert.equal(lightbox.open, false);
 });
 
 test('carousel starts with the Spectrum screenshot and only loads the active slide', () => {
@@ -193,6 +219,18 @@ test('all ten feature captions are concise and each screenshot asset exists loca
       `${expectedTitle} should have a short, useful description`);
     assert.ok(existsSync(resolve(siteDir, 'assets', filename)), `${filename} should be packaged locally`);
   });
+});
+
+test('Spectrum Community uses the full-resolution screenshot dimensions', () => {
+  const screenshot = readFileSync(resolve(siteDir, 'assets', 'spectrum-community.png'));
+  const htmlPages = [
+    readFileSync(resolve(siteDir, 'index.html'), 'utf8'),
+    readFileSync(resolve(rootDir, 'index.html'), 'utf8'),
+  ];
+  assert.equal(screenshot.toString('ascii', 1, 4), 'PNG');
+  assert.equal(screenshot.readUInt32BE(16), 2547);
+  assert.equal(screenshot.readUInt32BE(20), 1273);
+  for (const html of htmlPages) assert.match(html, /data-carousel-image[^>]*width="2547" height="1273"/i);
 });
 
 test('both entry pages reference the matching ten-slide gallery and carousel script', () => {
