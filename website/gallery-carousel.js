@@ -11,9 +11,9 @@
   const slides = [
     {
       title: 'Spectrum Community',
-      source: 'spectrum-general.png',
-      alt: 'Spectrum community forums and channels with the RSI Enhanced theme',
-      description: 'Browse Spectrum forums and community channels in a themed workspace.',
+      source: 'spectrum-community.png',
+      alt: 'Spectrum community with forums, chat lobbies, saved threads and the RSI Enhanced sidebar',
+      description: 'Browse forums, chat lobbies and saved threads from a themed Spectrum workspace.',
     },
     {
       title: 'Funding Stats',
@@ -56,6 +56,18 @@
       source: 'comm-link.png',
       alt: 'Comm-Link page with article cards and channel, series, type and sorting filters',
       description: 'Browse official communications with channel, series and type filters.',
+    },
+    {
+      title: 'My Hangar',
+      source: 'my-hangar.png',
+      alt: 'My Hangar with the RSI Enhanced sidebar, pledge cards and Hangar search and filter controls',
+      description: 'Search, filter and organize pledge items across your Hangar pages.',
+    },
+    {
+      title: 'Personal Dashboard',
+      source: 'personal-dashboard.png',
+      alt: 'Personal dashboard with Hangar, Spectrum saves, Roadmap, Funding Stats and Concierge cards',
+      description: 'See Hangar, saved discussions and tracked updates together in one view.',
     },
   ];
   if (!image || !title || !description || !counter || selectors.length !== slides.length) return;
