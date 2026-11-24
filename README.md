@@ -22,6 +22,7 @@ This only currently supports chromium based browsers. Non-chromium support will 
 This GitHub serves as a location for the source files for the extension. As per licensing you have permission to download and modify the source code. I only ask that you credit me when feasible.
 
 Chrome version is available at: https://chromewebstore.google.com/detail/rsi-enhanced/dhpcnkklknjpbncbebljoefdnkikgcmi
+
 Firefox version is available at: https://addons.mozilla.org/en-GB/firefox/addon/rsi-enhanced/
 
 **Disclaimer:**
