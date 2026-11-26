@@ -10,49 +10,140 @@
   <link rel="stylesheet" href="site.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="topbar">
     <div class="wrap nav">
       <a class="brand" href="#top" aria-label="RSI Enhanced home">
         <img src="assets/rsi-enhanced-icon.png" alt="">
         <span><small>COMMUNITY PROJECT</small>RSI ENHANCED</span>
       </a>
+      <div class="topbar-meta"><span class="version-chip">Version 1.2.1</span><a class="privacy-shortcut" href="#privacy">Privacy first <span aria-hidden="true">↗</span></a></div>
       <nav class="links" aria-label="Main navigation">
-        <a href="#features">Features</a>
+        <a href="#features">Explore features</a>
         <a href="#screenshots">Screenshots</a>
-        <a href="#changelog">What’s new</a>
-        <a href="#getting-started">Get started</a>
-        <a href="#privacy">Privacy</a>
-        <a class="button secondary" href="#install">Install options <span aria-hidden="true">↓</span></a>
+        <a href="#changelog">Release notes</a>
+        <a href="#faq">FAQ</a>
+        <a class="button store-button secondary top-store" href="https://chromewebstore.google.com/detail/rsi-enhanced/dhpcnkklknjpbncbebljoefdnkikgcmi">Add to Chrome <span class="button-arrow browser-logo browser-logo--chrome" aria-hidden="true"><img src="assets/chrome-logo.svg" alt=""></span></a>
+        <a class="button store-button top-store" href="https://addons.mozilla.org/en-GB/firefox/addon/rsi-enhanced/">Add to Firefox <span class="button-arrow browser-logo browser-logo--firefox" aria-hidden="true"><img src="assets/firefox-logo.svg" alt=""></span></a>
       </nav>
     </div>
   </header>
 
-  <main id="top">
-    <section class="hero">
+  <main id="main-content">
+    <section class="hero" id="top">
+      <div class="hero-space" aria-hidden="true">
+        <video class="hero-video" muted playsinline loop preload="none" poster="assets/field-guide-orbit.png">
+          <source data-src="assets/hero-planet.mp4" type="video/mp4">
+        </video>
+        <div class="hero-stars" aria-hidden="true"></div>
+      </div>
       <div class="wrap hero-grid">
-        <div>
+        <div class="hero-title">
           <div class="eyebrow">A browser extension for RSI</div>
           <h1>Customise <em>your RSI experience.</em></h1>
-          <p class="hero-copy">Give Spectrum and the RSI website a cleaner, more personal feel with practical tools for the pages you regularly use.</p>
+        </div>
+        <div class="hero-details">
+          <p class="hero-copy">Make Spectrum and the RSI website easier to read, navigate and make your own. Choose the features you want, then leave the rest off.</p>
           <div class="store-options" id="install" aria-label="Choose your browser's extension store">
             <a class="button store-button" href="https://chromewebstore.google.com/detail/rsi-enhanced/dhpcnkklknjpbncbebljoefdnkikgcmi">
-              <span>Add to Chrome</span><span class="button-arrow" aria-hidden="true">↗</span>
+              <span>Add to Chrome</span><span class="button-arrow browser-logo browser-logo--chrome" aria-hidden="true"><img src="assets/chrome-logo.svg" alt=""></span>
             </a>
             <a class="button store-button" href="https://addons.mozilla.org/en-GB/firefox/addon/rsi-enhanced/">
-              <span>Add to Firefox</span><span class="button-arrow" aria-hidden="true">↗</span>
+              <span>Add to Firefox</span><span class="button-arrow browser-logo browser-logo--firefox" aria-hidden="true"><img src="assets/firefox-logo.svg" alt=""></span>
             </a>
           </div>
-          <div class="quick-facts" aria-label="Extension highlights">
-          <span class="fact"><b>106</b> Spectrum themes</span>
-          <span class="fact"><b>9</b> reply layouts</span>
-          <span class="fact"><b>Version</b> 1.2.0</span>
-            <span class="fact">Chrome · Edge · Brave</span>
-            <span class="fact">Firefox · Available now</span>
-          </div>
+          <a class="hero-text-link" href="#features">Explore the Field Guide <span aria-hidden="true">↓</span></a>
         </div>
-        <div class="hero-art">
-          <img src="assets/spectrum-community.png" alt="Spectrum General forum with the RSI Enhanced sidebar and redesigned topic list">
-          <div class="art-caption"><strong>Spectrum, tuned to your style</strong><span class="signal">Your settings, your choice</span></div>
+      </div>
+      <div class="wrap quick-facts" aria-label="Extension highlights">
+        <span class="fact"><b>106</b> Spectrum themes</span>
+        <span class="fact"><b>9</b> reply layouts</span>
+        <span class="fact">Chrome · Edge · Brave</span>
+        <span class="fact">Firefox · Available now</span>
+        <span class="fact">Choose features individually</span>
+      </div>
+    </section>
+
+    <section class="section guide-section" id="features">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">The Field Guide</div><h2>Useful changes for the RSI pages you use.</h2></div>
+          <p class="section-intro">Start with a page that matters to you. Every area has its own controls, so you can customise one part of RSI without changing everything else.</p>
+        </div>
+        <div class="guide-layout">
+          <nav class="area-selector" aria-label="Choose an area">
+            <a class="chapter-link" href="#chapter-spectrum" data-chapter-link aria-current="location"><span>01</span>Spectrum</a>
+            <a class="chapter-link" href="#chapter-hangar" data-chapter-link><span>02</span>My Hangar</a>
+            <a class="chapter-link" href="#chapter-rsi" data-chapter-link><span>03</span>RSI pages</a>
+            <a class="chapter-link" href="#chapter-tos" data-chapter-link><span>04</span>ToS</a>
+            <a class="chapter-link" href="#chapter-dashboard" data-chapter-link><span>05</span>Dashboard</a>
+          </nav>
+          <div class="guide-chapters">
+            <article class="chapter chapter-featured" id="chapter-spectrum" data-guide-chapter>
+              <div class="chapter-copy">
+                <div class="chapter-kicker"><span>01</span> SPECTRUM</div>
+                <h3>Make Spectrum feel like yours.</h3>
+                <p>Build a more comfortable forum and chat experience. Choose from 106 themes or adjust colours, fonts, text size and forum width. Pick from nine reply layouts, then enable the tools you want for forums, chat, messages, friends, bookmarks, saved threads, advanced search, member profiles and notifications.</p>
+                <ul class="chapter-points">
+                  <li>Set appearance and reply layout separately</li>
+                  <li>Keep forum, chat and community tools under your control</li>
+                </ul>
+                <a class="chapter-cta" href="#screenshots">See Spectrum in the screenshots <span aria-hidden="true">↗</span></a>
+              </div>
+              <a class="chapter-image chapter-image-wide" href="#screenshots" aria-label="View Spectrum screenshots">
+                <img src="assets/spectrum-community.png" alt="Spectrum forum with the RSI Enhanced sidebar and a redesigned topic list" loading="lazy" decoding="async">
+                <span class="image-caption">SPECTRUM COMMUNITY <span aria-hidden="true">↗</span></span>
+              </a>
+            </article>
+            <article class="chapter chapter-compact" id="chapter-hangar" data-guide-chapter>
+              <div class="chapter-copy">
+                <div class="chapter-kicker"><span>02</span> MY HANGAR</div>
+                <h3>Find more in your Hangar.</h3>
+                <p>Search, filter, sort and organise pledge items with saved views, Collections and favourites. Switch between list or grid layouts, export your collection and open item images at full size. Compare related ships, search Buy Back pledges and review a change report after you refresh Hangar data.</p>
+                <a class="chapter-cta" href="#screenshots">See the Hangar view <span aria-hidden="true">↗</span></a>
+              </div>
+              <a class="chapter-image" href="#screenshots" aria-label="View My Hangar screenshots">
+                <img src="assets/my-hangar.png" alt="My Hangar with an organised list of owned ships and vehicles" loading="lazy" decoding="async">
+                <span class="image-caption">MY HANGAR <span aria-hidden="true">↗</span></span>
+              </a>
+            </article>
+            <article class="chapter chapter-compact" id="chapter-rsi" data-guide-chapter>
+              <div class="chapter-copy">
+                <div class="chapter-kicker"><span>03</span> RSI PAGES</div>
+                <h3>A clearer way around the RSI site.</h3>
+                <p>Optional styling and focused tools cover account pages, the Pledge Store, Ship Matrix, Organizations, Comm-Link, Patch Notes, Roadmap, Funding Goals and Dev Tracker. Use the Verse Data Hub to search public game information from supported RSI pages.</p>
+                <a class="chapter-cta" href="#screenshots">See more RSI pages <span aria-hidden="true">↗</span></a>
+              </div>
+              <a class="chapter-image" href="#screenshots" aria-label="View RSI website screenshots">
+                <img src="assets/organizations.png" alt="RSI Organizations page with an improved extension layout" loading="lazy" decoding="async">
+                <span class="image-caption">RSI WEBSITE <span aria-hidden="true">↗</span></span>
+              </a>
+            </article>
+            <article class="chapter chapter-compact" id="chapter-tos" data-guide-chapter>
+              <div class="chapter-copy">
+                <div class="chapter-kicker"><span>04</span> TERMS OF SERVICE</div>
+                <h3>A clearer way to read the Terms.</h3>
+                <p>Browse a clearer Terms of Service layout with a linked contents rail and earlier versions. Choose a past version and use Compare versions to see wording added or removed, section by section.</p>
+                <a class="chapter-cta" href="#screenshots">Explore the Terms of Service <span aria-hidden="true">↗</span></a>
+              </div>
+              <a class="chapter-image" href="#screenshots" aria-label="View the Terms of Service screenshot">
+                <img src="assets/ToS.png" alt="Terms of Service page with contents navigation, earlier versions and a comparison tool" loading="lazy" decoding="async">
+                <span class="image-caption">TERMS OF SERVICE <span aria-hidden="true">↗</span></span>
+              </a>
+            </article>
+            <article class="chapter chapter-compact" id="chapter-dashboard" data-guide-chapter>
+              <div class="chapter-copy">
+                <div class="chapter-kicker"><span>05</span> PERSONAL DASHBOARD</div>
+                <h3>Your RSI activity, at a glance.</h3>
+                <p>Bring your Hangar, saved Spectrum discussions, Roadmap watchlist, public funding stats and Concierge progress into one dashboard. Your personal data stays on this device, with clear links back to the RSI pages behind each summary.</p>
+                <a class="chapter-cta" href="#screenshots">Explore the Personal Dashboard <span aria-hidden="true">↗</span></a>
+              </div>
+              <a class="chapter-image" href="#screenshots" aria-label="View the Personal Dashboard screenshot">
+                <img src="assets/personal-dashboard.png" alt="Personal Dashboard bringing together Hangar, Spectrum saves, Roadmap, funding stats and Concierge progress" loading="lazy" decoding="async">
+                <span class="image-caption">PERSONAL DASHBOARD <span aria-hidden="true">↗</span></span>
+              </a>
+            </article>
+          </div>
         </div>
       </div>
     </section>
@@ -64,39 +155,10 @@
           <p class="section-intro">Choose your browser’s store, then enable only the RSI Enhanced features you want to use.</p>
         </div>
         <ol class="steps">
-          <li class="step"><span class="step-number">01</span><h3>Install from your browser store</h3><p>The Chrome Web Store is available for Chrome, Edge and Brave; Firefox is available from Add-ons.</p></li>
-          <li class="step"><span class="step-number">02</span><h3>Open the RSI website</h3><p>Visit Spectrum or another supported RSI page in your browser.</p></li>
-          <li class="step"><span class="step-number">03</span><h3>Choose the features you want</h3><p>Open RSI Enhanced settings and switch on the tools and appearance options that suit you.</p></li>
+          <li class="step"><span class="step-number">01</span><h3>Install from your browser store</h3><p>The extension is available for Chrome, Edge and Brave. It is also available for Firefox via Mozilla Add-ons.</p></li>
+          <li class="step"><span class="step-number">02</span><h3>Open RSI Enhanced settings</h3><p>Choose the RSI features and appearance options you want to use.</p></li>
+          <li class="step"><span class="step-number">03</span><h3>Open the RSI website</h3><p>Visit Spectrum or another supported RSI page to see your customizations.</p></li>
         </ol>
-      </div>
-    </section>
-
-    <section class="section" id="features">
-      <div class="wrap">
-        <div class="section-head">
-          <div><div class="eyebrow">Made for everyday browsing</div><h2>More control over the RSI pages you use.</h2></div>
-          <p class="section-intro">Choose what to change and what to leave alone. Each feature can be adjusted in the extension settings.</p>
-        </div>
-        <div class="features">
-          <article class="feature">
-            <div class="feature-num">01 / SPECTRUM</div>
-            <h3>Your Spectrum, your way</h3>
-            <p>Choose from 106 themes or tune colours, fonts, text size and forum width. Switch between nine reply layouts, and control forum, chat, messages, friends and notification tools separately.</p>
-            <span class="tag">Forums · Chat · Messages</span>
-          </article>
-          <article class="feature">
-            <div class="feature-num">02 / MY HANGAR</div>
-            <h3>Find things in your Hangar</h3>
-            <p>Search across pledge pages, filter and sort items, save favourites, switch list or grid views, export your collection and open item images at full size.</p>
-            <span class="tag">Search · Organize · Export</span>
-          </article>
-          <article class="feature">
-            <div class="feature-num">03 / RSI WEBSITE</div>
-            <h3>A more consistent RSI experience</h3>
-            <p>Optional styling and tools cover account pages, the Pledge Store, Ship Matrix, Organizations, Comm-Link, Patch Notes, Roadmap, Funding Goals and Dev Tracker.</p>
-            <span class="tag">Independent section controls</span>
-          </article>
-        </div>
       </div>
     </section>
 
@@ -104,7 +166,7 @@
       <div class="wrap">
         <div class="section-head">
           <div><div class="eyebrow">A look around</div><h2>See it on the pages themselves.</h2></div>
-          <p class="section-intro">Explore ten parts of Spectrum and the RSI site. Screenshots use different included themes, so colours and accents vary.</p>
+          <p class="section-intro">Explore eleven parts of Spectrum and the RSI site. Screenshots use different included themes, so colours and accents vary.</p>
         </div>
         <div class="feature-carousel" data-feature-carousel data-carousel-asset-base="assets/" role="region" aria-roledescription="carousel" aria-label="RSI Enhanced feature screenshots">
           <figure class="carousel-figure">
@@ -118,7 +180,7 @@
                 <strong data-carousel-title>Spectrum Community</strong>
                 <span data-carousel-description>Browse forums, chat lobbies and saved threads from a themed Spectrum workspace.</span>
               </div>
-              <span class="carousel-count" data-carousel-count aria-hidden="true">01 / 10</span>
+              <span class="carousel-count" data-carousel-count aria-hidden="true">01 / 11</span>
             </figcaption>
           </figure>
           <dialog class="carousel-lightbox" data-carousel-lightbox aria-label="Full-size screenshot">
@@ -138,6 +200,7 @@
               <button class="carousel-dot" type="button" data-carousel-slide="7" aria-label="Show Comm-Link"><span class="sr-only">Comm-Link</span></button>
               <button class="carousel-dot" type="button" data-carousel-slide="8" aria-label="Show My Hangar"><span class="sr-only">My Hangar</span></button>
               <button class="carousel-dot" type="button" data-carousel-slide="9" aria-label="Show Personal Dashboard"><span class="sr-only">Personal Dashboard</span></button>
+              <button class="carousel-dot" type="button" data-carousel-slide="10" aria-label="Show Terms of Service"><span class="sr-only">Terms of Service</span></button>
             </div>
             <button class="carousel-arrow" type="button" data-carousel-action="next" aria-label="Next screenshot"><svg class="carousel-arrow-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7" /></svg></button>
           </div>
@@ -149,9 +212,39 @@
     <section class="section changelog-section" id="changelog">
       <div class="wrap">
         <details class="release-notes">
-          <summary><span class="release-notes-title" role="heading" aria-level="2">What’s new in RSI Enhanced 1.2.0</span><span class="release-notes-hint">View release notes</span></summary>
+          <summary><span class="release-notes-title" role="heading" aria-level="2">What’s new in RSI Enhanced 1.2.1</span><span class="release-notes-hint">View release notes</span></summary>
           <div class="release-notes-content">
-            <p class="release-notes-intro">Version 1.2.0 adds new Hangar tools, makes ship research easier, and brings more customization to RSI and Spectrum.</p>
+            <p class="release-notes-intro">Version 1.2.1 redesigns Spectrum member cards and makes profile actions easier to find.</p>
+            <section class="release-group">
+              <h3>CHANGED</h3>
+              <ul>
+                <li>Spectrum member cards use a compact layout with aligned name, handle, badges and statistics. Posts, Karma and Enlisted share a text baseline; Add Friend and Private Message have clear spacing. Profile links, quick messaging and accessible Block options remain available, including RSI&#39;s native Block action and optional Hide posts.</li>
+                <li>The Account Access panel follows the selected theme palette across its surfaces, text, borders, credits, links and controls while keeping presence indicators distinct.</li>
+                <li>Backup &amp; restore uses compact backup, restore, cache, and reset controls. Resetting preferences asks for confirmation and leaves saved content and cached data intact. Clear Hangar search, Hangar change tracking, Funding Goals, and Roadmap caches individually or together; clearing Hangar change tracking starts a fresh baseline on the next manual refresh.</li>
+                <li>Gear pledge pages no longer show the Gear recommendation shelf or request the public Gear catalogue from product detail pages; the existing Gear browse pages and pledge details remain available.</li>
+                <li>The Personal Dashboard launcher and title bar use a matching dashboard panel icon.</li>
+                <li>The privacy notice explains that Roadmap Release View reads RSI&#39;s public board without sending search words and that Spectrum reads a public dossier to show Enlisted dates. Notice version 29 asks existing users to review the updated disclosure.</li>
+              </ul>
+            </section>
+            <section class="release-group">
+              <h3>FIXED</h3>
+              <ul>
+                <li>Firefox Account Access consistently uses the selected theme palette, matching the rest of the RSI page.</li>
+                <li>Roadmap Release View search works while categories are collapsed; selecting a result opens the matching patch and category, then takes you to and highlights the card.</li>
+                <li>Spectrum member card statistics show the full Enlisted date within the card and use the selected Spectrum theme&#39;s colors.</li>
+                <li>My Hangar Concierge progress shows the approximate qualifying pledge spend remaining to the next rank, matching the Personal Dashboard.</li>
+                <li>Gear galleries and pledge-card backing surfaces use the selected theme instead of fixed blue backgrounds.</li>
+                <li>Pledge Store canvases and shared card-list surfaces use the selected theme across Merchandise, Add-ons, Paints, Packs, Gift Cards and other catalog pages in the Chrome and Firefox packages.</li>
+                <li>Pledge Store cart buttons use a narrower card column so discounted and original prices stay readable without moving the button to another row.</li>
+                <li>Gear catalog grid gutters and the top filter/sort controls use the selected theme palette instead of cyan surfaces; the control override now wins against RSI&#39;s more-specific cyan rule.</li>
+                <li>The country selector strip and RSI website footer follow the selected theme across their backgrounds, dividers, links, logos and launcher button, with the footer layout and native actions unchanged.</li>
+                <li>The Spectrum empty-thread panel and its native first-reply action use the selected theme instead of cyan surfaces.</li>
+                <li>Spectrum Enlisted profile results use a bounded in-memory cache, expire after a short period, and retry unavailable values after a cooldown.</li>
+              </ul>
+            </section>
+            <details class="release-history">
+              <summary><span class="release-notes-title" role="heading" aria-level="3">Previous release · 1.2.0</span><span class="release-notes-hint">Expand older release notes</span></summary>
+              <div class="release-history__content">
                                         <section class="release-group">
   <h3>ADDED</h3>
   <ul>
@@ -185,6 +278,8 @@
     <li>The Firefox extension now installs with its supported background script setup.</li>
   </ul>
 </section>
+              </div>
+            </details>
           </div>
         </details>
       </div>
@@ -203,12 +298,66 @@
       </div>
     </section>
 
+    <section class="section faq-section" id="faq" aria-labelledby="faq-heading">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Common questions</div>
+            <h2 id="faq-heading">Questions worth asking.</h2>
+          </div>
+          <p class="section-intro">Clear answers about AI, permissions and data before you install.</p>
+        </div>
+        <div class="faq-list">
+          <div class="faq-column">
+          <details class="faq-item">
+            <summary>Was AI used to help build RSI Enhanced?<span aria-hidden="true">＋</span></summary>
+            <div class="faq-answer">
+              <p>Yes. AI tools are used to assist development by helping draft, review code and use of a regression testing suite to make sure features and code work continuously through development. The developer decides what is accepted and released. AI is not part of the installed extension. It does not send your browsing data to an AI or data service. The source, release history and automated tests are public so you can inspect the shipped code.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>How can I trust this extension?<span aria-hidden="true">＋</span></summary>
+            <div class="faq-answer">
+              <p>RSI Enhanced is an independent community project, not made or endorsed by Roberts Space Industries or Cloud Imperium Games. You can inspect its public source code and release history on GitHub, check the publisher and permissions in the browser store listings, and read the privacy policy. It has no analytics or telemetry, and saved feature data is not sent to the developer.</p>
+              <div class="faq-links">
+                <a href="https://github.com/FrostySM0/RSI-Enhanced">Browse source and releases <span aria-hidden="true">↗</span></a>
+                <a href="https://chromewebstore.google.com/detail/rsi-enhanced/dhpcnkklknjpbncbebljoefdnkikgcmi">Chrome Web Store <span aria-hidden="true">↗</span></a>
+                <a href="https://addons.mozilla.org/en-GB/firefox/addon/rsi-enhanced/">Firefox Add-ons <span aria-hidden="true">↗</span></a>
+                <a href="https://frostysm0.github.io/RSI-Enhanced/privacy-policy.html">Read the privacy policy <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </details>
+          </div>
+          <div class="faq-column">
+          <details class="faq-item">
+            <summary>What information leaves my browser?<span aria-hidden="true">＋</span></summary>
+            <div class="faq-answer">
+              <p>Saved settings and feature data stay in your browser and are not sent to the developer. Some optional features make requests to RSI or public sources such as the SC Wiki API and Google Sheets when you use them. For example, Verse Data Hub sends its search phrase and selected category to the SC Wiki API. The privacy policy lists each data flow.</p>
+              <div class="faq-links">
+                <a href="https://frostysm0.github.io/RSI-Enhanced/privacy-policy.html">See the full data-flow details <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>Which permissions does RSI Enhanced request?<span aria-hidden="true">＋</span></summary>
+            <div class="faq-answer">
+              <p>It requests the browser’s storage permission for settings and saved feature data, plus site access to robertsspaceindustries.com, api.star-citizen.wiki, and docs.google.com. These are used to style RSI pages and provide optional public game-data and funding features. Your browser’s store listing shows the requested permissions before installation.</p>
+            </div>
+          </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="cta">
       <div class="wrap">
         <div class="eyebrow">Open source</div>
         <h2>Take a closer look.</h2>
-        <p>Browse the source, follow updates, or report an issue through the RSI Enhanced GitHub project.</p>
-        <a class="button" href="https://github.com/FrostySM0/RSI-Enhanced">Visit the GitHub project <span aria-hidden="true">↗</span></a>
+        <p>Browse the source, follow updates, or send feedback through the RSI Enhanced GitHub project.</p>
+        <div class="actions cta-actions">
+          <a class="button" href="https://github.com/FrostySM0/RSI-Enhanced">Visit the GitHub project <span aria-hidden="true">↗</span></a>
+          <a class="button secondary" href="https://github.com/FrostySM0/RSI-Enhanced/issues">Report a bug or request a feature <span aria-hidden="true">↗</span></a>
+        </div>
       </div>
     </section>
   </main>
@@ -218,11 +367,16 @@
       <span>RSI Enhanced · An independent browser extension for Star Citizen’s RSI website.</span>
       <nav class="foot-links" aria-label="Footer links">
         <a href="https://github.com/FrostySM0/RSI-Enhanced">GitHub</a>
+        <a href="https://github.com/FrostySM0/RSI-Enhanced/issues">Report a bug or request a feature</a>
+        <a href="#faq">FAQ</a>
         <a href="https://frostysm0.github.io/RSI-Enhanced/privacy-policy.html">Privacy policy</a>
       </nav>
     </div>
   </footer>
   <script src="gallery-carousel.js" defer></script>
+  <script src="chapter-navigation.js" defer></script>
+  <script src="hero-motion.js" defer></script>
+  <script src="faq-motion.js" defer></script>
 </body>
 </html>
 

@@ -71,6 +71,12 @@
       alt: 'Personal dashboard with Hangar, Spectrum saves, Roadmap, Funding Stats and Concierge cards',
       description: 'See Hangar, saved discussions and tracked updates together in one view.',
     },
+    {
+      title: 'Terms of Service',
+      source: 'ToS.png',
+      alt: 'Terms of Service page with contents navigation, earlier versions and a comparison tool',
+      description: 'Browse sections and earlier versions, then compare current wording with an older release.',
+    },
   ];
   if (!image || !title || !description || !counter || selectors.length !== slides.length) return;
   const assetBase = carousel.dataset.carouselAssetBase || 'assets/';
