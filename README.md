@@ -12,6 +12,7 @@ This extension covers these areas;
 - Pledge store
 - Ship matrix
 - My Hangar
+- Terms of Service
 
 RSI Website and Spectrum functions can be turned off if you do not like them. For example you can turn off forum enhancements.
 
